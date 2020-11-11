@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/doctor_myconsult/doctor_myconsult",
+    
+    "pages/signIndex/signIndex",
+    "pages/user/user",
+    "pages/signIn/signIn",
+    "pages/forget_pass/forget_pass",
+    "pages/consult_detail/consult_detail",
+    "pages/consult_doctors_choose/consult_doctors_choose",
+    "pages/consult_chatroom/consult_chatroom",
+    "pages/lineIndex/lineIndex",
+    "pages/lineDetail/lineDetail",
+    "pages/signUp/signUp",
+    "pages/consult_questionnaire/consult_questionnaire",
+    "pages/doctorRegister/doctorRegister",
+    "pages/question/question",
+    "pages/article_detail/article_detail",
+    "pages/search/search",
+    "pages/searchResult/searchResult",
+    "pages/signUp/index",
+    "pages/mycoll/mycoll",
+    "pages/testIndex/testIndex",
+    "pages/doctor_consult_detail/doctor_consult_detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "妈咪宝贝",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#d4237a",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "科普频道",
+        "iconPath": "/images/icon/kppd1.png",
+        "selectedIconPath": "/images/icon/kppd2.png"
+      },
+      {
+        "pagePath": "pages/testIndex/testIndex",
+        "text": "测试",
+        "iconPath": "/images/icon/wj1.png",
+        "selectedIconPath": "/images/icon/wj2.png"
+      },
+      {
+        "pagePath": "pages/consult_doctors_choose/consult_doctors_choose",
+        "text": "咨询",
+        "iconPath": "/images/icon/zx1.png",
+        "selectedIconPath": "/images/icon/zx2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/icon/wd1.png",
+        "selectedIconPath": "/images/icon/wd2.png"
+      }
+    ]
+  },
+  "permissions": {
+    "openapi": [
+      "templateMessage.send"
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

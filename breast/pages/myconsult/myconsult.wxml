@@ -1,0 +1,27 @@
+<view wx:if="{{consultOrderList.length > 0}}">
+	<scroll-view class="content-info" scroll-y>
+		<view class="outer" wx:for="{{consultOrderList}}" wx:key="{{item.id}}">
+			<view class="card" data-doctorid="{{item.doctorId}}" data-userid="{{item.userId}}" data-oid="{{item.oid}}" data-status="{{item.status}}" bindtap="to_consult_detail">
+				<view class="topdes solids-bottom ">
+					<view class="cu-avatar round margin-left " style="margin:20rpx;background-image:url({{item.doctor.imgUrl}});"></view>
+					<view class="padding-xs flex align-center">
+						<text class="padding text-grey">{{item.doctor.name}}</text>
+						<text class="padding text-grey margin-right">{{item.status == 0 ? '未完成' : '已完成' }}</text>
+					</view>
+				</view>
+				<view class="solids-bottom">
+					<view class="padding description">{{item.symptomDescription}}</view>
+				</view>
+				<text class="text-grey padding">{{item.createTime}}</text>
+			</view>
+		</view>
+	</scroll-view>
+
+</view>
+<!-- 没有咨询 -->
+<view wx:if="{{consultOrderList.length == 0}}" class="no_outer">
+	<view class="noresult">
+		<image src="/images/icon/none.png" style="height: 228rpx"></image>
+		<view class="none_text">暂无咨询</view>
+	</view>
+</view>

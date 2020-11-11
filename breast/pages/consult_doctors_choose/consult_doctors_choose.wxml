@@ -1,0 +1,46 @@
+<!-- <view class="container">
+
+	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
+		<view class="service-list">
+			<navigator class="service-item" wx:for="{{doctorList}}" wx:key="{{item.id}}" url="../doctors_choosedetail/doctors_choosedetail?id={{item.id}}">
+				<view class="service-img">
+					<image src="{{item.imgurl}}" mode="aspectFill"></image>
+				</view>
+				<view class="service-text">
+          <view class="service-title">
+					  <view class="service-name">{{item.name}}</view>
+            <view class="service-position">{{item.position}}</view>
+          </view>
+          <view>
+            <text class="service-city">{{item.hospital}}    {{item.tag}}</text>
+          </view>
+          <view>
+					  <text class="service-city">咨询状态：{{item.state}}</text>
+          </view>
+				</view>
+			</navigator>
+		</view>
+		<view class="gototop {{scrolltop>200?'active':''}}" bindtap="goToTop"></view>
+	</scroll-view>
+</view> -->
+
+ <view class="cu-list menu-avatar"   wx:for="{{doctorList}}" wx:key="{{item.id}}" wx:for-index="idx" >
+
+    <view class="cu-item bor" style="margin-top:30rpx" data-index="{{idx}}"  bindtap="to_consultque">
+      <view class="cu-avatar round lg" style="background-image:url({{item.imgUrl}});"></view>
+      <view class="content">
+        <view class="text-black">{{item.name}} 主治医师</view>
+        <view class="text-gray text-sm flex">  
+							<text class=" margin-right-xs"></text> {{item.expertIn}}
+        </view>				
+				<view class="staus-bor">
+								<image class="status" src="/images/icon/kzx.png"></image>
+				<view style="margin-left:15rpx" class="text-pink">可咨询</view>
+				</view>
+      </view>
+    </view>  
+
+  </view>
+
+  
+	
