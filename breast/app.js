@@ -163,6 +163,7 @@ App({
             //设置 返回 的用户数据
             that.globalData.object = 'doctor';
             that.globalData.userInfor = res.data.data;
+            that.globalData.userId = res.data.data.id;
             console.log('doctorToken 登录成功', that.globalData.userInfor);
           },
           fail:function(res){
@@ -193,6 +194,7 @@ App({
               //设置 返回 的用户数据
               that.globalData.object = 'user';
               that.globalData.userInfor = res.data.data;
+              that.globalData.userId = res.data.data.userId;
               console.log('userToken 登录成功', that.globalData.userInfor);
             },
             fail: function (res) {

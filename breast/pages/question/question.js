@@ -1,8 +1,5 @@
-
 var app = getApp();
 Page({
-
-
   data: {
     tid:0,
     currentIndex: 0,
@@ -10,7 +7,7 @@ Page({
     type: 0,
     options: [],
     resData: [],
-    userid:-1
+    userId:-1
   },
   onLoad: function (options) {
     var id = options.id;
@@ -18,7 +15,7 @@ Page({
     this.getQuestion(id)
     this.setData({
       tid:id,
-      userid:options.userid
+      userId:options.userId
     })
   },
 
@@ -49,6 +46,10 @@ Page({
     //index--第几题
     var index = this.data.currentIndex;
     console.log(index)
+    //清空数据
+    this.setData({
+      options:[]
+    })
     //选项
     var optionList = new Array();
     optionList = questionList[index].qOpstions.split('|');
@@ -61,13 +62,14 @@ Page({
         [opStr]: optionList[i],
         [selectStr]: -1
       })
+      console.log(this.data.options)
     }
     this.setData({
       title: questionList[index].qContent,
       type: questionList[index].qType,
     })
 
-    console.log(this.data.options[3].option)
+    
   },
   selectOp: function (event) {
     console.log(event)
@@ -88,7 +90,7 @@ Page({
         wx.request({
           url: serverUrl+'/score/update',
           data:{
-            userid:that.data.userid,
+            userId: that.data.userId,
             score:10
           },
           success:function(res){
@@ -147,7 +149,7 @@ Page({
         url: serverUrl+ '/user/insertAnswers',
         method:"GET",
         data:{
-          userid:that.data.userid,
+          userId: that.data.userId,
           tid:this.data.tid,
           answers:str
         },
@@ -155,7 +157,7 @@ Page({
            console.log(res)
         }
   
-      })
+      }) 
 
       var oldIdx = this.data.currentIndex;
        this.setData({
