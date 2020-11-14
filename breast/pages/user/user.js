@@ -2,11 +2,15 @@ const app = getApp();
 Page({
 
   data: {
-
+    userId:-1
   },
 
-  onLoad: function (options) {
-
+  onShow: function (options) {
+    console.log('onLoad')
+    console.log(app.globalData.userId)
+      this.setData({
+        userId:app.globalData.userId
+      })
   },
 
   //退出登录 清除存储在本地的信息
@@ -15,7 +19,16 @@ Page({
     wx.removeStorageSync('userTokenDate');
     wx.removeStorageSync('doctorToken');
     wx.removeStorageSync('doctorTokenDate');
-    app.clearPrivacyData()
+    app.clearPrivacyData();
+    this.setData({
+      userId:-1
+    })
+  },
+
+  logIn:function(){
+    wx.navigateTo({
+      url: '../signIndex/signIndex',
+    })
   },
 
   chagetoLogin:function(){

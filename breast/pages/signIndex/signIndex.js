@@ -6,7 +6,7 @@ Page({
     position:0,//1-用户 2-医生
     isVisible:false,
   },
-  
+
   showLogin:function(){
     this.setData({
       isVisible:true,

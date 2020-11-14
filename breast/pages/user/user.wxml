@@ -36,7 +36,10 @@
   
 		</view>
 
-      <view class="logout_bor" bindtap="logOut">
+      <view class="logout_bor" wx:if="{{userId > 0}}" bindtap="logOut">
         <view class="logout">退出登录</view>
+      </view>
+        <view class="logout_bor" wx:elif="{{userId < 0}}" bindtap="logIn">
+        <view class="logout">登录</view>
       </view>
 

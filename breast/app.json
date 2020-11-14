@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/doctor_myconsult/doctor_myconsult",
-    
     "pages/signIndex/signIndex",
     "pages/user/user",
     "pages/signIn/signIn",
