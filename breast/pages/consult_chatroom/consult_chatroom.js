@@ -34,18 +34,18 @@ Page({
     if(this.data.object == 'user')
       wx.connectSocket({
         // 本地服务器地址
-        url: 'ws://localhost:8887/websocket/' + this.data.userId + '/' + this.data.doctorId + '/' + this.data.oid,
+        url: 'wss://mombabyai.cn/websocket/' + this.data.userId + '/' + this.data.doctorId + '/' + this.data.oid,
       })
       else
       wx.connectSocket({
         // 本地服务器地址
-        url: 'ws://localhost:8887/websocket/' + this.data.doctorId + '/' + this.data.userId + '/' + this.data.oid,
+        url: 'wss://mombabyai.cn/websocket/' + this.data.doctorId + '/' + this.data.userId + '/' + this.data.oid,
       })
-
 
     // 连接成功
     wx.onSocketOpen(function () {
       console.log('连接成功');
+      
     })
 
     wx.onSocketMessage(msg => {

@@ -23,9 +23,8 @@ App({
   },
 
   globalData: {
-    // serverUrl:'http://47.111.5.186:8087',
     //serverUrl: 'http://localhost:8087',
-    serverUrl: 'http://mombabyai.cn:8087',
+    serverUrl: 'https://mombabyai.cn',
     salt : "fdsfvxnmcvnew68sa5d54ds",
     userId:-1, //表示登录用户的id 无论是医生还是普通用户
     object:'',  //登录的用户群体：1.医生 2.普通用户
@@ -33,8 +32,8 @@ App({
     doctorList:[],       //医生列表
     consultOrderList:[],  //医生端存放 咨询订单
     //不同账号需要更改 密匙 否则 获取 openid将出错
-    APP_ID: 'wx3d0c29a20a305f28',
-    APP_SECRET: '685ef10637631ae8e3db77e000f22f9e',
+    APP_ID: 'wxfbebd90d9bf59e52',
+    APP_SECRET: '939f54b21647f5d6bf05feb58ece72bf',
     openId:'',//微信小程序用户标识符
     sendToDoctortmpId:'88nsGfDmdMA314-IC3nC2ILmfSX_TgW2GarmChOIOFc',
     // sendToDoctortmpId:'zCX36fb1ceNmJY__fb6g_8F-Bu0ApylFvz4aMLILfjE',
