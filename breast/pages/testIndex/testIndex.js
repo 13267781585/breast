@@ -14,13 +14,12 @@ Page({
   },
 
   onLoad: function (options) {
-    
+    this.getTests();
+  },
+
+  onShow:function(options){
     //获取用户的userid
     this.checkUserId();
-    
-    this.getTests();
-
-
   },
 
   getTests:function(){

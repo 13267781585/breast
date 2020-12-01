@@ -10,11 +10,12 @@ Page({
     openId: '',
   },
   onLoad: function () { //加载数据渲染页面
-    if(app.globalData.userId < 0)
-         showUtil.showToLogion();
     this.fetchDoctorData();
   },
-
+  onShow:function(options){
+    if (app.globalData.userId < 0)
+      showUtil.showToLogion();
+  },
   fetchDoctorData: function () {  //获取医生列表
     let _this = this;
     wx.showToast({

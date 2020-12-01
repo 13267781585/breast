@@ -2,6 +2,7 @@ package lllr.test.breast.util.wx;
 
 import com.alibaba.fastjson.JSONObject;
 import lllr.test.breast.util.DataValidateUtil;
+import lllr.test.breast.util.okhttp.HttpUtil;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +13,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+// TODO: 2020/12/1  将http get和post操作抽取出来后还没有完整测试过
 //与微信小程序官方api 交互的一些操作
 @Service
 public class WXUtil {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(WXUtil.class);
-
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
 
     //微信验证token参数
     @Value("${wx.TOKEN}")
@@ -35,6 +33,9 @@ public class WXUtil {
     //有效时间是7200s
     private static String ACCESS_TOKEN;
     private static long ACCESS_TOKEN_OUTTIME;
+
+    //小程序openId
+    private static String OPEN_ID;
 
     /*
     小程序上传给微信图片的标识符和有效期记录
@@ -108,42 +109,6 @@ public class WXUtil {
         return "";
     }
 
-
-    /*
-
-    ############### 没有域名 未调试
-     */
-
-    private Map<String,Object> JsonPost(String url,String json_data){
-        OkHttpClient okHttpClient = new OkHttpClient();
-        //创建一个RequestBody(参数1：数据类型 参数2传递的json串)
-        //json为String类型的json数据
-        RequestBody requestBody = RequestBody.create(JSON, json_data);
-        //创建一个请求对象
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-
-        Map dataMap = null;
-        OkHttpClient client = new OkHttpClient();
-
-        try (Response response = client.newCall(request).execute()) {
-
-            //将请求得到的 参数字符串 放入 Map中
-            String body_string = response.body().string();
-            dataMap = JSONObject.parseObject(body_string,Map.class);
-            LOGGER.debug(" ===JsonPost: " + url + body_string + " ===");
-        }catch (IOException e){
-            LOGGER.error(" ===JsonPost: " + url + e.getMessage() + " ===");
-            return null;
-        }
-
-        //返回 请求 得到的 参数
-        return dataMap;
-
-    }
-
     /*
    在微信公众号小程序平台  填写消息服务器地址后（http：//域名：端口/consult），
    微信会发一个 GET 请求用于验证:
@@ -173,50 +138,30 @@ public class WXUtil {
         LOGGER.debug("===" + code_data + "===");
 
         //验证成功 返回  echostr 参数
-        if(signature.equalsIgnoreCase(code_data))
-            return true;
-        return false;
+        return signature.equalsIgnoreCase(code_data);
     }
 
 
     /*
    获取小程序全局唯一后台接口调用凭据（access_token）
     */
-    private String WXGetAccessToken(){
+    public String WXGetAccessToken(){
         //判断 ACCESS_TOKEN 是否为空和是否过期
         if(ACCESS_TOKEN != null && ((System.currentTimeMillis() - ACCESS_TOKEN_OUTTIME) / 1000 < 6000))
             return ACCESS_TOKEN;
 
-        OkHttpClient client = new OkHttpClient();
         //微信获取 access_token api
         String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&";
         url += "appid=" + APP_ID + "&secret=" + APP_SECRET;
 
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        Map<String,String> responseContent = HttpUtil.GetHttp(url,false);
+        //从响应体中获取access_token
+        String access_token = responseContent.get("access_token");
 
-        try (Response response = client.newCall(request).execute()) {
-            if(response.body() == null) {
-                LOGGER.error("=== WXGetAccessToken: 微信AccessToken为空!" );
-                return "";
-            }
-
-            Map<String,String> responseContent = JSONObject.parseObject(response.body().string(), Map.class);
-            //从响应体中获取access_token
-            String access_token = responseContent.get("access_token");
-
-            LOGGER.debug("=== 微信access_token: " + access_token + "===");
-            ACCESS_TOKEN = access_token;
-            ACCESS_TOKEN_OUTTIME = System.currentTimeMillis();
-            return  access_token;
-
-        } catch (IOException e) {
-            LOGGER.error("=== WXGetAccessToken：" + e.getMessage() + "===");
-        }
-
-        return null;
-
+        LOGGER.debug("=== 微信access_token: " + access_token + "===");
+        ACCESS_TOKEN = access_token;
+        ACCESS_TOKEN_OUTTIME = System.currentTimeMillis();
+        return  access_token;
     }
 
     /*
@@ -229,9 +174,39 @@ public class WXUtil {
         JSONObject request_data = new JSONObject(requestData);
         String request_json = request_data.toJSONString();
         String url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token" + WXGetAccessToken();
-        Map<String,Object> response_data = JsonPost(url,request_json);
+        Map<String,Object> response_data = HttpUtil.JsonPost(url,request_json,false);
         return false;
     }
 
+    /*
+    发送小程序和公众号统一的服务消息
+
+     */
+    public void sendTemplateMessage(){
+
+    }
+
+    /*
+
+    获取小程序openId
+    code => 调用微信官方接口获取登录凭证（code）
+     */
+    public String getOpenId(String code){
+        //判断 ACCESS_TOKEN 是否为空和是否过期
+        if(OPEN_ID != null)
+            return OPEN_ID;
+
+        //微信获取 access_token api
+        String url = "https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&"+ "appid=" + APP_ID + "&secret=" + APP_SECRET +
+                "&js_code=" + code;
+
+        Map<String,String> responseContent = HttpUtil.GetHttp(url,false);
+        //从响应体中获取access_token
+        String open_id = responseContent.get("openid");
+
+        LOGGER.debug("=== open_id: " + open_id + "===");
+        OPEN_ID = open_id;
+        return  OPEN_ID;
+    }
 
 }

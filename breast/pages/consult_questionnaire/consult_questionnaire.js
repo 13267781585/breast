@@ -20,8 +20,6 @@ Page({
     doctorOpenId: ''   //医生微信小程序标识符
   },
   onLoad: function (options) {
-
-    //
     this.getImgToken();
     if (app.globalData.userInfor != null && app.globalData.userInfor.userId == null){
          showUtil.showToLogion();
@@ -40,7 +38,6 @@ Page({
     
   },
   onReady: function () {
-
     wx.hideLoading({
       complete: (res) => { },
     })

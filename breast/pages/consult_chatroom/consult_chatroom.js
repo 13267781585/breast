@@ -34,12 +34,12 @@ Page({
     if(this.data.object == 'user')
       wx.connectSocket({
         // 本地服务器地址
-        url: 'wss://mombabyai.cn/websocket/' + this.data.userId + '/' + this.data.doctorId + '/' + this.data.oid,
+        url: this.data.serverWssUrl + this.data.userId + '/' + this.data.doctorId + '/' + this.data.oid,
       })
       else
       wx.connectSocket({
         // 本地服务器地址
-        url: 'wss://mombabyai.cn/websocket/' + this.data.doctorId + '/' + this.data.userId + '/' + this.data.oid,
+        url: this.data.serverWssUrl + this.data.doctorId + '/' + this.data.userId + '/' + this.data.oid,
       })
 
     // 连接成功
@@ -210,17 +210,17 @@ Page({
             touser: app.globalData.openId,
             template_id: app.globalData.sendToDoctortmpId,
             data: {
-              date2: {
-                "value": "2019年10月1日"
+              name1: {
+                "value": "张三"
               },
-              number6: {
-                value: 666
+              time3: {
+                value: ''
               },
-              thing4: {
-                value: 444
+              thing2: {
+                value: '消息时间'
               },
-              thing9: {
-                value: 999
+              thing7: {
+                value: '备注'
               }
             },
 

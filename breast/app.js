@@ -23,6 +23,8 @@ App({
   },
 
   globalData: {
+    serverWssUrl: 'wss://mombabyai.cn/websocket/', 
+    //serverWssUrl: 'ws://localhost:8087/websocket/', 
     //serverUrl: 'http://localhost:8087',
     serverUrl: 'https://mombabyai.cn',
     salt : "fdsfvxnmcvnew68sa5d54ds",
@@ -35,9 +37,7 @@ App({
     APP_ID: 'wxfbebd90d9bf59e52',
     APP_SECRET: '939f54b21647f5d6bf05feb58ece72bf',
     openId:'',//微信小程序用户标识符
-    sendToDoctortmpId:'88nsGfDmdMA314-IC3nC2ILmfSX_TgW2GarmChOIOFc',
-    // sendToDoctortmpId:'zCX36fb1ceNmJY__fb6g_8F-Bu0ApylFvz4aMLILfjE',
-    
+    sendToDoctortmpId:'ZUBuHw56XW-d-loTKSOO5OJiLRcR4Moj87U7QN0iweA',
   },
 
   //清除记录的隐私数据=》 用于 用户退出登录时调用
@@ -95,8 +95,6 @@ App({
         return this.globalData.doctorList[i];
       }
   },
-  
-  
 
   // js 格式化 date 对象，输出格式为 yyyy-MM-dd HH:mm:ss 字符串
   jsDateFormatter(dateInput) {  // dateInput 是一个 js 的 Date 对象
@@ -215,27 +213,23 @@ App({
       wx.login({
         success(res) {
           console.log('参数：', res)
-          code = res.code,
+          console.log('wx.login code:',res.code)
+          code = res.code;
             wx.request({
-              url: 'https://api.weixin.qq.com/sns/jscode2session',
+              url: that.globalData.serverUrl + '/wx/getOpenId',
               method: 'GET',
               data: {
-                appid: that.globalData.APP_ID,
-                secret: that.globalData.APP_SECRET,
-                grant_type: 'authorization_code',
-                js_code: code
+                code: code
               },
               success(res) {
                 console.log('success:', res)
-                that.globalData.openId=res.data.openid
+                that.globalData.openId=res.data.data;
                 console.log('app global openid:',that.globalData.openId)
               },
               fail(res) {
                 console.log('fail:', res)
-
               }
             })
-
         }
       })
       

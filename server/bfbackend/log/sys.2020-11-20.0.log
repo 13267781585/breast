@@ -1,0 +1,4 @@
+2020-11-20 10:13:24,010 [INFO] (StartupInfoLogger.java:50)- Starting BreastApplication on LAPTOP-562395R3 with PID 6048 (started by 爱哭的周小姐 in D:\桌面\breast\project\breastfeed\server\bfbackend)
+2020-11-20 10:13:24,051 [DEBUG] (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-20 10:13:24,051 [INFO] (SpringApplication.java:648)- No active profile set, falling back to default profiles: default
+2020-11-20 10:13:27,187 [INFO] (StartupInfoLogger.java:59)- Started BreastApplication in 3.861 seconds (JVM running for 6.654)
