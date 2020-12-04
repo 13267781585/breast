@@ -17,4 +17,13 @@ public class WXServiceImpl implements WXService {
         String openId = wxUtil.getOpenId(code);
         return ComUtils.isEmpty(openId) ? ServerResponse.createByError() : ServerResponse.createBysuccessData(openId);
     }
+
+    public ServerResponse sendMessageNotice(String messageData) throws Exception {
+        String accessToken = wxUtil.WXGetAccessToken();
+        if(ComUtils.isEmpty(accessToken))
+            throw new Exception("发送消息通知失败!");
+
+        wxUtil.sendTemplateMessage(accessToken,messageData);
+        return ServerResponse.createBysuccess();
+    }
 }

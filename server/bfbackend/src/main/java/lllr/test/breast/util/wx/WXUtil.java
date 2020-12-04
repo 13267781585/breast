@@ -180,10 +180,17 @@ public class WXUtil {
 
     /*
     发送小程序和公众号统一的服务消息
-
+    accessToken 微信接口调用凭证
+    touser 小程序openId
+    tmpId 消息模板id
+    json_data 消息数据 json格式
      */
-    public void sendTemplateMessage(){
-
+    public void sendTemplateMessage(String accessToken,String json_data) throws Exception {
+        String url = "https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=" + accessToken;
+        Map<String,Object> response = HttpUtil.JsonPost(url,json_data,false);
+        String errMsg = (String) response.get("errmsg");
+        if(!"openapi.uniformMessage.send:ok".equals(errMsg))
+            throw new Exception("消息通知发送失败!");
     }
 
     /*
