@@ -23,8 +23,8 @@ App({
   },
 
   globalData: {
-    serverWssUrl: 'wss://mombabyai.cn/websocket/', 
-    //serverWssUrl: 'ws://localhost:8087/websocket/', 
+    //serverWssUrl: 'wss://mombabyai.cn/websocket/', 
+    serverWssUrl: 'ws://localhost:8087/websocket/', 
     serverUrl: 'http://localhost:8088',
     //serverUrl: 'https://mombabyai.cn',
     salt : "fdsfvxnmcvnew68sa5d54ds",

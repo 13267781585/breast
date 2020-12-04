@@ -13,6 +13,7 @@ import org.hibernate.validator.constraints.Range;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,10 @@ import java.util.UUID;
 public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
     private static final String  COOLIE_NAME_TOKEN = "token";
+
+    @Value("${sys.userTokenDeadLine]")
+    private String userTokenDeadLine;
+
     @Autowired
     private UserService userService;
 
@@ -127,7 +132,7 @@ public class UserController {
 
         //将 token 放入 header
         response.setHeader("user_token",user.getUserToken());
-        response.setHeader("user_token_date", String.valueOf(System.currentTimeMillis() + 60 * 60 * 24 * 1000)); //设置token 过期时间
+        response.setHeader("user_token_date", String.valueOf(System.currentTimeMillis() + Long.parseLong(userTokenDeadLine))); //设置token 过期时间
 
 //
 //        Cookie cookie = new Cookie(COOLIE_NAME_TOKEN,user.getUserToken());
@@ -142,8 +147,6 @@ public class UserController {
                                      @RequestParam(value = "userPassword")@Length(min=6,message = "密码错误") String userPassword,
                                      HttpServletResponse response,
                                      HttpServletRequest request) {
-
-        System.out.println(userPassword);
         //根据用户名查询用户信息并返回
         ServerResponse<User> reData = userService.userSign(userName, userPassword);
         //不为空说明表单数据正确
@@ -193,14 +196,5 @@ public class UserController {
     {
         return userService.getOpenId(userId);
     }
-
-
-
-
-
-
-
-
-
 
 }
