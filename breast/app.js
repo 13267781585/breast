@@ -25,8 +25,8 @@ App({
   globalData: {
     serverWssUrl: 'wss://mombabyai.cn/websocket/', 
     //serverWssUrl: 'ws://localhost:8087/websocket/', 
-    //serverUrl: 'http://localhost:8087',
-    serverUrl: 'https://mombabyai.cn',
+    serverUrl: 'http://localhost:8088',
+    //serverUrl: 'https://mombabyai.cn',
     salt : "fdsfvxnmcvnew68sa5d54ds",
     userId:-1, //表示登录用户的id 无论是医生还是普通用户
     object:'',  //登录的用户群体：1.医生 2.普通用户
@@ -37,7 +37,7 @@ App({
     APP_ID: 'wxfbebd90d9bf59e52',
     APP_SECRET: '939f54b21647f5d6bf05feb58ece72bf',
     openId:'',//微信小程序用户标识符
-    sendToDoctortmpId:'ZUBuHw56XW-d-loTKSOO5OJiLRcR4Moj87U7QN0iweA',
+    messageNoticeTmpId:'ZUBuHw56XW-d-loTKSOO5OJiLRcR4Moj87U7QN0iweA',
   },
 
   //清除记录的隐私数据=》 用于 用户退出登录时调用

@@ -143,7 +143,6 @@ Page({
       this.setData({
         list: newList
       });
-      this.clearMessage();
       console.log(this.data.list)
       this.rollingBottom()
     } else {
@@ -157,6 +156,7 @@ Page({
     }
     //发送 消息通知
     this.sendMessageNotice()
+    this.clearMessage();
   },
 
   // 页面卸载，关闭连接
@@ -189,52 +189,30 @@ Page({
     var accessToken = '';
     var that = this;
   
-    //先获取 access_token
+    var msg = { "touser": app.globalData.openId, "template_id": app.globalData.messageNoticeTmpId,
+      "data":{
+"name1": { "value": app.globalData.userInfor.userName }, "time3": { "value": app.jsDateFormatter(new Date()) }, "thing2": { "value": that.data.message }, "thing7": { "value": "请您在空闲时间尽快回复！"}
+      }
+    };
+    var json_str = JSON.stringify(msg);
+    console.log("json_str:",json_str);
+//发送通知
     wx.request({
-      url: 'https://api.weixin.qq.com/cgi-bin/token',
-      method: 'GET',
-      data: {
-        grant_type: 'client_credential',
-        appid: app.globalData.APP_ID,
-        secret: app.globalData.APP_SECRET
+      url: app.globalData.serverUrl + '/wx/sendMessageNotice',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data:{
+        message:json_str
       },
       success(res) {
-        console.log('获取access_token成功：', res)
-        accessToken = res.data.access_token
-
-        //发送通知
-        wx.request({
-          url: 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=' + accessToken,
-          method: 'POST',
-          data: {
-            touser: app.globalData.openId,
-            template_id: app.globalData.sendToDoctortmpId,
-            data: {
-              name1: {
-                "value": "张三"
-              },
-              time3: {
-                value: ''
-              },
-              thing2: {
-                value: '消息时间'
-              },
-              thing7: {
-                value: '备注'
-              }
-            },
-
-          },
-          success(res) {
-            console.log('消息推送发送成功:', res)
-          },
-          fail(res) {
-            console.log('消息推送发送失败:', res)
-          }
-        })
+        console.log('消息推送发送成功:', res)
+      },
+      fail(res) {
+        console.log('消息推送发送失败:', res)
       }
     })
-
   },
   
   /*图片模块 */
