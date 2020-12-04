@@ -37,7 +37,7 @@ public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
     private static final String  COOLIE_NAME_TOKEN = "token";
 
-    @Value("${sys.userTokenDeadLine]")
+    @Value("${sys.userTokenDeadLine}")
     private String userTokenDeadLine;
 
     @Autowired

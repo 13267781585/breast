@@ -23,10 +23,10 @@ App({
   },
 
   globalData: {
-    //serverWssUrl: 'wss://mombabyai.cn/websocket/', 
-    serverWssUrl: 'ws://localhost:8087/websocket/', 
-    serverUrl: 'http://localhost:8088',
-    //serverUrl: 'https://mombabyai.cn',
+    serverWssUrl: 'wss://mombabyai.cn/websocket/', 
+    //serverWssUrl: 'ws://localhost:8087/websocket/', 
+    //serverUrl: 'http://localhost:8088',
+    serverUrl: 'https://mombabyai.cn',
     salt : "fdsfvxnmcvnew68sa5d54ds",
     userId:-1, //表示登录用户的id 无论是医生还是普通用户
     object:'',  //登录的用户群体：1.医生 2.普通用户

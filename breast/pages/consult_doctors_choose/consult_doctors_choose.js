@@ -13,8 +13,10 @@ Page({
     this.fetchDoctorData();
   },
   onShow:function(options){
-    if (app.globalData.userId < 0)
+    if (app.globalData.userId < 0){
+      console.log('userId', app.globalData.userId);
       showUtil.showToLogion();
+    }
   },
   fetchDoctorData: function () {  //获取医生列表
     let _this = this;
