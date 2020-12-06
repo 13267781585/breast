@@ -17,6 +17,8 @@ public class WeChatMessageItem {
 
     private String oid;
 
+    private Integer status;
+
     public String getOid() {
         return oid;
     }
@@ -37,7 +39,16 @@ public class WeChatMessageItem {
                 ", messageContent='" + messageContent + '\'' +
                 ", time=" + time +
                 ", oid='" + oid + '\'' +
+                ", status=" + status +
                 '}';
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public WeChatMessageItem(Integer fromUserId, Integer toUserId, int messageType, String messageContent, Date time) {
