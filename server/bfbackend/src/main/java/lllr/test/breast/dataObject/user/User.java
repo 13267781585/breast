@@ -29,6 +29,36 @@ public class User {
 
     private String openId;
 
+    private String imgUrl;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", age=" + age +
+                ", creditId='" + creditId + '\'' +
+                ", pregnantType=" + pregnantType +
+                ", pregnantWeek='" + pregnantWeek + '\'' +
+                ", job='" + job + '\'' +
+                ", confinementDate=" + confinementDate +
+                ", confinementWeek=" + confinementWeek +
+                ", confinementType=" + confinementType +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userToken='" + userToken + '\'' +
+                ", openId='" + openId + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                '}';
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     public String getOpenId() {
         return openId;
     }
