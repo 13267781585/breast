@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface WeChatMessageItemMapper {
+public interface WeChatMessageItemMapper extends WeChatMessageItemMapperExtend{
 
     int deleteByPrimaryKey(Integer id);
 

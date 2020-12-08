@@ -1,5 +1,7 @@
 package lllr.test.breast.service.inter;
 
+import lllr.test.breast.common.ServerResponse;
+import lllr.test.breast.dataObject.consult.MessageList;
 import lllr.test.breast.dataObject.consult.WeChatMessageItem;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,7 @@ public interface WeChatService {
 
     //查询与特定用户的聊天记录
     List<WeChatMessageItem> selectWeChatMsgByFromUserIdAndToUserIdAndOid(Integer fromUserId,Integer toUserId,String oid);
+
+    //查询医生和用户咨询的消息列表
+    ServerResponse<List<MessageList>> selectDoctorMessageList(Integer doctorId);
 }
