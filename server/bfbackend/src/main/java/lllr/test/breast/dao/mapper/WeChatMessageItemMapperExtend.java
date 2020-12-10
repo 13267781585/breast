@@ -1,10 +1,7 @@
 package lllr.test.breast.dao.mapper;
 
 import lllr.test.breast.dataObject.consult.MessageList;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
@@ -27,4 +24,11 @@ public interface WeChatMessageItemMapperExtend {
             "union all " +
             "SELECT wm.*,u.user_id,u.user_name,u.img_url FROM wechat_message_item wm inner join user u on wm.from_user_id=u.user_id where wm.to_user_id=#{doctorId,jdbcType=INTEGER}"})
     List<MessageList> selectDoctorMessageList(Integer doctorId);
+
+    @Update({"<script>" +
+            "update wechat_message_item set status=#{value,jdbcType=INTEGER} where id in " +
+            "<foreach item='item' index='index' collection='ids' open='(' separator=',' close=')'>#{item,jdbcType=INTEGER}</foreach>" +
+            "</script>"})
+    int updateStatusToReadByIds(@Param("ids") List<Integer> ids,@Param("value") Integer value);
+
 }

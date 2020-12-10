@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.plugin2.message.Message;
 
 import java.util.*;
 
@@ -103,6 +102,11 @@ public class WeChatServiceImpl implements WeChatService {
         LOGGER.info("返回消息列表:"+returnMessageList);
 
         return ServerResponse.createBysuccessData(returnMessageList);
+    }
+
+    @Override
+    public ServerResponse updateMessageTextStatusToRead(List<Integer> ids) {
+        return weChatMessageItemMapper.updateStatusToReadByIds(ids,StaticDataUtil.READ_TEXT_STATUS) > 0 ? ServerResponse.createBysuccess() : ServerResponse.createByError();
     }
 
 
