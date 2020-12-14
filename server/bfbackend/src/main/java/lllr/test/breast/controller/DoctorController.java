@@ -99,6 +99,8 @@ public class DoctorController {
         doctor.setLicenseNumber(licenseNumber);
         doctor.setName(name);
         doctor.setUserName(userName);
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        doctor.setUuid(uuid);
 
         //将用户的信息插入数据库
 

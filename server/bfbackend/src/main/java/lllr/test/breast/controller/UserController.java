@@ -121,6 +121,8 @@ public class UserController {
         user.setUserName(userName);
         user.setUserPassword(userPassword);
         user.setUserToken(UUID.randomUUID().toString().replace("-", ""));
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        user.setUuid(uuid);
         return userService.userRegister(user);
     }
 
