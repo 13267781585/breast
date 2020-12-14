@@ -31,24 +31,14 @@ public class User {
 
     private String imgUrl;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", age=" + age +
-                ", creditId='" + creditId + '\'' +
-                ", pregnantType=" + pregnantType +
-                ", pregnantWeek='" + pregnantWeek + '\'' +
-                ", job='" + job + '\'' +
-                ", confinementDate=" + confinementDate +
-                ", confinementWeek=" + confinementWeek +
-                ", confinementType=" + confinementType +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userToken='" + userToken + '\'' +
-                ", openId='" + openId + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
-                '}';
+    private String uuid;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getImgUrl() {
@@ -161,5 +151,26 @@ public class User {
 
     public void setUserToken(String userToken) {
         this.userToken = userToken == null ? null : userToken.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", age=" + age +
+                ", creditId='" + creditId + '\'' +
+                ", pregnantType=" + pregnantType +
+                ", pregnantWeek='" + pregnantWeek + '\'' +
+                ", job='" + job + '\'' +
+                ", confinementDate=" + confinementDate +
+                ", confinementWeek=" + confinementWeek +
+                ", confinementType=" + confinementType +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userToken='" + userToken + '\'' +
+                ", openId='" + openId + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", uuid='" + uuid + '\'' +
+                '}';
     }
 }

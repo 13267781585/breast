@@ -25,6 +25,16 @@ public class Doctor {
 
     private String openId;
 
+    private String uuid;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
     public String getOpenId() {
         return openId;
     }
@@ -136,6 +146,7 @@ public class Doctor {
                 ", videoCost=" + videoCost +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", openId='" + openId + '\'' +
+                ", uuid='" + uuid + '\'' +
                 '}';
     }
 }
