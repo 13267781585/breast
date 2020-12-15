@@ -28,6 +28,15 @@ public final class ComUtils {
 		return new SimpleDateFormat(pattern).format(date);
 	}
 
+	//判断两个字符串是否相等
+	public static boolean isStrEqual(String str1,String str2){
+		if(str1 == null)
+			return false;
+		if(str2 == null)
+			return false;
+		return str1.equals(str2);
+	}
+
 	public static boolean isNull(Object obj) {
 		if (obj == null || "".equals(obj.toString())) {
 			return true;
