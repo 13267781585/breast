@@ -6,11 +6,14 @@ import lllr.test.breast.dataObject.consult.AutoAnswerTemplate;
 import lllr.test.breast.dataObject.consult.WeChatMessageItem;
 import lllr.test.breast.service.inter.UserConsultAutoReply;
 import lllr.test.breast.service.inter.WeChatService;
+import lllr.test.breast.util.ComUtils;
+import lllr.test.breast.util.StaticDataUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -18,6 +21,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,7 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 @Controller
-@ServerEndpoint(value = "/websocket/{from_user_id}/{to_user_id}/{oid}")
+@ServerEndpoint(value = "/websocket/{uuid}")
 public class WebSocketController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketController.class);
@@ -70,12 +74,7 @@ public class WebSocketController {
     /**
      * 标识当前连接客户端的用户名
      */
-    private String user_id;
-
-    /**
-     * 标识当前订单
-     */
-    private String oid;
+    private String uuid;
 
     /**
      *  用于存所有的连接服务的客户端，这个对象存储是安全的
@@ -88,56 +87,21 @@ public class WebSocketController {
     返回之前的聊天记录
      */
     @OnOpen
-    public void OnOpen(Session session, @PathParam("from_user_id") String from_user_id,@PathParam("to_user_id")String to_user_id,@PathParam("oid")String oid){
+    public void OnOpen(Session session, @PathParam("uuid") String uuid){
         this.session = session;
-        this.user_id = from_user_id;
-        this.oid = oid;
+        this.uuid = uuid;
 
         //把当前用户会话缓存
-        webSocketSet.put(this.user_id,this);
+        webSocketSet.put(this.uuid,this);
         LOGGER.info("[WebSocket] 连接成功，当前连接人数:" + webSocketSet.size());
-
-        //查询之前消息并返回之前的消息记录
-        ReturnBeforeWeChatMessages(from_user_id,to_user_id,oid);
-
     }
-
-    //查询之前的聊天数据并返回
-    private void ReturnBeforeWeChatMessages(String from_user_id,String to_user_id,String oid){
-        //查询返回聊天记录
-        List<WeChatMessageItem> items = weChatService.selectWeChatMsgByFromUserIdAndToUserIdAndOid(Integer.valueOf(from_user_id),Integer.valueOf(to_user_id),oid);
-        LOGGER.info(" === 用户 " + from_user_id + "和用户 " + to_user_id + "的聊天记录：" + items);
-
-        AppointSending(from_user_id,JSONObject.toJSONString(items));
-    }
-
-
+    
     @OnClose
     public void OnClose(){
-        webSocketSet.remove(this.oid);
+        webSocketSet.remove(this.uuid);
         LOGGER.info("[WebSocket] 退出成功，当前连接人数为：={}",webSocketSet.size() + " 当前在线人： " + webSocketSet);
     }
 
-    /*
-    前台发送
-    消息格式 json
-    {
-        "fromUserId":"",
-        "toUserId":""'
-        "messageType":"",
-        "messageContent":"",
-        "time":""
-    }
-
-    后台返回：
-    数据无误：
-    {"msg":"成功发送!","status":1}
-
-    数据有误：
-    {"msg":"系统错误，请稍后再试！","status":0}
-
-
-     */
     @OnMessage
     public void OnMessage(String message){
         LOGGER.info("[WebSocket] 收到消息：{}",message);
@@ -147,49 +111,53 @@ public class WebSocketController {
 
     //处理用户发送的消息
     /*
-    当发送方的user_id为 000000 时，默认为发送给系统客服，系统自动处理后发送给用户
+    发送的消息字符串都会包含消息类型 type 字段用于判断消息的类型
 
      */
     private void HandleUserMsg(String message){
-        //将 消息转化为 消息条目
-        WeChatMessageItem weChatMessageItem = JSONObject.parseObject(message,WeChatMessageItem.class);
+        //将消息转化为json对象
+        JSONObject msgJson = JSONObject.parseObject(message);
+        String type = msgJson.getString("type");
 
-        String toUserId = weChatMessageItem.getToUserId().toString();
-        String fromUserId = weChatMessageItem.getFromUserId().toString();
-        //数据有误
-        if(weChatMessageItem.getFromUserId() == null || weChatMessageItem.getMessageType() == null || weChatMessageItem.getMessageContent() == null || toUserId == null){
-            if(fromUserId != null) {
-                LOGGER.debug("=== " + fromUserId + " 发送给 " + toUserId + " 用户消息数据有误 ， 发送失败! ===" );
-                AppointSending(fromUserId,JSONObject.toJSONString(ServerResponse.createByErrorMsg("系统错误，请稍后再试！")));              //若发送人不为空，则返回错误消息
+        if(StaticDataUtil.GET_ALL_WECHATITEM_BY_ID.equals(type))
+        {
+            //获取用户的聊天记录请求
+//            参数
+//            type:"getAllWeChatItemById" 消息类型
+//            toUuid  接收者
+//            fromUuid 发送者
+//            oid 订单id
+            String fromUuid = msgJson.getString("fromUuid");
+            String toUuid = msgJson.getString("toUuid");
+            String oid = msgJson.getString("oid");
+            List<WeChatMessageItem> items = weChatService.selectWeChatMsgByFromUuidAndToUuidAndOid(fromUuid,toUuid,oid);
+            JSONObject returnObject = new JSONObject();
+            returnObject.put("type",StaticDataUtil.RETURN_ALL_WECHATITEM_BY_ID);
+            returnObject.put("fromUserId",fromUuid);
+            returnObject.put("toUserId",toUuid);
+            returnObject.put("oid",oid);
+            returnObject.put("data",items);
 
-            }
-            return ;
-        }
+            ////////////////
+            LOGGER.info("====== " + StaticDataUtil.GET_ALL_WECHATITEM_BY_ID + " ==== 返回数据" + returnObject.toJSONString());
+            ////////////////
+            //返回数据
+            AppointSending(fromUuid,returnObject.toJSONString());
+        }else
+            if(StaticDataUtil.SEND_WECHATITEM_TO_OTHER.equals(type))
+            {
+                //发送聊天消息
 
-        //系统自动回复
-        if(toUserId.equals(SYSTEM_SERVICE_ID)) {
-            //系统根据关键词自动回复
-            List<AutoAnswerTemplate> templates = userConsultAutoReply.AutoReply(weChatMessageItem.getMessageContent());
-            WeChatMessageItem autoReply = new WeChatMessageItem(Integer.valueOf(SYSTEM_SERVICE_ID),Integer.valueOf(fromUserId),3,JSONObject.toJSONString(templates),new Date(System.currentTimeMillis()));
-
-            AppointSending(fromUserId,JSONObject.toJSONString(autoReply));              //发送消息给指定的用户
-            //将聊天记录 存入 数据库
-            weChatService.insertWeChatMsg(autoReply);
-            return;
-        }
-
-        //发送消息给指定的用户
-        if(webSocketSet.containsKey(toUserId))
-            AppointSending(toUserId, JSONObject.toJSONString(weChatMessageItem));
-
-        //将聊天记录 存入 数据库
-        weChatService.insertWeChatMsg(weChatMessageItem);
-
-        if(webSocketSet.containsKey(fromUserId))
-            AppointSending(fromUserId,JSONObject.toJSONString(ServerResponse.createBysuccessMsg("成功发送!")));              //返回发送成功消息给发送消息用户
+            }else
+                if(StaticDataUtil.UPDATE_MESSAGETEXT_STATUS_TO_OTHER.equals(type))
+                {
+                    //医生端更新消息未读状态为已读
+                }else
+                    if(StaticDataUtil.SELECT_DOCTOR_MESSAGELIST.equals(type))
+                    {
+                        //查询登录用户的消息列表
+                    }
     }
-
-    public String getOid(){return oid;}
 
     /**
      * 群发
@@ -208,18 +176,24 @@ public class WebSocketController {
 
     /**
      * 指定发送
-     * @param name
+     * @param uuid
      * @param message
      */
-    public void AppointSending(String name,String message){
-        try {
-            String Toid = webSocketSet.get(name).getOid();
-            if(Toid != null && Toid.equals(this.oid)) {
-                webSocketSet.get(name).session.getBasicRemote().sendText(message);
-                LOGGER.debug("===  用户消息成功 消息数据：" + message + " ===");
+    public void AppointSending(String uuid,String message){
+        if(ComUtils.isNull(uuid))
+        {
+            //////////
+            LOGGER.warn("======= websocket ===== uuid为空 发送消息:" + message);
+            ////////
+            return;
+        }
+        WebSocketController webSocketController = webSocketSet.get(uuid);
+        if(!ComUtils.isNull(webSocketController)) {
+            try {
+                webSocketController.session.getBasicRemote().sendText(message);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            e.printStackTrace();
         }
     }
 }

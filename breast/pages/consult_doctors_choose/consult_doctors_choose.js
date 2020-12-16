@@ -12,6 +12,7 @@ Page({
   onLoad: function () { //加载数据渲染页面
     this.fetchDoctorData();
   },
+
   onShow:function(options){
     if (app.globalData.userId < 0){
       console.log('userId', app.globalData.userId);
@@ -56,16 +57,16 @@ Page({
     var index = e.currentTarget.dataset.index;
     var item = this.data.doctorList[index];
     //获取参数
-    var doctorId = item.id;
+    var doctorUuid = item.uuid;
     var doctorName = item.name;
+    var doctorId = item.id;
     var doctorImg = item.imgUrl;
     var openId = item.openId;
     if (app.globalData.userId < 0)
       showUtil.showToLogion()
     else
       wx.navigateTo({
-        url: '../consult_questionnaire/consult_questionnaire?doctorId=' + doctorId + '&doctorName=' + doctorName +
-          '&doctorImg=' + doctorImg + '&openId=' + openId,
+        url: '../consult_questionnaire/consult_questionnaire?doctorUuid=' + doctorUuid + '&doctorName=' + doctorName + '&doctorImg=' + doctorImg + '&openId=' + openId + '&doctorId=' + doctorId,
       })
   },
 

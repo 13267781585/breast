@@ -5,9 +5,9 @@ import java.util.Date;
 public class WeChatMessageItem {
     private Integer id;
 
-    private Integer fromUserId;
+    private String fromUuid;
 
-    private Integer toUserId;
+    private String toUuid;
 
     private Integer messageType;
 
@@ -29,20 +29,6 @@ public class WeChatMessageItem {
 
     public WeChatMessageItem(){}
 
-    @Override
-    public String toString() {
-        return "WeChatMessageItem{" +
-                "id=" + id +
-                ", fromUserId=" + fromUserId +
-                ", toUserId=" + toUserId +
-                ", messageType=" + messageType +
-                ", messageContent='" + messageContent + '\'' +
-                ", time=" + time +
-                ", oid='" + oid + '\'' +
-                ", status=" + status +
-                '}';
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -51,13 +37,43 @@ public class WeChatMessageItem {
         this.status = status;
     }
 
-    public WeChatMessageItem(Integer fromUserId, Integer toUserId, int messageType, String messageContent, Date time) {
+    public WeChatMessageItem(String fromUuid, String toUuid, int messageType, String messageContent, Date time) {
         this.time = time;
-        this.fromUserId =fromUserId;
-        this.toUserId = toUserId;
+        this.fromUuid =fromUuid;
+        this.toUuid = toUuid;
         this.messageContent = messageContent;
         this.messageType = messageType;
 
+    }
+
+    @Override
+    public String toString() {
+        return "WeChatMessageItem{" +
+                "id=" + id +
+                ", fromUuid='" + fromUuid + '\'' +
+                ", toUuid='" + toUuid + '\'' +
+                ", messageType=" + messageType +
+                ", messageContent='" + messageContent + '\'' +
+                ", time=" + time +
+                ", oid='" + oid + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    public String getFromUuid() {
+        return fromUuid;
+    }
+
+    public void setFromUuid(String fromUuid) {
+        this.fromUuid = fromUuid;
+    }
+
+    public String getToUuid() {
+        return toUuid;
+    }
+
+    public void setToUuid(String toUuid) {
+        this.toUuid = toUuid;
     }
 
     public Integer getId() {
@@ -66,22 +82,6 @@ public class WeChatMessageItem {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getFromUserId() {
-        return fromUserId;
-    }
-
-    public void setFromUserId(Integer fromUserId) {
-        this.fromUserId = fromUserId;
-    }
-
-    public Integer getToUserId() {
-        return toUserId;
-    }
-
-    public void setToUserId(Integer toUserId) {
-        this.toUserId = toUserId;
     }
 
     public Integer getMessageType() {

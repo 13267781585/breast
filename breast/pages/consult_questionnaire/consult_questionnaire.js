@@ -3,9 +3,10 @@ var showUtil = require('../../assert/util.js')
 const app = getApp();
 Page({
   data: {
-    doctorId: '',//医生的标识符
+    doctorUuid: '',//医生的标识符
     doctorName: '',//医生姓名
     doctorImg: '',//医生图片
+    doctorId:-1,//医生id
     question: '',//所有问题
     name: '', //联系姓名
     phone: '',//联系人电话
@@ -30,12 +31,12 @@ Page({
     })
     console.log('医生id参数：', options)
     this.setData({
-      doctorId: options.doctorId,
+      doctorUuid: options.doctorUuid,
       doctorName: options.doctorName,
+      doctorId:options.doctorId,
       doctorImg: options.doctorImg,
       doctorOpenId: options.openId
     })
-    
   },
   onReady: function () {
     wx.hideLoading({
@@ -118,9 +119,13 @@ Page({
         console.log('生成订单成功:', res)
         that.sendSubMessage()
         if (res.data.status == 1) {
+          // wx.navigateTo({
+          //   url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=' + res.data.data + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
+          //   + app.globalData.userInfor.imgUrl,
+          // })
           wx.navigateTo({
-            url: '../consult_chatroom/consult_chatroom?doctorId=' + that.data.doctorId + '&oid=' + res.data.data + '&doctorImg=' + that.data.doctorImg + '&userId=' + app.globalData.userInfor.userId,
-
+            url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=f6cc95117ca04e8287f83e1e9ef19f5e' + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
+              + app.globalData.userInfor.imgUrl,
           })
         }
         else

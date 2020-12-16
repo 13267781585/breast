@@ -108,6 +108,8 @@ Page({
             url: '../index/index',
           })
         }
+        //连接websocket
+        app.connectServerByWs()
       },
       fail(res){
         console.log('登录失败:',res)

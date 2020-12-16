@@ -23,5 +23,5 @@ public interface WeChatMessageItemMapper extends WeChatMessageItemMapperExtend{
 
 //    List<WeChatMessageItem> selectByFromUserIdAndToUserId(@Param("from") String fromUserId, @Param("to") String toUserId);
 
-    List<WeChatMessageItem> selectByFromUserIdAndToUserIdAndOid(@Param("fromUserId") Integer fromUserId, @Param("toUserId")Integer toUserId,@Param("oid") String oid);
+    List<WeChatMessageItem> selectByFromUuidAndToUuidAndOid(@Param("fromUuid") String fromUuid, @Param("toUuid")String toUuid,@Param("oid") String oid);
 }

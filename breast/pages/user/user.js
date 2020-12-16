@@ -23,6 +23,8 @@ Page({
     this.setData({
       userId:-1
     })
+    //断开websocket连接
+    app.closeSocket()
   },
 
   logIn:function(){

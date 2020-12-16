@@ -24,7 +24,7 @@
 	</scroll-view>
 </view> -->
 
- <view class="cu-list menu-avatar"   wx:for="{{doctorList}}" wx:key="{{item.id}}" wx:for-index="idx" >
+ <view class="cu-list menu-avatar"   wx:for="{{doctorList}}" wx:key="{{item.uuid}}" wx:for-index="idx" >
 
     <view class="cu-item bor" style="margin-top:30rpx" data-index="{{idx}}"  bindtap="to_consultque">
       <view class="cu-avatar round lg" style="background-image:url({{item.imgUrl}});"></view>

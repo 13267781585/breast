@@ -3,8 +3,8 @@
 <mapper namespace="lllr.test.breast.dao.mapper.WeChatMessageItemMapper">
   <resultMap id="BaseResultMap" type="lllr.test.breast.dataObject.consult.WeChatMessageItem">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="from_user_id" jdbcType="INTEGER" property="fromUserId" />
-    <result column="to_user_id" jdbcType="INTEGER" property="toUserId" />
+    <result column="from_uuid" jdbcType="CHAR" property="fromUuid" />
+    <result column="to_uuid" jdbcType="CHAR" property="toUuid" />
     <result column="message_type" jdbcType="INTEGER" property="messageType" />
     <result column="message_content" jdbcType="VARCHAR" property="messageContent" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />
@@ -12,7 +12,7 @@
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, from_user_id, to_user_id, message_type, message_content, time,oid,status
+    id, from_uuid, to_uuid, message_type, message_content, time,oid,status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -20,12 +20,12 @@
     from wechat_message_item
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByFromUserIdAndToUserIdAndOid" resultMap="BaseResultMap">
+  <select id="selectByFromUuidAndToUuidAndOid" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from wechat_message_item
-    where from_user_id = #{fromUserId,jdbcType=INTEGER} and to_user_id = #{toUserId,jdbcType=INTEGER} and oid = #{oid,jdbcType=CHAR} or
-    from_user_id = #{toUserId,jdbcType=INTEGER} and to_user_id = #{fromUserId,jdbcType=INTEGER}
+    where from_uuid = #{fromUuid,jdbcType=CHAR} and to_uuid = #{toUuid,jdbcType=CHAR} and oid = #{oid,jdbcType=CHAR} or
+    from_uuid = #{toUuid,jdbcType=CHAR} and to_uuid = #{fromUuid,jdbcType=CHAR}
     and oid = #{oid,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -33,10 +33,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="lllr.test.breast.dataObject.consult.WeChatMessageItem">
-    insert into wechat_message_item (id, from_user_id, to_user_id, 
+    insert into wechat_message_item (id, from_uuid, to_uuid,
       message_type, message_content, time,oid,status
       )
-    values (#{id,jdbcType=INTEGER}, #{fromUserId,jdbcType=INTEGER}, #{toUserId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{fromUuid,jdbcType=CHAR}, #{toUuid,jdbcType=CHAR},
       #{messageType,jdbcType=INTEGER}, #{messageContent,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{oid,jdbcType=CHAR},#{status,jdbcType=INTEGER}
       )
   </insert>
@@ -46,10 +46,10 @@
       <if test="id != null">
         id,
       </if>
-      <if test="fromUserId != null">
+      <if test="fromUuid != null">
         from_user_id,
       </if>
-      <if test="toUserId != null">
+      <if test="toUuid != null">
         to_user_id,
       </if>
       <if test="messageType != null">
@@ -72,11 +72,11 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="fromUserId != null">
-        #{fromUserId,jdbcType=INTEGER},
+      <if test="fromUuid != null">
+        #{fromUuid,jdbcType=CHAR},
       </if>
-      <if test="toUserId != null">
-        #{toUserId,jdbcType=INTEGER},
+      <if test="toUuid != null">
+        #{toUuid,jdbcType=CHAR},
       </if>
       <if test="messageType != null">
         #{messageType,jdbcType=INTEGER},
@@ -99,10 +99,10 @@
     update wechat_message_item
     <set>
       <if test="fromUserId != null">
-        from_user_id = #{fromUserId,jdbcType=INTEGER},
+        from_uuid = #{fromUuid,jdbcType=CHAR},
       </if>
       <if test="toUserId != null">
-        to_user_id = #{toUserId,jdbcType=INTEGER},
+        to_uuid = #{toUuid,jdbcType=CHAR},
       </if>
       <if test="messageType != null">
         message_type = #{messageType,jdbcType=INTEGER},
@@ -124,8 +124,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="lllr.test.breast.dataObject.consult.WeChatMessageItem">
     update wechat_message_item
-    set from_user_id = #{fromUserId,jdbcType=INTEGER},
-      to_user_id = #{toUserId,jdbcType=INTEGER},
+    set from_uuid = #{fromUuid,jdbcType=CHAR},
+      to_uuid = #{toUuid,jdbcType=CHAR},
       message_type = #{messageType,jdbcType=INTEGER},
       message_content = #{messageContent,jdbcType=VARCHAR},
       time = #{time,jdbcType=TIMESTAMP},

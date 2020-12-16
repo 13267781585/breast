@@ -2,80 +2,73 @@ const app = getApp();
 Page({
   // 初始页面数据
   data: {
-    doctorId: '', //医生的标识符
-    userId: '',
+    otherId: '', //对方的标识符
+    id: '',
     oid: '', //咨询订单的标识符
     scrollTop: 0,
     consultOrder:{},
     InputBottom: 0,
     list: [],
-    doctorImg: '', //医生的头像
+    otherImg: '', //对方的头像
+    img:'',  //自己得头像链接
     object:'',
     message:"", //消息内容
-    userHeadPictureUrl: 'http://llllllllr.top/doctorRegister_1585797161.jpg',  //医生端 用户备用头像
+    userHeadPictureUrl: 'http://llllllllr.top/doctorRegister_1585797161.jpg',  //用户备用头像
   },
   // 监听页面加载
   onLoad: function (options) {
+    var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
     console.log('参数：', options)
-    var doctor = app.findDoctorById(options.doctorId);
     this.setData({
       object:app.globalData.object,
-      doctorId: options.doctorId,
-      userId: options.userId,
+      id: options.id,
       oid: options.oid,
-      doctorImg: doctor.imgUrl,      // ******  无法获取医生的头像地址 ， 可能是 请求需要时间 有延迟
+      otherId: options.otherId,    
+      otherImg: oImg,
+      img:options.img
     })
     wx.showToast({
       title: '连接中',
       icon: 'loading'
+    }),
+
+      //获取之前聊天记录
+    this.getAllWeChatItem();
+
+    //监听服务器消息
+    this.listenServerMessage();
+  },
+
+//获取之前聊天记录
+  getAllWeChatItem(){
+    var json_object = { "type":"getAllWeChatItemById","toUuid":this.data.otherId,"fromUuid":this.data.id,"oid":this.data.oid};
+    var json_str = JSON.stringify(json_object);
+    console.log('json_str'+json_str),
+    wx.sendSocketMessage({
+      data: json_str,
     })
+  },
 
-    //判断是 普通用户 还是 医生 在线
-    if(this.data.object == 'user')
-      wx.connectSocket({
-        // 本地服务器地址
-        url: this.data.serverWssUrl + this.data.userId + '/' + this.data.doctorId + '/' + this.data.oid,
-      })
-      else
-      wx.connectSocket({
-        // 本地服务器地址
-        url: this.data.serverWssUrl + this.data.doctorId + '/' + this.data.userId + '/' + this.data.oid,
-      })
-
-    // 连接成功
-    wx.onSocketOpen(function () {
-      console.log('连接成功');
-      
-    })
-
+  listenServerMessage(){
     wx.onSocketMessage(msg => {
       console.log('收到消息为:', msg)
-      //将 从 服务器 得到 的 消息数据 进行 解析 为 JSON 数组
-      var data = JSON.parse(msg.data);
-      console.log('转化后的消息为:', data)
+      //将 从 服务器 得到 的 消息数据 进行 解析 为 JSON
+      var json_object = JSON.parse(msg.data);
+      console.log('转化后的消息为:', json_object)
 
-      //判断是否是 发送完消息后 服务器的 反馈 消息
-      if (data.status != undefined)
-        if (data.status == 1)
-          return;
-        else {
-          console.log(data.msg)
-          wx.showModal({
-            title: '温馨提示',
-            content: "系统错误！请稍后再发送！",
-            showCancel: false
-          })
-          return;
-        }
-
+    //判断消息的类型
+      var type = json_object.type;
+      if (type != 'returnAllWeChatItemById')
+        return ;
+        var data = json_object.data;
       var newList = this.data.list;
       //将消息加入表中
-      for (var i = 0; i < data.length; i++){
+      for (var i = 0; i < data.length; i++) {
         //格式化 日期 的格式
-      var time = data[i].time;
-      data[i].time = app.jsDateFormatter(new Date(time))
-      newList.push(data[i]);
-    }
+        var time = data[i].time;
+        data[i].time = app.jsDateFormatter(new Date(time));
+        newList.push(data[i]);
+      }
       this.setData({
         list: newList
       });
@@ -84,7 +77,7 @@ Page({
 
       this.rollingBottom()
     })
-     
+
   },
 
 //设置 消息内容
@@ -105,15 +98,14 @@ Page({
   // 发送内容
   //点击发送 消息 按钮
   send: function () {
-
     // 判断发送内容是否为空
     if (this.data.message.length != 0) {
       console.log('订单oid:',this.data.oid)
       //判断是 登录 用户 是 医生 还是 普通用户
       if(this.data.object == 'user')
         var msg = {
-          fromUserId: this.data.userId,
-          toUserId: this.data.doctorId,
+          fromUuid: this.data.id,
+          toUuid: this.data.otherId,
           messageType: 0,                 // 消息类型  文字 图片
           messageContent: this.data.message,
           time: app.jsDateFormatter(new Date()),   //时间
@@ -121,8 +113,8 @@ Page({
         }
         else
         var msg = {
-          fromUserId: this.data.doctorId,
-          toUserId: this.data.userId,
+          fromUuid: this.data.otherId,
+          toUuid: this.data.id,
           messageType: 0,                 // 消息类型  文字 图片
           messageContent: this.data.message,
           time: app.jsDateFormatter(new Date()),   //时间
@@ -159,20 +151,6 @@ Page({
     this.clearMessage();
   },
 
-  // 页面卸载，关闭连接
-  onUnload() {
-    console.log('关闭连接，发送消息通知')
-    
-    wx.closeSocket();
-    wx.onSocketClose(function (res) {
-      wx.showToast({
-        title: '连接已断开~',
-        icon: 'none',
-        duration: 2000
-      })
-    })
-
-  },
   // 聊天内容始终显示在最低端
   rollingBottom(e) {
     wx.createSelectorQuery().selectAll('.list').boundingClientRect(rects => {

@@ -13,20 +13,33 @@ App({
 			this.globalData.CustomBar = e.statusBarHeight + 50;
 		}
       }
-    }),
+    })
+  },
+  onShow(){
     //查询是否存有 token => 登录
     this.tokenSign()
     //加载 微信小程序 唯一标识符
     this.getOpenId(),
-    //请求医生列表
+      //请求医生列表
     this.getDoctorList()
   },
 
+  onHide(){
+    this.closeSocket()
+  },
+
+//当小程序从前台进入后台，关闭websocket
+  closeSocket(){
+    console.log('关闭websocket连接')
+
+    wx.closeSocket();
+  },
+
   globalData: {
-    serverWssUrl: 'wss://mombabyai.cn/websocket/', 
-    //serverWssUrl: 'ws://localhost:8087/websocket/', 
-    //serverUrl: 'http://localhost:8088',
-    serverUrl: 'https://mombabyai.cn',
+    // serverWssUrl: 'wss://mombabyai.cn/websocket/', 
+    // serverUrl: 'https://mombabyai.cn',
+    serverWssUrl: 'ws://localhost:8088/websocket', 
+    serverUrl: 'http://localhost:8088',
     salt : "fdsfvxnmcvnew68sa5d54ds",
     userId:-1, //表示登录用户的id 无论是医生还是普通用户
     object:'',  //登录的用户群体：1.医生 2.普通用户
@@ -45,6 +58,20 @@ App({
     this.globalData.userId = -1;
     this.globalData.object = '',
     this.globalData.userInfor = null
+  },
+
+  connectServerByWs(){
+    //判断是 普通用户 还是 医生 在线
+    console.log('登录用户信息',this.globalData.userInfor)
+    wx.connectSocket({
+      // 本地服务器地址
+      url: this.globalData.serverWssUrl + '/' + this.globalData.userInfor.uuid
+    })
+   
+    // 连接成功
+    wx.onSocketOpen(function () {
+      console.log('连接成功');
+    })
   },
 
 //从服务端获取医生信息
@@ -162,6 +189,8 @@ App({
             that.globalData.userInfor = res.data.data;
             that.globalData.userId = res.data.data.id;
             console.log('doctorToken 登录成功', that.globalData.userInfor);
+            //连接websocket
+            that.connectServerByWs()
           },
           fail:function(res){
             console.log('token 登录失败')
@@ -193,6 +222,8 @@ App({
               that.globalData.userInfor = res.data.data;
               that.globalData.userId = res.data.data.userId;
               console.log('userToken 登录成功', that.globalData.userInfor);
+              //连接websocket
+              that.connectServerByWs()
             },
             fail: function (res) {
               console.log('token 登录失败')
@@ -205,6 +236,7 @@ App({
           wx.removeStorageSync('userTokenDate');
         }
       }
+  
   },
   //获取  微信小程序 中 用户的唯一标识符
     getOpenId(){
