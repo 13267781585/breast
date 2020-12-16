@@ -19,4 +19,7 @@ public class StaticDataUtil {
     public static final String RETURN_DOCTOR_MESSAGELIST = "returnDoctorMessageList"; //  返回登录用户消息列表
     public static final String ACCEPT_WECHATITEM_FROM_OTHER = "acceptWeChatItemFromOther"; //  接收别人发给我的消息
     public static final String RETURN_ALL_WECHATITEM_BY_ID = "returnAllWeChatItemById";// 返回用户的聊天记录
+    //websocket发送消息身份
+    public static final String SEND_MESSAGE_DOCTOR = "doctor";
+    public static final String SEND_MESSAGE_USER = "user";
 }

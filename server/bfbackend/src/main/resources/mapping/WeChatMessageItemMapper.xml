@@ -32,7 +32,7 @@
     delete from wechat_message_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="lllr.test.breast.dataObject.consult.WeChatMessageItem">
+  <insert id="insert" parameterType="lllr.test.breast.dataObject.consult.WeChatMessageItem" keyProperty="id" useGeneratedKeys="true">
     insert into wechat_message_item (id, from_uuid, to_uuid,
       message_type, message_content, time,oid,status
       )

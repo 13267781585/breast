@@ -43,7 +43,16 @@ public class WeChatMessageItem {
         this.toUuid = toUuid;
         this.messageContent = messageContent;
         this.messageType = messageType;
+    }
 
+    public WeChatMessageItem(String fromUuid, String toUuid, int messageType, String messageContent, Date time,String oid,int status) {
+        this.time = time;
+        this.fromUuid =fromUuid;
+        this.toUuid = toUuid;
+        this.messageContent = messageContent;
+        this.messageType = messageType;
+        this.oid = oid;
+        this.status = status;
     }
 
     @Override

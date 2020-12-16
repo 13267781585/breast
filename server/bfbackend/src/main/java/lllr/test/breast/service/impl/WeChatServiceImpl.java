@@ -22,9 +22,11 @@ public class WeChatServiceImpl implements WeChatService {
     private WeChatMessageItemMapper weChatMessageItemMapper;
 
     @Override
-    public boolean insertWeChatMsg(WeChatMessageItem record) {
+    public Boolean insertWeChatMsg(WeChatMessageItem record) throws Exception {
         int successInsNum = weChatMessageItemMapper.insert(record);
-        return successInsNum > 0;
+        if(successInsNum != 1)
+            throw new Exception("===== insertWeChatMsg 插入数据库数据错误! ==== 数据:" + record);
+        return true;
     }
 
 //    @Override

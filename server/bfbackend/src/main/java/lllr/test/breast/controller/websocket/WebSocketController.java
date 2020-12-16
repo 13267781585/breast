@@ -103,7 +103,7 @@ public class WebSocketController {
     }
 
     @OnMessage
-    public void OnMessage(String message){
+    public void OnMessage(String message) throws Exception {
         LOGGER.info("[WebSocket] 收到消息：{}",message);
 
         HandleUserMsg(message);
@@ -114,10 +114,14 @@ public class WebSocketController {
     发送的消息字符串都会包含消息类型 type 字段用于判断消息的类型
 
      */
-    private void HandleUserMsg(String message){
+    private void HandleUserMsg(String message) throws Exception {
         //将消息转化为json对象
         JSONObject msgJson = JSONObject.parseObject(message);
         String type = msgJson.getString("type");
+
+        /////////////////
+        LOGGER.info("==== websocket接收消息:"+message);
+        ///////////////
 
         if(StaticDataUtil.GET_ALL_WECHATITEM_BY_ID.equals(type))
         {
@@ -146,8 +150,54 @@ public class WebSocketController {
         }else
             if(StaticDataUtil.SEND_WECHATITEM_TO_OTHER.equals(type))
             {
+/*                type:"sendWeChatItemToOther" 消息类型
+                    fromUuid发送者
+                    sendObject: 发送身份 doctor user
+                toUuid  接收者
+                messageType                // 消息类型  文字 图片
+                messageContent  消息内容
+                time  消息发送时间
+                oid  咨询订单id*/
                 //发送聊天消息
+                String fromUuid = msgJson.getString("fromUuid");
+                String sendObject = msgJson.getString("sendObject");
+                String toUuid = msgJson.getString("toUuid");
+                String messageContent = msgJson.getString("messageContent");
+                Date time = msgJson.getDate("time");
+                Integer messageType = msgJson.getInteger("messageType");
+                String oid = msgJson.getString("oid");
 
+                WeChatMessageItem record = new WeChatMessageItem(fromUuid,toUuid,messageType,messageContent,time,oid,StaticDataUtil.READ_TEXT_STATUS);
+                //判断是用户发送消息给医生还是医生发送消息给用户
+                if(StaticDataUtil.SEND_MESSAGE_DOCTOR.equals(sendObject))
+                    record.setStatus(StaticDataUtil.READ_TEXT_STATUS);
+                else
+                    if(StaticDataUtil.SEND_MESSAGE_USER.equals(sendObject))
+                        record.setStatus(StaticDataUtil.UNREAD_TEXT_STATUS);
+                //将消息记录插入数据库
+                weChatService.insertWeChatMsg(record);
+
+                ////////////////////
+                LOGGER.info("===== 将weCharItem插入数据库后是否成功设置主键 ===="+record);
+                ////////////////////
+
+//                参数
+//                type:"acceptWeChatItemFromOther" 消息类型
+//                type:"returnAllWeChatItemById" 消息类型
+//                toUuid  接收者
+//                fromUuid发送者
+//                oid 订单id
+//                data:[]
+
+                //将消息发送给对方
+                JSONObject returnObject = new JSONObject();
+                returnObject.put("type",StaticDataUtil.ACCEPT_WECHATITEM_FROM_OTHER);
+                returnObject.put("fromUuid",fromUuid);
+                returnObject.put("toUuid",toUuid);
+                returnObject.put("oid",oid);
+                returnObject.put("data",record);
+
+                AppointSending(toUuid,returnObject.toJSONString());
             }else
                 if(StaticDataUtil.UPDATE_MESSAGETEXT_STATUS_TO_OTHER.equals(type))
                 {

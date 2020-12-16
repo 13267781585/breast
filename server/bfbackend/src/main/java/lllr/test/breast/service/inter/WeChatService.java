@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public interface WeChatService {
     //增
-    boolean insertWeChatMsg(WeChatMessageItem record);
+    Boolean insertWeChatMsg(WeChatMessageItem record) throws Exception;
 
 //    //根据用户标识查询相关聊天记录
 //    List<WeChatMessageItem> selectWeChatMsgByUserId(String userId);

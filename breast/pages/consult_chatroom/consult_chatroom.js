@@ -58,21 +58,43 @@ Page({
 
     //判断消息的类型
       var type = json_object.type;
-      if (type != 'returnAllWeChatItemById')
-        return ;
+      var json_oid = json_object.oid;
+      var json_toUuid = json_object.toUuid;
+      var json_fromUuid = json_object.fromUuid;
+      
+      if (type == 'returnAllWeChatItemById')   //接收之前消息记录
+       {
         var data = json_object.data;
-      var newList = this.data.list;
-      //将消息加入表中
-      for (var i = 0; i < data.length; i++) {
-        //格式化 日期 的格式
-        var time = data[i].time;
-        data[i].time = app.jsDateFormatter(new Date(time));
-        newList.push(data[i]);
-      }
-      this.setData({
-        list: newList
-      });
+        var newList = this.data.list;
+        //将消息加入表中
+        for (var i = 0; i < data.length; i++) {
+          //格式化 日期 的格式
+          var time = data[i].time;
+          data[i].time = app.jsDateFormatter(new Date(time));
+          newList.push(data[i]);
+        }
+        this.setData({
+          list: newList
+        });
+      }else
+        if (type == 'acceptWeChatItemFromOther'){         //对方给我发送消息
+        //判断是否是这个订单的聊天
+          if (json_oid !== this.data.oid || json_toUuid != this.data.id || json_fromUuid != this.data.otherId)
+            return;
+          var data = json_object.data;
+          var newList = this.data.list;
+          //将消息加入表中
+            //格式化 日期 的格式
+            data.time = app.jsDateFormatter(new Date(data.time));
+            newList.push(data);
+          this.setData({
+            list: newList
+          });
+          if(app.globalData.object == 'doctor')            //接收消息后判断登录的用户如是医生，更新消息为已读
+          {
 
+          }
+        }
       console.log('设置后的list：', this.data.list)
 
       this.rollingBottom()
@@ -102,19 +124,11 @@ Page({
     if (this.data.message.length != 0) {
       console.log('订单oid:',this.data.oid)
       //判断是 登录 用户 是 医生 还是 普通用户
-      if(this.data.object == 'user')
         var msg = {
+          type:'sendWeChatItemToOther',
+          userObject:app.globalData.object,
           fromUuid: this.data.id,
           toUuid: this.data.otherId,
-          messageType: 0,                 // 消息类型  文字 图片
-          messageContent: this.data.message,
-          time: app.jsDateFormatter(new Date()),   //时间
-          oid: this.data.oid  //咨询 所属 的 咨询订单
-        }
-        else
-        var msg = {
-          fromUuid: this.data.otherId,
-          toUuid: this.data.id,
           messageType: 0,                 // 消息类型  文字 图片
           messageContent: this.data.message,
           time: app.jsDateFormatter(new Date()),   //时间
