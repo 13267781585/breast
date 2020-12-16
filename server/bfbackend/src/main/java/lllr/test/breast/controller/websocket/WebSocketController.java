@@ -133,8 +133,8 @@ public class WebSocketController {
             List<WeChatMessageItem> items = weChatService.selectWeChatMsgByFromUuidAndToUuidAndOid(fromUuid,toUuid,oid);
             JSONObject returnObject = new JSONObject();
             returnObject.put("type",StaticDataUtil.RETURN_ALL_WECHATITEM_BY_ID);
-            returnObject.put("fromUserId",fromUuid);
-            returnObject.put("toUserId",toUuid);
+            returnObject.put("fromUuid",fromUuid);
+            returnObject.put("toUuid",toUuid);
             returnObject.put("oid",oid);
             returnObject.put("data",items);
 
