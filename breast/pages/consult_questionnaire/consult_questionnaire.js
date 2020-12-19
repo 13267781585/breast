@@ -119,14 +119,14 @@ Page({
         console.log('生成订单成功:', res)
         that.sendSubMessage()
         if (res.data.status == 1) {
-          // wx.navigateTo({
-          //   url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=' + res.data.data + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
-          //   + app.globalData.userInfor.imgUrl,
-          // })
           wx.navigateTo({
-            url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=f6cc95117ca04e8287f83e1e9ef19f5e' + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
-              + app.globalData.userInfor.imgUrl,
+            url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=' + res.data.data + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
+            + app.globalData.userInfor.imgUrl,
           })
+          // wx.navigateTo({
+          //   url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=f6cc95117ca04e8287f83e1e9ef19f5e' + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
+          //     + app.globalData.userInfor.imgUrl,
+          // })
         }
         else
           //弹出 错误消息 提示框

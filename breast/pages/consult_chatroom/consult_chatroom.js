@@ -15,6 +15,13 @@ Page({
     message:"", //消息内容
     userHeadPictureUrl: 'http://llllllllr.top/doctorRegister_1585797161.jpg',  //用户备用头像
   },
+  
+  onHide() {
+    //医生端更新用户消息状态
+    if (this.data.object == 'doctor')
+      this.updateWeChatMessageItemToRead();
+  },
+
   // 监听页面加载
   onLoad: function (options) {
     var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
@@ -37,6 +44,35 @@ Page({
 
     //监听服务器消息
     this.listenServerMessage();
+
+    //医生端更新用户消息状态
+    if (this.data.object == 'doctor')
+      this.updateWeChatMessageItemToRead();
+  },
+
+
+  //医生端更新消息状态未读为已读
+  updateWeChatMessageItemToRead() {
+    var messageList = this.data.list;
+    var ids = [];
+    for (var i = 0; i < messageList.length; i++) {
+      if (messageList[i].status == 0) {
+        messageList[i].status = 1;
+        ids.push(messageList[i].id);
+      }
+    }
+    if (ids.length > 0) {
+      this.setData({
+        list: messageList
+      })
+      //发送ws消息通知服务端更新消息状态
+      var json_object = { "type": "updateMessageTextStatusToRead", "ids": ids };
+      var json_str = JSON.stringify(json_object);
+      console.log("更新消息状态字符串:", json_str);
+      wx.sendSocketMessage({
+        data: json_str,
+      })
+    }
   },
 
 //获取之前聊天记录
@@ -90,10 +126,6 @@ Page({
           this.setData({
             list: newList
           });
-          if(app.globalData.object == 'doctor')            //接收消息后判断登录的用户如是医生，更新消息为已读
-          {
-
-          }
         }
       console.log('设置后的list：', this.data.list)
 

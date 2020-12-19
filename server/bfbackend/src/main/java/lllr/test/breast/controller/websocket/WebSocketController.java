@@ -202,6 +202,13 @@ public class WebSocketController {
                 if(StaticDataUtil.UPDATE_MESSAGETEXT_STATUS_TO_OTHER.equals(type))
                 {
                     //医生端更新消息未读状态为已读
+                    List<Integer> ids = msgJson.getObject("ids",List.class);
+
+                    /////////////
+                    LOGGER.info("=== 更新消息未读为已读ids:"+ids);
+                    ////////////////////////////////////
+
+                    weChatService.updateMessageTextStatusToRead(ids);
                 }else
                     if(StaticDataUtil.SELECT_DOCTOR_MESSAGELIST.equals(type))
                     {
