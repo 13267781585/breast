@@ -21,7 +21,8 @@
     "pages/signUp/index",
     "pages/mycoll/mycoll",
     "pages/testIndex/testIndex",
-    "pages/doctor_consult_detail/doctor_consult_detail"
+    "pages/doctor_consult_detail/doctor_consult_detail",
+    "pages/doctor_message_list/doctor_message_list"
   ],
   "window": {
     "backgroundTextStyle": "light",

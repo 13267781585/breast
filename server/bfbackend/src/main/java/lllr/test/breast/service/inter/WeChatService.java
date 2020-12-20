@@ -21,7 +21,7 @@ public interface WeChatService {
     List<WeChatMessageItem> selectWeChatMsgByFromUuidAndToUuidAndOid(String fromUuid,String toUuid,String oid);
 
     //查询医生和用户咨询的消息列表
-    ServerResponse<List<MessageList>> selectDoctorMessageList(Integer doctorId);
+    List<MessageList> selectDoctorMessageList(String doctorUuid) throws Exception;
 
     //更新聊天消息的状态为已读
     ServerResponse updateMessageTextStatusToRead(List<Integer> ids);

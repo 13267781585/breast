@@ -17,18 +17,18 @@ public class WeChatMessageController {
     @Autowired
     private WeChatService weChatService;
 
-    @RequestMapping("/selectDoctorMessageList")
-    public ServerResponse<List<MessageList>> selectDoctorMessageList(Integer doctorId) throws Exception {
-        if(ComUtils.isNull(doctorId))
-            throw new Exception("doctorId不能为空!");
-        return weChatService.selectDoctorMessageList(doctorId);
-    }
+//    @RequestMapping("/selectDoctorMessageList")
+//    public ServerResponse<List<MessageList>> selectDoctorMessageList(Integer doctorId) throws Exception {
+//        if(ComUtils.isNull(doctorId))
+//            throw new Exception("doctorId不能为空!");
+//        return weChatService.selectDoctorMessageList(doctorId);
+//    }
 
-    @RequestMapping("/updateMessageTextStatusToRead")
-    public ServerResponse updateMessageTextStatusToRead(@RequestBody Map<String,List<Integer>> param) throws Exception {
-        List<Integer> ids = param.get("ids");
-        if(ComUtils.isEmpty(ids))
-            throw new Exception("WeChatMessageController   ===   updateMessageTextStatusToRead   ===   更新消息列表的id集合不能为空!");
-        return weChatService.updateMessageTextStatusToRead(ids);
-    }
+//    @RequestMapping("/updateMessageTextStatusToRead")
+//    public ServerResponse updateMessageTextStatusToRead(@RequestBody Map<String,List<Integer>> param) throws Exception {
+//        List<Integer> ids = param.get("ids");
+//        if(ComUtils.isEmpty(ids))
+//            throw new Exception("WeChatMessageController   ===   updateMessageTextStatusToRead   ===   更新消息列表的id集合不能为空!");
+//        return weChatService.updateMessageTextStatusToRead(ids);
+//    }
 }

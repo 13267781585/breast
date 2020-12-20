@@ -3,6 +3,7 @@ package lllr.test.breast.controller.websocket;
 import com.alibaba.fastjson.JSONObject;
 import lllr.test.breast.common.ServerResponse;
 import lllr.test.breast.dataObject.consult.AutoAnswerTemplate;
+import lllr.test.breast.dataObject.consult.MessageList;
 import lllr.test.breast.dataObject.consult.WeChatMessageItem;
 import lllr.test.breast.service.inter.UserConsultAutoReply;
 import lllr.test.breast.service.inter.WeChatService;
@@ -13,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -213,6 +213,19 @@ public class WebSocketController {
                     if(StaticDataUtil.SELECT_DOCTOR_MESSAGELIST.equals(type))
                     {
                         //查询登录用户的消息列表
+                        String doctorUuid = msgJson.getString("doctorUuid");
+                        String uuid = msgJson.getString("uuid");
+                        List<MessageList> msgList = weChatService.selectDoctorMessageList(doctorUuid);
+                        JSONObject returnObject = new JSONObject();
+                        returnObject.put("type",StaticDataUtil.RETURN_DOCTOR_MESSAGELIST);
+                        returnObject.put("doctorUuid",doctorUuid);
+                        returnObject.put("data",msgList);
+
+                        ////////////////
+                        LOGGER.info("======= 消息列表数据"+msgList + "========");
+                        //////////////
+
+                        AppointSending(uuid,returnObject.toJSONString());
                     }
     }
 

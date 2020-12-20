@@ -92,24 +92,27 @@ Page({
          }
        }
 
-        console.log(that.data.object)
-        //登录成功后跳转
-        if (that.data.object == "doctor"){
-          console.log("医生跳转到")
-          //医生跳转到我的订单页面
-          wx.switchTab({
-            url: '../index/index',
-          })
-        }
-        else {
-          console.log("用户跳转到")
-          //用户跳转到首页
-          wx.switchTab({
-            url: '../index/index',
-          })
-        }
         //连接websocket
         app.connectServerByWs()
+
+        //当成功连接ws后跳转页面
+        wx.onSocketOpen(function(){
+          //登录成功后跳转
+          if (that.data.object == "doctor") {
+            console.log("医生跳转到")
+            //医生登陆后跳转到消息列表页面
+            wx.navigateTo({
+              url: '../doctor_message_list/doctor_message_list',
+            })
+          }
+          else {
+            console.log("用户跳转到")
+            //用户跳转到首页
+            wx.switchTab({
+              url: '../index/index',
+            })
+          }
+        })
       },
       fail(res){
         console.log('登录失败:',res)

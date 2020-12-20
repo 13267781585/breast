@@ -44,9 +44,11 @@ public class WeChatServiceImpl implements WeChatService {
     }
 
     @Override
-    public ServerResponse<List<MessageList>> selectDoctorMessageList(Integer doctorId) {
+    public List<MessageList> selectDoctorMessageList(String doctorUuid) throws Exception {
         //根据返回的数据统计为读消息的数量和最后一条未读消息
-        List<MessageList> messageList = weChatMessageItemMapper.selectDoctorMessageList(doctorId);      //查询数据库数据集
+        if(ComUtils.isEmpty(doctorUuid))
+            throw new Exception("=== 获取医生消息列表id不能为空!===");
+        List<MessageList> messageList = weChatMessageItemMapper.selectDoctorMessageList(doctorUuid);      //查询数据库数据集
 
         LOGGER.info("医生消息列表:"+messageList);
 
@@ -92,7 +94,7 @@ public class WeChatServiceImpl implements WeChatService {
 
         LOGGER.info("返回消息列表:"+returnMessageList);
 
-        return ServerResponse.createBysuccessData(returnMessageList);
+        return returnMessageList;
     }
 
     @Override

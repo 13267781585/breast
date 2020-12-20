@@ -19,7 +19,7 @@ App({
     //查询是否存有 token => 登录
     this.tokenSign()
     //加载 微信小程序 唯一标识符
-    this.getOpenId(),
+    this.getOpenId()
       //请求医生列表
     this.getDoctorList()
   },
@@ -190,7 +190,14 @@ App({
             that.globalData.userId = res.data.data.id;
             console.log('doctorToken 登录成功', that.globalData.userInfor);
             //连接websocket
-            that.connectServerByWs()
+            that.connectServerByWs();
+            //当成功连接ws后跳转到消息列表页面
+            wx.onSocketOpen(function(){
+              console.log('连接成功，跳转消息列表页面')
+              wx.navigateTo({
+                url: '/pages/doctor_message_list/doctor_message_list',
+              })
+            })
           },
           fail:function(res){
             console.log('token 登录失败')

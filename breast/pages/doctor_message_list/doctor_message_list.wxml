@@ -1,0 +1,27 @@
+<view>
+  <view style="margin-top:5rpx"></view>
+  <view class="consult-list menu-avatar " wx:for="{{messageList}}" wx:key="{{item.user.uuid}}">
+    <view class="cu-item bor" style="margin-top:-5rpx" id="{{item.user.uuid}}" bindtap="to_chatroom">
+      <view class="cu-avatar round lg" style="margin-left:15rpx ;background-image:url({{item.user.imgUrl}});"></view>
+
+      <view class="content"style="width: 200px;  height: 25px;">
+        <view class="text-black" style="margin-left:15rpx;font-size:30rpx;">{{item.user.userName}}</view>
+
+        <view class="text-gray text-sm flex">
+        </view>
+
+        <view class="staus-bor">
+          <!-- <image class="status" src="/images/icon/kzx.png"style="margin-left:15rpx;"></image> -->
+          <view style="margin-left:15rpx" class="text-gray">{{item.weChatMessageItem.messageContent}}</view>
+        </view>
+
+      </view>
+      <view class="staus-bor" style="float: right;">
+          <!-- <image class="status" src="/images/icon/kzx.png"style="margin-left:15rpx;"></image> -->
+       <view style="margin-left:15rpx" class="text-gray">已读</view>
+    </view>
+
+  </view>
+</view>
+
+</view>
