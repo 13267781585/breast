@@ -1,5 +1,8 @@
 import  md5  from '../../assert/js/md5.js';
 var app = getApp();
+// 登录返回的userInfor含有：
+// user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, 
+// confinement_type, user_name, user_password, user_token, open_id,img_url,uuid
 Page({
   data: {
     object:'',
@@ -74,7 +77,22 @@ Page({
          app.globalData.object = that.data.object;
          app.globalData.userInfor = responseData;
          console.log('用户登录成功，检查信息是否放入 app.js', app.globalData.userInfor)
-
+         if("doctor"==app.globalData.object){
+           console.log("----检测到医生登录---->开始设置tabBar")
+           getApp().setDoctorTabBar();
+           console.log(app.globalData.tabBarList);
+           wx.reLaunch({
+             url: '/pages/user/user',
+           })
+         }
+         if("user"==app.globalData.object){
+          console.log("----检测到用户登录---->开始设置tabBar")
+          getApp().setUserTabBar();
+          console.log(app.globalData.tabBarList);
+          wx.reLaunch({
+            url: '/pages/user/user',
+          })
+        }
          //保存 Cookie
          if (res && res.header && res.header['doctor_token'] && res.header['doctor_token_date']) {
            //设置userId
@@ -92,17 +110,23 @@ Page({
          }
        }
 
+
         //连接websocket
         app.connectServerByWs()
 
         //当成功连接ws后跳转页面
         wx.onSocketOpen(function(){
+          
           //登录成功后跳转
           if (that.data.object == "doctor") {
             console.log("医生跳转到")
-            //医生登陆后跳转到消息列表页面
-            wx.navigateTo({
-              url: '../doctor_message_list/doctor_message_list',
+            // 医生登陆后跳转到消息列表页面
+            // wx.navigateTo({
+            //   url: '../doctor_message_list/doctor_message_list',
+            // })
+            
+            wx.switchTab({
+              url: '../user/user',
             })
           }
           else {

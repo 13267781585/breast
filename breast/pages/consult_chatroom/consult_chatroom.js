@@ -21,18 +21,30 @@ Page({
     if (this.data.object == 'doctor')
       this.updateWeChatMessageItemToRead();
   },
-
+  onUnload(){
+    //设置返回路径 避免返回到问卷页面
+    if(getApp().globalData.object=="doctor"){
+      wx.reLaunch({
+        url: '../doctor_message_list/doctor_message_list', //指定url
+    })
+    }else{
+      wx.reLaunch({
+        url: '../consult_doctors_choose/consult_doctors_choose', //指定url
+      })
+    }
+  },
   // 监听页面加载
   onLoad: function (options) {
-    var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    console.log('参数：', options)
+    var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
+    console.log('参数：', options);
+    var img=JSON.parse(decodeURIComponent(options.img));
     this.setData({
       object:app.globalData.object,
       id: options.id,
       oid: options.oid,
       otherId: options.otherId,    
       otherImg: oImg,
-      img:options.img
+      img:img
     })
     wx.showToast({
       title: '连接中',
@@ -45,23 +57,30 @@ Page({
     //监听服务器消息
     this.listenServerMessage();
 
-    //医生端更新用户消息状态
-    if (this.data.object == 'doctor')
-      this.updateWeChatMessageItemToRead();
+    //医生端更新用户消息状态   下面的函数应该放到监听代码里面 避免异步问题 ：还未获取到之前的聊天记录就更新用户消息 此时list为空
+    // if (getApp().globalData.object == 'doctor'){
+    //   this.updateWeChatMessageItemToRead();
+    // }
   },
 
 
   //医生端更新消息状态未读为已读
-  updateWeChatMessageItemToRead() {
+  updateWeChatMessageItemToRead:async function() {
     var messageList = this.data.list;
+    console.log("----开始更新消息---->messageList：",messageList);
     var ids = [];
+
+    console.log(messageList.length); //为0
     for (var i = 0; i < messageList.length; i++) {
+      console.log(messageList[i],messageList[i].status)
       if (messageList[i].status == 0) {
         messageList[i].status = 1;
+        console.log("加入一个id");
         ids.push(messageList[i].id);
       }
     }
-    if (ids.length > 0) {
+    console.log("----ids---->",ids);
+     if(ids.length > 0) {
       this.setData({
         list: messageList
       })
@@ -76,7 +95,7 @@ Page({
   },
 
 //获取之前聊天记录
-  getAllWeChatItem(){
+  getAllWeChatItem:async function(){
     var json_object = { "type":"getAllWeChatItemById","toUuid":this.data.otherId,"fromUuid":this.data.id,"oid":this.data.oid};
     var json_str = JSON.stringify(json_object);
     console.log('json_str'+json_str),
@@ -100,10 +119,12 @@ Page({
       
       if (type == 'returnAllWeChatItemById')   //接收之前消息记录
        {
-        var data = json_object.data;
-        var newList = this.data.list;
-        //将消息加入表中
-        for (var i = 0; i < data.length; i++) {
+         console.log("----接收之前消息记录---->msg:",msg)
+         var data = json_object.data;
+         //console.log("----接收之前消息记录---->data:",data)
+         var newList = this.data.list;
+         //将消息加入表中
+         for (var i = 0; i < data.length; i++) {
           //格式化 日期 的格式
           var time = data[i].time;
           data[i].time = app.jsDateFormatter(new Date(time));
@@ -112,7 +133,11 @@ Page({
         this.setData({
           list: newList
         });
-      }else
+
+        if (getApp().globalData.object == 'doctor'){
+          this.updateWeChatMessageItemToRead();
+        }
+       }else
         if (type == 'acceptWeChatItemFromOther'){         //对方给我发送消息
         //判断是否是这个订单的聊天
           if (json_oid !== this.data.oid || json_toUuid != this.data.id || json_fromUuid != this.data.otherId)
@@ -158,7 +183,7 @@ Page({
       //判断是 登录 用户 是 医生 还是 普通用户
         var msg = {
           type:'sendWeChatItemToOther',
-          userObject:app.globalData.object,
+          sendObject:app.globalData.object,
           fromUuid: this.data.id,
           toUuid: this.data.otherId,
           messageType: 0,                 // 消息类型  文字 图片
@@ -302,6 +327,10 @@ Page({
 
       }
     });
+  },
+
+  getInformation:function(){
+    console.log("----打开资料页面----");
   },
   DelImg(e) {
     wx.showModal({

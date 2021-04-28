@@ -31,7 +31,7 @@ CREATE TABLE `user` (
   `confinement_type` int(11) NOT NULL,
   `user_name` varchar(45) NOT NULL,
   `user_password` varchar(45) NOT NULL,
-  `user_token` char(32) DEFAULT NULL COMMENT '用户登录token',
+  `user_token` char(302) DEFAULT NULL COMMENT '用户登录token',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `credit_id_UNIQUE` (`credit_id`),
   UNIQUE KEY `user_name_UNIQUE` (`user_name`)

@@ -42,7 +42,7 @@ App({
     serverUrl: 'http://localhost:8088',
     salt : "fdsfvxnmcvnew68sa5d54ds",
     userId:-1, //表示登录用户的id 无论是医生还是普通用户
-    object:'',  //登录的用户群体：1.医生 2.普通用户
+    object:'visitor',  //登录的用户群体：1.医生 2.普通用户 3.未登录的游客 //默认为游客
     userInfor:null,   //记录用户的信息
     doctorList:[],       //医生列表
     consultOrderList:[],  //医生端存放 咨询订单
@@ -51,13 +51,97 @@ App({
     APP_SECRET: '939f54b21647f5d6bf05feb58ece72bf',
     openId:'',//微信小程序用户标识符
     messageNoticeTmpId:'ZUBuHw56XW-d-loTKSOO5OJiLRcR4Moj87U7QN0iweA',
+    order_list:[],//暂时存放咨询记录
+    tabBarList:[     
+   {
+      "pagePath": "/pages/index/index",
+      "text": "科普频道",
+      "iconPath": "/images/icon/kppd1.png",
+      "selectedIconPath": "/images/icon/kppd2.png"
+    },
+    {
+      "pagePath": "/pages/testIndex/testIndex",
+      "text": "测试",
+      "iconPath": "/images/icon/wj1.png",
+      "selectedIconPath": "/images/icon/wj2.png"
+    },
+    {
+      "pagePath": "/pages/consult_doctors_choose/consult_doctors_choose",
+      "text": "咨询",
+      "iconPath": "/images/icon/zx1.png",
+      "selectedIconPath": "/images/icon/zx2.png"
+    },
+    {
+      "pagePath": "/pages/user/user",
+      "text": "我的",
+      "iconPath": "/images/icon/wd1.png",
+      "selectedIconPath": "/images/icon/wd2.png"
+    }] //存放tabBar的初始数据
   },
 
+  setUserTabBar:function(){
+    console.log('----setUserTabBar----')
+    this.globalData.tabBarList= [
+      {
+        "pagePath": "/pages/index/index",
+        "text": "科普频道",
+        "iconPath": "/images/icon/kppd1.png",
+        "selectedIconPath": "/images/icon/kppd2.png"
+      },
+      {
+        "pagePath": "/pages/testIndex/testIndex",
+        "text": "测试",
+        "iconPath": "/images/icon/wj1.png",
+        "selectedIconPath": "/images/icon/wj2.png"
+      },
+      {
+        "pagePath": "/pages/consult_doctors_choose/consult_doctors_choose",
+        "text": "咨询",
+        "iconPath": "/images/icon/zx1.png",
+        "selectedIconPath": "/images/icon/zx2.png"
+      },
+      {
+        "pagePath": "/pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/icon/wd1.png",
+        "selectedIconPath": "/images/icon/wd2.png"
+      }
+    ]
+    wx.switchTab({
+      url:'../user/user',
+    })
+  },
+  setDoctorTabBar(){
+    console.log('----setDoctorTabBar----')
+    this.globalData.tabBarList=[
+      {
+        "pagePath": "/pages/doctor_message_list/doctor_message_list",
+        "text": "消息",
+        "iconPath": "/images/icon/zx1.png",
+        "selectedIconPath": "/images/icon/zx2.png"
+      },
+      {
+        "pagePath": "/pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/icon/wd1.png",
+        "selectedIconPath": "/images/icon/wd2.png"
+      }
+    ]
+    // wx.switchTab({
+    //   url: '../doctor_message_list/doctor_message_list',
+    // })
+    wx.switchTab({
+      url: '../user/user',
+  })
+    console.log("----设置doctor TabBar结束----")
+  },
   //清除记录的隐私数据=》 用于 用户退出登录时调用
   clearPrivacyData(){
     this.globalData.userId = -1;
-    this.globalData.object = '',
     this.globalData.userInfor = null
+    this.globalData.object='visitor';
+    this.globalData.consultOrderList=[];
+    this.globalData.order_list=[];
   },
 
   connectServerByWs(){
@@ -189,14 +273,21 @@ App({
             that.globalData.userInfor = res.data.data;
             that.globalData.userId = res.data.data.id;
             console.log('doctorToken 登录成功', that.globalData.userInfor);
+            console.log(that.globalData.tabBarList)
+            console.log('doctorToken 登录成功->设置tabBar');
+            that.setDoctorTabBar();
+            console.log(that.globalData.tabBarList)
             //连接websocket
             that.connectServerByWs();
+
             //当成功连接ws后跳转到消息列表页面
             wx.onSocketOpen(function(){
               console.log('连接成功，跳转消息列表页面')
-              wx.navigateTo({
-                url: '/pages/doctor_message_list/doctor_message_list',
-              })
+              // that.setDoctorTabBar();
+              
+            //   wx.switchTab({
+            //   url: '../user/user',
+            // })
             })
           },
           fail:function(res){

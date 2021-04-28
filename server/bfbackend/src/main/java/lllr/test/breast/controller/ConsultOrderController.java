@@ -69,7 +69,10 @@ public class ConsultOrderController {
             return ServerResponse.createByErrorMsg("数据格式错误！");
         }
 
-        ConsultOrder consultOrder = new ConsultOrder(doctorId,userId,create_time,lastingTime,contact,contactPhone,symptomDescription,consultCost);
+        //订单持续时间后台来设置
+        int setLastingTime=60 * 60 * 24 * 1000; //一天
+        //价格也应该在后台设置 否则容易造成不安全情况
+        ConsultOrder consultOrder = new ConsultOrder(doctorId,userId,create_time,setLastingTime,contact,contactPhone,symptomDescription,consultCost);
         consultOrder.setOid(UUID.randomUUID().toString().replace("-", ""));
         consultOrder.setUserOpenId(userOpenId);
         consultOrder.setDoctorOpenId(doctorOpenId);
@@ -86,4 +89,16 @@ public class ConsultOrderController {
     {
         return consultOrderService.selectByOid(oid);
     }
+    @GetMapping("/getConsultByUserIdAndDoctorId")
+    ServerResponse<ConsultOrder> getConsultByUserIdAndDoctorId(@RequestParam("userId")@NotNull Integer userId,
+                                                               @RequestParam("doctorId")@NotNull Integer doctorId){
+        return consultOrderService.selectConsultByUserIdAndDoctorId(userId,doctorId);
+    }
+
+    //查询订单是否有效
+    @GetMapping("/isOpenConsult")
+    ServerResponse<String> getConsultStatus(@RequestParam("oid")@NotEmpty String oid){
+        return consultOrderService.getConsultStatus(oid);
+    }
 }
+

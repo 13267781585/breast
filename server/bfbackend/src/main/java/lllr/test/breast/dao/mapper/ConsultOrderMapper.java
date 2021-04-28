@@ -27,4 +27,8 @@ public interface ConsultOrderMapper {
     ConsultOrder getByOid(String oid);
 
     int updateConsultOrderStatusById(@Param("id") Integer id,@Param("status") Integer status);
+
+    List<ConsultOrder> selectConsultByUserIdAndDoctorId(@Param("userId")Integer userId, @Param("doctorId")Integer doctorId);
+
+
 }

@@ -153,11 +153,11 @@ public class WebSocketController {
 /*                type:"sendWeChatItemToOther" 消息类型
                     fromUuid发送者
                     sendObject: 发送身份 doctor user
-                toUuid  接收者
-                messageType                // 消息类型  文字 图片
-                messageContent  消息内容
-                time  消息发送时间
-                oid  咨询订单id*/
+                    toUuid  接收者
+                    messageType                // 消息类型  文字 图片
+                    messageContent  消息内容
+                    time  消息发送时间
+                    oid  咨询订单id*/
                 //发送聊天消息
                 String fromUuid = msgJson.getString("fromUuid");
                 String sendObject = msgJson.getString("sendObject");
@@ -201,6 +201,7 @@ public class WebSocketController {
             }else
                 if(StaticDataUtil.UPDATE_MESSAGETEXT_STATUS_TO_OTHER.equals(type))
                 {
+
                     //医生端更新消息未读状态为已读
                     List<Integer> ids = msgJson.getObject("ids",List.class);
 

@@ -6,8 +6,25 @@ Page({
   },
 
   onShow: function (options) {
-    console.log('onLoad')
-    console.log(app.globalData.userId)
+    this.onLoad();
+    // console.log('onload')
+    console.log('onShow',app.globalData.userId,app.globalData.object)
+    if ("doctor" == app.globalData.object) {
+      //自定义组件还得给tabBar 添加选中效果
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 1 //tabBar的下标  doctor tabBar[消息，我的]
+        })
+      }
+    }else{
+      //自定义组件还得给tabBar 添加选中效果
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 3 //tabBar的下标 user tabBar[科普频道，测试，咨询，我的]
+        })
+      }
+    }
+
       this.setData({
         userId:app.globalData.userId
       })
@@ -24,7 +41,13 @@ Page({
       userId:-1
     })
     //断开websocket连接
+    app.setUserTabBar();
     app.closeSocket()
+    console.log('执行reLaunch',getApp().globalData.tabBarList);
+    
+    wx.reLaunch({
+      url: '/pages/user/user',
+    })
   },
 
   logIn:function(){

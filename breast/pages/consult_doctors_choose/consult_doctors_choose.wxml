@@ -24,23 +24,53 @@
 	</scroll-view>
 </view> -->
 
- <view class="cu-list menu-avatar"   wx:for="{{doctorList}}" wx:key="{{item.uuid}}" wx:for-index="idx" >
+<view class="root">
+	  <!-- 背景上部分 -->
+	<view class="bg_head">
+    <image class="doctor_bg_top" src="/images/doctor_bg2.jpg" mode="aspectFill"></image>
+	</view>
+	
+	
+  <!-- 消息下部分 -->
+  <view class="doctor_list" wx:for="{{doctorList}}" wx:key="{{item.uuid}}" wx:for-index="idx">
+    <!-- 每个消息作为一个item -->
+    <view class="doctor-item bor" style="margin-top:-5rpx" id="{{item.uuid}}" data-index="{{idx}}" bindtap="to_consultque">
+      <!-- 总的消息边框大小设计 -->
+      <!-- <view class="msg_kuang"> -->
+        <view class="doctor_txk">
+          <!-- <view class="chat_head" style="background-image:url({{item.user.imgUrl}});"></view> -->
+					<!-- <view class="doctor_head" style="background-image:url({{item.imgUrl}});" mode="aspectFill"></view> -->
+					<view class="cu-avatar2 round lg" style="height:120rpx;width:120rpx; background-image:url({{item.imgUrl}});"></view>
+        </view>
 
-    <view class="cu-item bor" style="margin-top:30rpx" data-index="{{idx}}"  bindtap="to_consultque">
-      <view class="cu-avatar round lg" style="background-image:url({{item.imgUrl}});"></view>
-      <view class="content">
-        <view class="text-black">{{item.name}} 主治医师</view>
-        <view class="text-gray text-sm flex">  
-							<text class=" margin-right-xs"></text> {{item.expertIn}}
-        </view>				
-				<view class="staus-bor">
-								<image class="status" src="/images/icon/kzx.png"></image>
-				<view style="margin-left:15rpx" class="text-pink">可咨询</view>
-				</view>
-      </view>
-    </view>  
+        <view class="doctor_content">
+          <view class="content_username">
+            {{item.name}} 主治医师
+          </view>
+          <view class="content_msg">
+            {{item.expertIn}}
+					</view>
+					
 
+        </view>
+
+        <!-- <view class="text-gray text-sm flex"> -->
+        <!-- </view> -->
+
+        <view class="doctor_right" bindtap="">
+          <!-- <image class="status" src="/images/icon/kzx.png"style="margin-left:15rpx;"></image> -->
+          <!-- <view class="msg_date">21/4/22</view> -->
+					<!-- <view class="text-gray">21/4/22已读已读已读已读已读已读已读已读已读</view> -->
+					<!-- <view class="btn_consult"> -->
+							<image class="btn_status" src="/images/icon/kzx.png"></image>
+							<view class="btn_go" class="text-pink">点击咨询</view>
+					<!-- </view> -->
+        </view>
+
+      <!-- </view> -->
+    </view>
   </view>
+</view>
 
-  
+
 	

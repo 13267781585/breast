@@ -22,7 +22,8 @@
     "pages/mycoll/mycoll",
     "pages/testIndex/testIndex",
     "pages/doctor_consult_detail/doctor_consult_detail",
-    "pages/doctor_message_list/doctor_message_list"
+    "pages/doctor_message_list/doctor_message_list",
+    "pages/testButtom/testButtom"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,6 +32,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "custom":true,
     "selectedColor": "#d4237a",
     "borderStyle": "white",
     "list": [
@@ -49,6 +51,12 @@
       {
         "pagePath": "pages/consult_doctors_choose/consult_doctors_choose",
         "text": "咨询",
+        "iconPath": "/images/icon/zx1.png",
+        "selectedIconPath": "/images/icon/zx2.png"
+      },
+      {
+        "pagePath": "pages/doctor_message_list/doctor_message_list",
+        "text": "消息",
         "iconPath": "/images/icon/zx1.png",
         "selectedIconPath": "/images/icon/zx2.png"
       },

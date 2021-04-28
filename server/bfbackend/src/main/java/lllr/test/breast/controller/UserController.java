@@ -123,6 +123,7 @@ public class UserController {
         user.setUserToken(UUID.randomUUID().toString().replace("-", ""));
         String uuid = UUID.randomUUID().toString().replace("-", "");
         user.setUuid(uuid);
+        user.setImgUrl("https://pics7.baidu.com/feed/a8773912b31bb051fb37de05c78e64b24bede083.jpeg?token=f02d22e51399a01c6c239e6247cec44f");
         return userService.userRegister(user);
     }
 
@@ -154,7 +155,6 @@ public class UserController {
         //不为空说明表单数据正确
         if (reData.getData() != null)
             AfterSign(request, response, reData.getData());
-
         return reData;
     }
 

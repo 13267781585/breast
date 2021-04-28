@@ -104,12 +104,20 @@
       <result column="voice_cost" jdbcType="INTEGER" property="voiceCost" />
       <result column="video_cost" jdbcType="INTEGER" property="videoCost" />
     </association>
-
   </resultMap>
 
   <sql id="Base_Column_List">
     id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls
   </sql>
+
+  <select id="selectConsultByUserIdAndDoctorId"  resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM consult_order
+    WHERE user_id = #{userId,jdbcType=VARCHAR} and
+          doctor_id = #{doctorId,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectConsultOrderAndDoctorByUserId" parameterType="java.lang.Integer" resultMap="ConsultOrdersUserResultMap">
     SELECT consult_order.* ,doctor.name, doctor.license_number, doctor.img_url
     FROM consult_order inner join

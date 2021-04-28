@@ -18,6 +18,12 @@ Page({
   },
 
   onShow:function(options){
+    //自定义组件还得给tabBar 添加选中效果
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected:1 //tabBar的下标 user tabBar[科普频道，测试，咨询，我的]
+      })
+    }
     //获取用户的userid
     this.checkUserId();
   },

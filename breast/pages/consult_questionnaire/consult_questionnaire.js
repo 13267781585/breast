@@ -17,32 +17,51 @@ Page({
     modalName: null,
     imgToken: '',
     imageURL: '',
-    userid: -1,
-    doctorOpenId: ''   //医生微信小程序标识符
+    userId: -1,
+    doctorOpenId: '',   //医生微信小程序标识符
+    oid:''//查询订单id
   },
   onLoad: function (options) {
+    //判断是否登录
     this.getImgToken();
     if (app.globalData.userInfor != null && app.globalData.userInfor.userId == null){
          showUtil.showToLogion();
     }
-    console.log('问卷接收参数：', options)
-    wx.showLoading({
-      title: '加载中',
-    })
-    console.log('医生id参数：', options)
+    //接受传参并设置
+    console.log('----填写咨询问卷传递参数：----：', options)
     this.setData({
       doctorUuid: options.doctorUuid,
       doctorName: options.doctorName,
       doctorId:options.doctorId,
-      doctorImg: options.doctorImg,
+      doctorImg: JSON.parse(decodeURIComponent(options.doctorImg)),
       doctorOpenId: options.openId
     })
+    //判断本地是否有问卷
+    console.log('----判断本地是否有问卷：----')
+    if(this.queryGlobalConsult(this.data.doctorId)){
+      //如果返回为true则直接进入聊天页面
+      console.log('----本地有咨询问卷：----')
+      wx.navigateTo({
+        url: '../consult_chatroom/consult_chatroom?otherId=' +this.data.doctorUuid + '&oid=' + this.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
+        +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl))
+      })
+    }
+    //判断数据库是否有问卷
+    console.log('----判断数据库是否有问卷：----')
+    console.log(options.doctorId,getApp().globalData.userId);
+    this.queryConsult(getApp().globalData.userId,options.doctorId);
+
+    //等待填写问卷
+    wx.showLoading({
+      title: '加载中',
+    })
+
   },
+
   onReady: function () {
     wx.hideLoading({
       complete: (res) => { },
     })
-
   },
 
   bindButtonTap: function () {
@@ -90,12 +109,12 @@ Page({
       this.showModal("请输入正确的电话号码和详细的病症！")
       return;
     }
-    
     var now = new Date();
     var createTime = app.jsDateFormatter(now);
     var that = this;
-    console.log('咨询订单参数：' + createTime + ' ' + this.data.doctorId )
+    console.log('咨询订单参数：' + createTime + ' ' + this.data.doctorUuid )
     //创建 咨询订单
+    console.log('----app.globalData.userInfor.user_id---',getApp().globalData.userId)
     wx.request({
       url: app.globalData.serverUrl + '/addConsultOrder',
       method: 'POST',
@@ -104,24 +123,27 @@ Page({
       },
       data: {
         doctorId: this.data.doctorId,
-        userId: app.globalData.userInfor.userId,
+        userId: getApp().globalData.userId,
         createTime: createTime,
-        lastingTime: 60 * 60 * 24 * 1000,
+        lastingTime: 60 * 60 * 24 * 1000,//先传 暂时没用
         contact: this.data.name,
         contactPhone: this.data.phone,
         symptomDescription: this.data.question,
         consultCost: this.data.consultCost,
         imgUrls: this.data.imgList.toString(),
-        userOpenId: app.globalData.userInfor.openId,
+        userOpenId: getApp().globalData.userInfor.openId,
         doctorOpenId: this.data.doctorOpenId,
       },
       success(res) {
-        console.log('生成订单成功:', res)
+        console.log('生成订单成功----->添加记录到全局 res:', res)
+        //添加记录到全局
+        that.addConsultToGlobal(createTime,res.data.data);
+        console.log('本地记录--->订阅消息:',getApp().globalData.order_list)
         that.sendSubMessage()
         if (res.data.status == 1) {
           wx.navigateTo({
-            url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=' + res.data.data + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
-            + app.globalData.userInfor.imgUrl,
+            url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=' + res.data.data + '&otherImg=' + encodeURIComponent(JSON.stringify(that.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
+            +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
           })
           // wx.navigateTo({
           //   url: '../consult_chatroom/consult_chatroom?otherId=' + that.data.doctorUuid + '&oid=f6cc95117ca04e8287f83e1e9ef19f5e' + '&otherImg=' + that.data.doctorImg + '&id=' + app.globalData.userInfor.uuid + '&img='
@@ -236,6 +258,73 @@ Page({
       }
     })
   },
+  //查询全局参数是否有记录 有记录则设置oid
+  //同时要查询是否有效
+  queryGlobalConsult:function(doctorId){
+    var order_list=getApp().globalData.order_list;
+    console.log('order_list:',order_list);
+    if(order_list==null||""==order_list){
+      return false;
+    }else{
+      order_list.forEach(item => {
+        if(item.doctorId==doctorId){
+          //查询订单是否有效
+          if(this.queryConsuIsOpen(item.oid)){
+            this.data.oid=item.oid;
+            return true;
+          }else{
+            return false;
+          }
+        }
+      });
+      return false;
+    }
+
+  },
+  //查询订单是否有效
+  queryConsuIsOpen:async function(oid){
+    wx.request({
+      url: app.globalData.serverUrl + '/isOpenConsult',
+      method: 'GET',
+      data: {
+        oid:oid
+      },
+      success: function (res) {
+        console.log('查询订单是否有效---->res:',res)
+        if(res.data.msg=="consult_isClose"){
+          console.log("----查询到无效----")
+          return false;
+        }
+        if(res.data.msg=="consult_isOpen"){
+          console.log("----查询到有效----")
+          return true;
+        }
+        return false;
+      }
+    })
+
+  },
+  //添加记录到全局
+  addConsultToGlobal:function(cr_time,consultId){
+    var record={
+      doctorId:this.data.doctorId,
+      userId:app.globalData.userId,
+      createTime: cr_time,
+      contact: this.data.name,
+      contactPhone: this.data.phone,
+      symptomDescription: this.data.question,
+      consultCost: this.data.consultCost,
+      imgUrls: this.data.imgList.toString(),
+      userOpenId: app.globalData.userInfor.openId,
+      doctorOpenId: this.data.doctorOpenId,
+      oid:consultId
+    }
+    var order_list_update=app.globalData.order_list;
+    console.log('----历史咨询记录---->',order_list_update)
+    order_list_update.push(record);
+    app.globalData.order_list=order_list_update;
+    console.log('----更新后的咨询记录---->',getApp().globalData.order_list);
+  },
 
   sendSubMessage() {
     var tempId = app.globalData.sendToDoctortmpId;
@@ -256,5 +345,51 @@ Page({
       }
     })
 
-  }
+  },  
+  
+  //查询后台数据库是否有订单
+  queryConsult:async function(user_id,doctor_id){
+    var _this=this;
+    wx.request({
+      url: getApp().globalData.serverUrl + '/getConsultByUserIdAndDoctorId',
+      method: 'GET',
+      header: {
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    data:{
+      userId:user_id,
+      doctorId:doctor_id,
+    },
+    success(res){
+      if(res.data.status == 1){
+        console.log('----查询到后台咨询记录----:', res)
+        //开始查询订单是否有效
+        // var flag=_this.queryConsuIsOpen(res.data.data.oid);
+        _this.queryConsuIsOpen(res.data.data.oid);
+        console.log("订单有效")
+        wx.navigateTo({
+          url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + res.data.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
+          +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
+        })
+          
+        // //出现异步请求问题
+        // if(flag){
+        //   console.log("订单有效")
+        //   wx.navigateTo({
+        //     url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + res.data.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
+        //     +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
+        //   })
+        // }else{
+          console.log("无效则不进入聊天页面")
+        // }
+    
+      }else{
+        console.log('----没有查询到咨询记录----:', res)
+      }
+    },
+      fail(res) {
+        console.log('----查询失败----', res)
+      }
+    })
+}
 })

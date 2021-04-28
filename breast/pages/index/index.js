@@ -32,17 +32,38 @@ Page({
 
   onLoad: function () {
 
+    console.log('----index进入onload----')
+
     wx.showLoading({
       title: '加载中....',
     })
+
     this.getArticleList();
 
     this.getAudioList();
      
-      this.getVedioList();
+    this.getVedioList();
+
+    //解决一个user和doctor页面乱的bug
+    console.log(getApp().globalData.object)
+    if(getApp().globalData.object=="doctor"){
+      console.log("----进入用户界面----");
+      wx.reLaunch({
+        url: '../user/user',
+      })
+    }
   },
 
-
+  onShow:function(){
+      this.onLoad();
+      console.log('----进入onshow----')
+      //自定义组件还得给tabBar 添加选中效果
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({
+          selected:0 //tabBar的下标 user tabBar[科普频道，测试，咨询，我的]
+        })
+      }
+  },
   //图文---------------
 
   //获取文章列表

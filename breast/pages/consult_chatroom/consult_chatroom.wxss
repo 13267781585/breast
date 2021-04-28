@@ -96,3 +96,44 @@ page {
   float: right;
   font-size: 35rpx;
 }
+
+.infor{
+  /* position: absolute; */
+  /* width: 45rpx;
+  height: 45rpx; */
+  
+  /* background: rgb(22, 151, 18); */
+  margin:15rpx;
+  z-index: 66;
+}
+.infor2{
+  margin-top:30rpx;
+  margin-left: 100rpx;
+  z-index: 5;
+}
+.infor_icon{
+  position: fixed;
+  float: right;
+  font-size: 35rpx;
+  width: 45rpx;
+  height: 45rpx;
+  background: rgb(22, 151, 18);
+}
+
+.add-wrap {
+  position:fixed;
+  /* bottom:20; */
+  display:flex;
+  width:120rpx;
+  float:right;
+  margin-top: 50rpx;
+  margin-left: 550rpx;
+  /* justify-content:right; */
+  /* background: rgb(22, 151, 18); */
+  z-index: 166;
+  }
+  
+.add-wrap image {
+  width:40px;
+  height:40px;
+}

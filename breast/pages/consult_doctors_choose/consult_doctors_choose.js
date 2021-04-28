@@ -10,10 +10,29 @@ Page({
     openId: '',
   },
   onLoad: function () { //加载数据渲染页面
+    console.log('----进入onload----')
     this.fetchDoctorData();
   },
 
   onShow:function(options){
+    this.onLoad();
+    console.log('----进入onshow----')
+    if ("doctor" == app.globalData.object) {
+      //自定义组件还得给tabBar 添加选中效果
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 0 //tabBar的下标  doctor tabBar[消息，我的]
+        })
+      }
+    }else{
+      //自定义组件还得给tabBar 添加选中效果
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 2 //tabBar的下标 user tabBar[科普频道，测试，咨询，我的]
+        })
+      }
+    }
+
     if (app.globalData.userId < 0){
       console.log('userId', app.globalData.userId);
       showUtil.showToLogion();
@@ -66,7 +85,7 @@ Page({
       showUtil.showToLogion()
     else
       wx.navigateTo({
-        url: '../consult_questionnaire/consult_questionnaire?doctorUuid=' + doctorUuid + '&doctorName=' + doctorName + '&doctorImg=' + doctorImg + '&openId=' + openId + '&doctorId=' + doctorId,
+        url: '../consult_questionnaire/consult_questionnaire?doctorUuid=' + doctorUuid + '&doctorName=' + doctorName + '&doctorImg=' + encodeURIComponent(JSON.stringify(doctorImg)) + '&openId=' + openId + '&doctorId=' + doctorId,
       })
   },
 
