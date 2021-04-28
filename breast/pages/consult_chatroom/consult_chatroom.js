@@ -35,16 +35,15 @@ Page({
   },
   // 监听页面加载
   onLoad: function (options) {
-    var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    console.log('参数：', options);
-    var img=JSON.parse(decodeURIComponent(options.img));
+    var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
+    console.log('参数：', options)
     this.setData({
       object:app.globalData.object,
       id: options.id,
       oid: options.oid,
       otherId: options.otherId,    
       otherImg: oImg,
-      img:img
+      img: options.img
     })
     wx.showToast({
       title: '连接中',
