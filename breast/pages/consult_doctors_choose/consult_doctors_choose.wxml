@@ -1,0 +1,78 @@
+<!-- <view class="container">
+
+	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
+		<view class="service-list">
+			<navigator class="service-item" wx:for="{{doctorList}}" wx:key="{{item.id}}" url="../doctors_choosedetail/doctors_choosedetail?id={{item.id}}">
+				<view class="service-img">
+					<image src="{{item.imgurl}}" mode="aspectFill"></image>
+				</view>
+				<view class="service-text">
+          <view class="service-title">
+					  <view class="service-name">{{item.name}}</view>
+            <view class="service-position">{{item.position}}</view>
+          </view>
+          <view>
+            <text class="service-city">{{item.hospital}}    {{item.tag}}</text>
+          </view>
+          <view>
+					  <text class="service-city">咨询状态：{{item.state}}</text>
+          </view>
+				</view>
+			</navigator>
+		</view>
+		<view class="gototop {{scrolltop>200?'active':''}}" bindtap="goToTop"></view>
+	</scroll-view>
+</view> -->
+
+<view class="root">
+	  <!-- 背景上部分 -->
+	<view class="bg_head">
+    <image class="doctor_bg_top" src="/images/doctor_bg2.jpg" mode="aspectFill"></image>
+	</view>
+	
+	
+  <!-- 消息下部分 -->
+  <view class="doctor_list" wx:for="{{doctorList}}" wx:key="index" wx:for-index="idx">
+    <!-- 每个消息作为一个item -->
+    <view class="doctor-item bor" style="margin-top:-5rpx" id="{{item.uuid}}" data-index="{{idx}}" bindtap="to_consultque">
+      <!-- 总的消息边框大小设计 -->
+      <!-- <view class="msg_kuang"> -->
+        <view class="doctor_txk">
+          <!-- <view class="chat_head" style="background-image:url({{item.user.imgUrl}});"></view> -->
+					<!-- <view class="doctor_head" style="background-image:url({{item.imgUrl}});" mode="aspectFill"></view> -->
+					<view class="cu-avatar2 round lg" style="height:120rpx;width:120rpx; background-image:url({{item.imgUrl}});"></view>
+        </view>
+
+        <view class="doctor_content">
+          <view class="content_username">
+            {{item.name}} 主治医师
+          </view>
+          <view class="content_msg">
+            {{item.expertIn}}
+					</view>
+					
+
+        </view>
+
+        <!-- <view class="text-gray text-sm flex"> -->
+        <!-- </view> -->
+
+        <view class="doctor_right" bindtap="">
+          <!-- <image class="status" src="/images/icon/kzx.png"style="margin-left:15rpx;"></image> -->
+          <!-- <view class="msg_date">21/4/22</view> -->
+					<!-- <view class="text-gray">21/4/22已读已读已读已读已读已读已读已读已读</view> -->
+					<!-- <view class="btn_consult"> -->
+							<image class="btn_status" src="/images/icon/kzx.png"></image>
+							<view class="btn_go" class="text-pink">点击咨询</view>
+					<!-- </view> -->
+        </view>
+
+      <!-- </view> -->
+    </view>
+  </view>
+</view>
+
+
+
+<view class="blank_forTabBar" style="height:100rpx,width: 750rpx;"></view>
+	
