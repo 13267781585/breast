@@ -1,0 +1,85 @@
+
+
+<view class="add-wrap"hover-class="plus-hover" bindtap="getInformation">
+	<image src="../../images/information.jpg"></image>
+</view>
+
+<!-- <view class="cu-chat">
+	<block wx:for="{{list}}" wx:key="{{item.id}}">
+		<view class="cu-item self" wx:if="{{item.fromUuid == id}}">
+			<view  class="main">
+				<view class="content bg-green shadow">
+					<text>{{item.messageContent}}</text>
+				</view>
+			</view>
+			<view class="cu-avatar radius" style="background-image:url({{img}});"></view>
+			
+			<view class="date">{{item.time}}</view>
+		</view>
+
+			<view wx:elif="{{item.fromUuid == otherId}}" class="cu-item">
+					<view class="cu-avatar radius" style="background-image:url({{otherImg}});"></view>
+			<view class="main">
+				<view class="content  shadow">
+					<text>{{item.messageContent}}</text>
+				</view>
+			</view>
+			<view class="date">{{item.time}}</view>
+		</view>
+	</block>
+</view>
+
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+	<input class="solid-bottom" bindinput="handleMessage" value="{{message}}" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10" adjust-position="true"></input>
+	<view class="action">
+		<text class="cuIcon-emojifill text-grey"></text>
+	</view>
+	<button bindtap="send" style="width:64px" class="cu-btn bg-green shadow">发送</button>
+</view> -->
+
+<!-- 下面为4-29更新 -->
+
+<view class="cu-chat">
+<scroll-view class="cu-chat" style="top:{{statsuBarHeight+headHeight}}px;height:{{chatListHeight}}px;"
+	scroll-y="true" scroll-into-view="{{toView}}" bindtap="hideKeyboard" scroll-top="scrolltop">
+		<view wx:for="{{list}}" wx:key="index" id="item{{index+1}}">
+		<view class="cu-item self" wx:if="{{item.fromUuid == id}}">
+			<view  class="main">
+				<view class="content bg-green shadow">
+					<text>{{item.messageContent}}</text>
+				</view>
+			</view>
+			<view class="cu-avatar radius" style="background-image:url({{img}});"></view>
+			
+			<view class="date">{{item.time}}</view>
+		</view>
+
+			<view wx:elif="{{item.fromUuid == otherId}}" class="cu-item">
+					<view class="cu-avatar radius" style="background-image:url({{otherImg}});"></view>
+			<view class="main">
+				<view class="content  shadow">
+					<text>{{item.messageContent}}</text>
+				</view>
+			</view>
+			<view class="date">{{item.time}}</view>
+		</view>
+		</view>
+</scroll-view>
+
+
+<view class="cu-bar foot input {{keyboardHeight!=0?'cur':''}}" style="bottom:{{keyboardHeight}}px">
+	<input class="solid-bottom" bindinput="handleMessage" value="{{message}}" adjust-position="{{false}}" focus="{{false}}" maxlength="300"  hold-keyboard="{{true}}"></input>
+	<view class="action">
+		<text class="cuIcon-emojifill text-grey"></text>
+	</view>
+	<button bindtap="send" style="width:64px" class="cu-btn bg-green shadow">发送</button>
+</view>
+</view>
+<!-- 图片的显示(lyf) -->
+	<!-- <view class="cu-item self">
+		<view class="main">
+			<image src="http://llllllllr.top/1242397_082650005_2.jpg20201513220" class="radius" mode="widthFix"></image>
+		</view>
+		<view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+	</view> -->
+	
