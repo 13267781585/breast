@@ -33,18 +33,20 @@
 		<!--文章部分-->
 		<!-- 点击事件，绑定detailArticle方法，传参数 item.id 记得用双花括号括起来 -->
 		<block wx:for="{{articleList}}" wx:for-item="item">
-
 			<view class="article" catch:tap="detailArticle" data-articleId="{{item.id}}">
 				<view class="line"></view>
 				<image src="{{item.imgUrl}}"></image>
 				<text class="article-title">{{item.title}}</text>
 				<text class="article-content">{{item.description}}</text>
+				<!-- <view class="blank_forTabBar" style="height:100rpx;"></view> -->
 			</view>
 		</block>
 		<!-- </scroll-view> -->
 	<!-- </view> -->
+
 </view>
 </scroll-view>
+
 </view>
 
-<view class="blank_forTabBar" style="height:100rpx,width: 750rpx;"></view>
+<view class="blank_forTabBar" style="height:100rpx;"></view>
