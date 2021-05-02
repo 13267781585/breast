@@ -38,7 +38,7 @@ App({
   globalData: {
     // serverWssUrl: 'wss://mombabyai.cn/websocket/', 
     // serverUrl: 'https://mombabyai.cn',
-    serverWssUrl: 'ws://localhost:8088/websocket', 
+    serverWssUrl: 'ws://localhost:8088/websocket',//本地
     serverUrl: 'http://localhost:8088',
     salt : "fdsfvxnmcvnew68sa5d54ds",
     userId:-1, //表示登录用户的id 无论是医生还是普通用户
