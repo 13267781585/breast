@@ -2,6 +2,13 @@
 const url_pre = 'http://api.tszh.wiwcc.com';
 App({
   onLaunch: function () {
+    //打开小程序时获取屏幕的长宽高
+    const res = wx.getSystemInfoSync()
+    // this.globalData.statsuBarHeight=res.statusBarHeight;
+    // this.globalData.sysWidth = res.screenWidth;
+    // this.globalData.sysHeight = res.screenHeight;
+    this.globalData.windowHeight=res.windowHeight;
+
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -76,7 +83,12 @@ App({
       "text": "我的",
       "iconPath": "/images/icon/wd1.png",
       "selectedIconPath": "/images/icon/wd2.png"
-    }] //存放tabBar的初始数据
+    }], //存放tabBar的初始数据
+    //各种参数用来设置聊天时页面的问题
+    statsuBarHeight:0,
+    sysWidth:0,
+    sysHeight:0,
+    windowHeight:0
   },
 
   setUserTabBar:function(){

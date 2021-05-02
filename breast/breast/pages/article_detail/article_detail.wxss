@@ -16,6 +16,8 @@ page{
 .content{
   top: 400rpx;
   margin: 30px 20px;
+  font-size: 36rpx;
+  letter-spacing:1px;
 }
 
 .title {

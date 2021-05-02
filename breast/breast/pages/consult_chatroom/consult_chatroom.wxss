@@ -137,3 +137,26 @@ page {
   width:40px;
   height:40px;
 }
+
+
+.cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 100 rpx;
+	justify-content: space-between;
+}
+
+.cu-bar.foot{
+  padding-top: 0;
+  margin-top: 0;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	z-index: 1024;
+	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.text_msg{
+  overflow: hidden;
+}

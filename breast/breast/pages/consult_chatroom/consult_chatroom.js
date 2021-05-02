@@ -14,6 +14,11 @@ Page({
     object:'',
     message:"", //消息内容
     userHeadPictureUrl: 'http://llllllllr.top/doctorRegister_1585797161.jpg',  //用户备用头像
+    statsuBarHeight: app.globalData.statsuBarHeight,
+    headHeight:40,
+    chatListHeight:0,
+    keyboardHeight:0,
+    windowHeight:0
   },
   
   onHide() {
@@ -35,8 +40,20 @@ Page({
   },
   // 监听页面加载
   onLoad: function (options) {
+    
+    this.setChatListHeight();
+    wx.onKeyboardHeightChange(res => { //监听键盘高度变化
+      this.setData({
+        keyboardHeight: res.height
+      });
+      this.setChatListHeight();
+      this.scroll2Bottom();
+    })
+
+    // var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
     var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    console.log('参数：', options)
+    console.log('参数：', options);
+    // var img=JSON.parse(decodeURIComponent(options.img));
     this.setData({
       object:app.globalData.object,
       id: options.id,
@@ -136,6 +153,7 @@ Page({
         if (getApp().globalData.object == 'doctor'){
           this.updateWeChatMessageItemToRead();
         }
+        this.scroll2Bottom();
        }else
         if (type == 'acceptWeChatItemFromOther'){         //对方给我发送消息
         //判断是否是这个订单的聊天
@@ -153,7 +171,7 @@ Page({
         }
       console.log('设置后的list：', this.data.list)
 
-      this.rollingBottom()
+      this.scroll2Bottom();
     })
 
   },
@@ -219,6 +237,7 @@ Page({
     //发送 消息通知
     this.sendMessageNotice()
     this.clearMessage();
+    this.scroll2Bottom();
   },
 
   // 聊天内容始终显示在最低端
@@ -348,6 +367,36 @@ Page({
       }
     })
   },
+
+  setChatListHeight:function(){
+    // console.log("----app.globalData.sysHeight:----",app.globalData.sysHeight)
+    // console.log("----app.globalData.statsuBarHeight:----",app.globalData.statsuBarHeight)
+    // console.log("----this.data.headHeight:----",this.data.headHeight)
+    // console.log("----this.windowHeight:----",app.globalData.windowHeight)
+    // console.log("----this.keyboardHeight:----",this.data.keyboardHeight)
+    this.setData({
+      chatListHeight: app.globalData.windowHeight - this.data.keyboardHeight-50,
+    })
+    // console.log("----this.chatListHeight:----",this.data.chatListHeight)
+  },
+
+
+  //隐藏输入法键盘
+  hideKeyboard:function(){
+    wx.hideKeyboard();
+    this.setData({
+      keyboardHeight:0
+    })
+    // this.hideMediaPanel();
+  },
+  //聊天页面滚动到最下面消息
+  scroll2Bottom:function(){
+    console.log("----scroll2Bottom-----")
+    var list_id=this.data.list.length;
+    this.setData({
+      toView:'item'+list_id,
+    })
+  }
 
 
 })

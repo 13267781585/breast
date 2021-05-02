@@ -25,3 +25,8 @@
  		
  	</view>
  </scroll-view>
+
+
+ 
+<!-- 自定义组件tab会挡住 需要加个空白才能显示完整页面 -->
+<view class="blank_forTabBar" style="height:100rpx;"></view>
