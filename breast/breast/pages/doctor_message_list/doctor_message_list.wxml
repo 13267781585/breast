@@ -1,0 +1,50 @@
+<view class="root">
+
+  <!-- 背景上部分 -->
+  <view class="bg_head">
+    <image class="meg_bg_top" src="/images/msg_bg1.jpg"></image>
+  </view>
+
+
+  <!-- 消息下部分 -->
+  <view class="message_list" wx:for="{{messageList}}" wx:key="{{item.user.uuid}}">
+    <!-- 每个消息作为一个item -->
+    <view class="msg-item bor" style="margin-top:-5rpx" id="{{item.user.uuid}}" bindtap="to_chatroom">
+      <!-- 总的消息边框大小设计 -->
+      <!-- <view class="msg_kuang"> -->
+        <view class="msg_txk">
+          <view wx:if="{{item.unReadTextNum>0}}">
+            <view class="red_circle"></view>
+            <!-- <view class="red_circle">item.unReadTextNum</view> -->
+          </view>
+          <!-- <view class="chat_head" style="background-image:url({{item.user.imgUrl}});"></view> -->
+          <image class="chat_head" src="/images/me.jpg" mode="aspectFill"></image>
+        </view>
+        <!-- <view wx:if="{{item.user.imgUrl}}!=NULL"> -->
+        <!-- <view class="chat_head" style="background-image:url({{item.user.imgUrl}});"></view> -->
+        <!-- </view> -->
+        <!-- <view wx:elif="{{item.user.imgUrl==NULL}}"> -->
+        <!-- <image class="chat_head" src='/images/me.jpg' mode="aspectFill"></image> -->
+        <!-- </view> -->
+        <view class="msg_content">
+          <view class="content_username">
+            {{item.user.userName}}
+          </view>
+          <view class="content_msg">
+            {{item.weChatMessageItem.messageContent}}
+          </view>
+        </view>
+
+        <!-- <view class="text-gray text-sm flex"> -->
+        <!-- </view> -->
+
+        <view class="msg_right">
+          <!-- <image class="status" src="/images/icon/kzx.png"style="margin-left:15rpx;"></image> -->
+          <view class="msg_date">21/4/22</view>
+          <!-- <view class="text-gray">21/4/22已读已读已读已读已读已读已读已读已读</view> -->
+        </view>
+
+      <!-- </view> -->
+    </view>
+  </view>
+</view>
