@@ -69,7 +69,7 @@ Page({
           that.showModal(res.data.msg)
         } else {
             wx.navigateTo({
-              url: '../signIn/signIn',
+              url: '../signIn/signIn?object=doctor',
             })
         }
       },
