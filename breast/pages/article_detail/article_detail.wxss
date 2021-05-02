@@ -16,8 +16,11 @@ page{
 .content{
   top: 400rpx;
   margin: 30px 20px;
+<<<<<<< HEAD
   font-size: 36rpx;
   letter-spacing:1px;
+=======
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
 }
 
 .title {

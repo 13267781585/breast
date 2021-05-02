@@ -1,0 +1,338 @@
+2021-04-30 22:43:35,733 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, description, img_url, category , content from article where id = ? 
+2021-04-30 22:43:35,747 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 1(Integer)
+2021-04-30 22:43:35,749 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:43:35,764 [INFO] (UserController.java:189)- b38d993a3ea844bbbf98f4dfa3499098
+2021-04-30 22:43:36,030 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_id, coll_type, coll_id from collection where user_id = ? and coll_type = ? and coll_id = ? 
+2021-04-30 22:43:36,030 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 1(Integer), 1(Integer)
+2021-04-30 22:43:36,032 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-04-30 22:43:36,807 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:43:36,814 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:43:36,835 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:43:36,836 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:43:36,839 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:43:36,917 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:23,991 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:44:24,928 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:44:24,930 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:44:24,937 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:44:24,975 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:44:24,977 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:24,980 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:25,231 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:44:25,234 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:25,279 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:44:25,280 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:25,344 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:44:25,345 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:25,443 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:44:25,856 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:44:25,857 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:25,859 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:25,891 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:44:25,892 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:25,896 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:44:34,524 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:44:35,778 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:44:35,779 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:44:35,782 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:44:35,802 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:44:35,803 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:35,805 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:36,185 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:44:36,185 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:36,192 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:36,332 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:44:36,333 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:36,335 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:44:36,381 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:44:36,383 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:36,386 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:44:36,400 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:44:36,401 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:44:36,404 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:44:36,973 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:45:06,070 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:45:06,861 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:45:06,863 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:45:06,865 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:45:06,945 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:45:06,946 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:45:06,950 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:45:07,150 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:45:07,151 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:45:07,154 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:45:07,171 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:45:07,173 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:45:07,179 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:45:07,363 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:45:07,782 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:45:07,784 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:45:07,790 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:45:07,907 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:45:07,908 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:45:07,911 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:31,350 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:48:32,577 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:48:32,579 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:48:32,583 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:48:32,587 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:32,589 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:48:32,591 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:33,153 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:48:33,154 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:33,157 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:33,244 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:48:33,245 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:33,247 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:33,355 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:48:33,357 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:33,374 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:48:33,375 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:33,459 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:33,459 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:33,922 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:48:33,944 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=083RRX0w3qDPiW2RXd3w3IgDpx1RRX0B 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: XKOBGyore-1hNoLA ]"}
+2021-04-30 22:48:33,944 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:48:37,677 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:48:38,551 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:48:38,554 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:48:38,559 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:48:38,586 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:48:38,586 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:38,589 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:38,843 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:48:38,844 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:38,846 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:38,876 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:48:38,877 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:38,880 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:39,076 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:48:39,453 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:48:39,453 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:39,455 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:39,478 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:48:39,478 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:39,481 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:40,034 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=063ehlGa1D3dYA0NfBJa1ZBrjN1ehlGN 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: XKOBfwNre-NDKQLA ]"}
+2021-04-30 22:48:40,035 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:48:53,382 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:48:54,173 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:48:54,175 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:48:54,177 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:48:54,202 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:48:54,203 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:54,204 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:54,722 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:48:54,997 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:48:54,999 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:55,004 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:55,112 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:48:55,113 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:55,115 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:55,173 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:48:55,174 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:55,176 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:48:55,198 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:48:55,199 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:48:55,202 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:48:55,808 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=083JAEll2cW8Y640xaml2qapuL2JAElB 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: XKOBpRNre-FCFR8a ]"}
+2021-04-30 22:48:55,809 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:49:27,602 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:49:28,480 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:49:28,481 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:49:28,483 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:49:28,497 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:49:28,498 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:49:28,500 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:49:28,673 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:49:28,674 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:49:28,678 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:49:29,146 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:49:29,147 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:49:29,162 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:49:29,214 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:49:29,216 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:49:29,218 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:49:29,234 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:49:29,236 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:49:29,239 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:49:29,546 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:49:29,762 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=013lPp0w3YChiW2CnL3w3cIarT2lPp0P 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: yKOBxfMre-GBVLfa ]"}
+2021-04-30 22:49:29,763 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:50:18,507 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:50:19,402 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:50:19,403 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:50:19,405 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:50:19,467 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:50:19,468 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:19,470 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:50:19,721 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:50:19,722 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:19,725 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:50:19,750 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:50:19,751 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:19,752 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:50:19,947 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:50:20,299 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:50:20,301 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:20,302 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:50:20,381 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:50:20,382 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:20,385 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:50:21,120 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=0632A6ll2S1BX64PHTnl2PZnRx22A6lU 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: YKOBdiore-faLZva ]"}
+2021-04-30 22:50:21,121 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:50:51,178 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:50:51,951 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:50:51,953 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:50:51,957 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:50:51,963 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:50:51,964 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:51,966 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:50:52,134 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:50:52,135 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:52,137 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:50:52,153 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:50:52,154 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:52,159 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:50:52,366 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:50:52,712 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:50:52,714 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:52,717 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:50:52,841 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:50:52,842 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:50:52,844 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:50:53,588 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=003zjNFa1YbFXA0nQ5Ga1WSMAP1zjNFi 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: YKOBn_4ce-UYlnYa ]"}
+2021-04-30 22:50:53,589 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:51:20,024 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:51:20,799 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:51:20,801 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:51:20,806 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:51:20,830 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:51:20,831 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:20,835 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:51:21,091 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:51:21,092 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:21,094 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:51:21,326 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:51:21,577 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:51:21,579 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:21,580 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:51:21,712 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:51:21,713 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:21,715 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:51:21,829 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:51:21,830 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:21,832 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:51:22,384 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=003RAPkl2vVjX64Fnall2OuEl42RAPk5 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: zKOBmYTNe-E3ZGfa ]"}
+2021-04-30 22:51:22,385 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:51:41,226 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:51:42,002 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:51:42,003 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:51:42,006 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:51:42,015 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:51:42,017 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:42,019 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:51:42,597 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:51:43,000 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:51:43,002 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:43,007 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:51:43,165 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:51:43,167 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:43,169 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:51:43,253 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:51:43,255 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:43,260 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:51:43,316 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:51:43,317 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:51:43,321 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:51:43,837 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=073qXKml2rR2X64DdKll2DkL2p0qXKm1 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: zKOB_tNre-p2IFWa ]"}
+2021-04-30 22:51:43,838 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:52:23,079 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-04-30 22:52:23,945 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-04-30 22:52:23,946 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-04-30 22:52:23,948 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:52:23,960 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-04-30 22:52:23,960 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:23,962 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:24,178 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:24,180 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:24,181 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:24,209 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:24,211 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:24,212 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:52:24,400 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-04-30 22:52:24,745 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:24,747 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:24,751 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:24,765 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:24,766 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:24,768 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:52:25,282 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=073uBTGa1n6zWA0Iv7Ha1dNNXL3uBTG4 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: ZKOBThiCe-nFppuA ]"}
+2021-04-30 22:52:25,286 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-04-30 22:52:27,995 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-04-30 22:52:28,006 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 2(Integer)
+2021-04-30 22:52:28,064 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-04-30 22:52:30,418 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-04-30 22:52:30,419 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-04-30 22:52:30,480 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 7
+2021-04-30 22:52:30,534 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-04-30 22:52:30,534 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 05a934a56ee1424793f6fe29bab2e587(String)
+2021-04-30 22:52:30,536 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:52:31,022 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"05a934a56ee1424793f6fe29bab2e587"}
+2021-04-30 22:52:31,048 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"05a934a56ee1424793f6fe29bab2e587"}
+2021-04-30 22:52:31,050 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-04-30 22:52:31,051 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 05a934a56ee1424793f6fe29bab2e587(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 05a934a56ee1424793f6fe29bab2e587(String)
+2021-04-30 22:52:31,070 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-04-30 22:52:31,109 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":88,"messageContent":"123","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":89,"messageContent":"111","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792035000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":90,"messageContent":"11","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":91,"messageContent":"1","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792037000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":92,"messageContent":"11","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":93,"messageContent":"11","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792039000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":94,"messageContent":"1","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792039000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":95,"messageContent":"12311.68","messageType":0,"oid":"05a934a56ee1424793f6fe29bab2e587","status":0,"time":1619792042000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"05a934a56ee1424793f6fe29bab2e587","type":"returnAllWeChatItemById"}
+2021-04-30 22:52:37,730 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:37,732 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:37,737 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:38,269 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:38,271 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:38,274 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:52:38,389 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:38,390 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:38,391 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:38,411 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:38,411 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:38,415 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:52:39,080 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, description, img_url, category , content from article where id = ? 
+2021-04-30 22:52:39,081 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 1(Integer)
+2021-04-30 22:52:39,083 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:52:39,116 [INFO] (UserController.java:189)- b38d993a3ea844bbbf98f4dfa3499098
+2021-04-30 22:52:39,185 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_id, coll_type, coll_id from collection where user_id = ? and coll_type = ? and coll_id = ? 
+2021-04-30 22:52:39,188 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 1(Integer), 1(Integer)
+2021-04-30 22:52:39,190 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-04-30 22:52:44,493 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:44,494 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:44,495 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:44,510 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:44,511 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:44,513 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:52:49,761 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, description, img_url, category , content from article where id = ? 
+2021-04-30 22:52:49,762 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 2(Integer)
+2021-04-30 22:52:49,764 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:52:49,864 [INFO] (UserController.java:189)- b38d993a3ea844bbbf98f4dfa3499098
+2021-04-30 22:52:50,137 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_id, coll_type, coll_id from collection where user_id = ? and coll_type = ? and coll_id = ? 
+2021-04-30 22:52:50,138 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 1(Integer), 2(Integer)
+2021-04-30 22:52:50,139 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-04-30 22:52:51,989 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:51,992 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:52,125 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:52,126 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:52,126 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:52,128 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 22:52:53,210 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, description, img_url, category , content from article where id = ? 
+2021-04-30 22:52:53,211 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 3(Integer)
+2021-04-30 22:52:53,214 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-04-30 22:52:53,303 [INFO] (UserController.java:189)- b38d993a3ea844bbbf98f4dfa3499098
+2021-04-30 22:52:53,365 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_id, coll_type, coll_id from collection where user_id = ? and coll_type = ? and coll_id = ? 
+2021-04-30 22:52:53,367 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 1(Integer), 3(Integer)
+2021-04-30 22:52:53,370 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-04-30 22:52:54,919 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-04-30 22:52:54,920 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:54,922 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-04-30 22:52:54,934 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-04-30 22:52:54,936 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-04-30 22:52:54,937 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-04-30 23:28:47,881 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}

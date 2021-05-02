@@ -283,7 +283,10 @@ Page({
   },
   //查询订单是否有效
   queryConsuIsOpen:async function(oid){
+<<<<<<< HEAD
     var _this=this;
+=======
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
     wx.request({
       url: app.globalData.serverUrl + '/isOpenConsult',
       method: 'GET',
@@ -298,10 +301,14 @@ Page({
         }
         if(res.data.msg=="consult_isOpen"){
           console.log("----查询到有效----")
+<<<<<<< HEAD
           wx.navigateTo({
             url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
             +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
           })
+=======
+          return true;
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
         }
         return false;
       }
@@ -351,8 +358,11 @@ Page({
 
   },  
   
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
   //查询后台数据库是否有订单
   queryConsult:async function(user_id,doctor_id){
     var _this=this;
@@ -370,8 +380,19 @@ Page({
       if(res.data.status == 1){
         console.log('----查询到后台咨询记录----:', res)
         //开始查询订单是否有效
+<<<<<<< HEAD
         _this.queryConsuIsOpen(res.data.data.oid);
   
+=======
+        // var flag=_this.queryConsuIsOpen(res.data.data.oid);
+        _this.queryConsuIsOpen(res.data.data.oid);
+        console.log("订单有效")
+        wx.navigateTo({
+          url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + res.data.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
+          +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
+        })
+          
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
         // //出现异步请求问题
         // if(flag){
         //   console.log("订单有效")
@@ -380,7 +401,11 @@ Page({
         //     +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
         //   })
         // }else{
+<<<<<<< HEAD
         console.log("无效则不进入聊天页面")
+=======
+          console.log("无效则不进入聊天页面")
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
         // }
     
       }else{

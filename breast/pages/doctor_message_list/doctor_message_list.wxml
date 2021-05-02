@@ -28,10 +28,17 @@
         <!-- </view> -->
         <view class="msg_content">
           <view class="content_username">
+<<<<<<< HEAD
             {{item.user.userName}}陈琦
           </view>
           <view class="content_msg">
             {{item.weChatMessageItem.messageContent}}+"123456789123456"消息消息消息消息消息消息消息消息消息
+=======
+            {{item.user.userName}}
+          </view>
+          <view class="content_msg">
+            {{item.weChatMessageItem.messageContent}}
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
           </view>
         </view>
 

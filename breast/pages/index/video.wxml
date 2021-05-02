@@ -24,6 +24,10 @@
  		</view>
  		
  	</view>
+<<<<<<< HEAD
  </scroll-view>
 
  <view class="blank_forTabBar" style="height:100rpx,width: 750rpx;"></view>
+=======
+ </scroll-view>
+>>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
