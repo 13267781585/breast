@@ -32,11 +32,7 @@
 	
 	
   <!-- 消息下部分 -->
-<<<<<<< HEAD
-  <view class="doctor_list" wx:for="{{doctorList}}" wx:key="index" wx:for-index="idx">
-=======
   <view class="doctor_list" wx:for="{{doctorList}}" wx:key="{{item.uuid}}" wx:for-index="idx">
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
     <!-- 每个消息作为一个item -->
     <view class="doctor-item bor" style="margin-top:-5rpx" id="{{item.uuid}}" data-index="{{idx}}" bindtap="to_consultque">
       <!-- 总的消息边框大小设计 -->
@@ -77,9 +73,6 @@
 </view>
 
 
-<<<<<<< HEAD
 
-<view class="blank_forTabBar" style="height:100rpx,width: 750rpx;"></view>
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
-	
+<!-- 自定义组件tab会挡住 需要加个空白才能显示完整页面 -->
+<view class="blank_forTabBar" style="height:100rpx;"></view>

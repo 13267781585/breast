@@ -133,13 +133,10 @@ page {
   z-index: 166;
   }
   
-<<<<<<< HEAD
-
 .add-wrap image {
   width:40px;
   height:40px;
 }
-
 
 
 .cu-bar {
@@ -158,9 +155,8 @@ page {
 	bottom: 0;
 	z-index: 1024;
 	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
-=======
-.add-wrap image {
-  width:40px;
-  height:40px;
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
+}
+
+.text_msg{
+  overflow: hidden;
 }

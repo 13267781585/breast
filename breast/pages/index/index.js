@@ -32,11 +32,7 @@ Page({
 
   onLoad: function () {
 
-<<<<<<< HEAD
-    // console.log('----index进入onload----')
-=======
     console.log('----index进入onload----')
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
 
     wx.showLoading({
       title: '加载中....',
@@ -60,11 +56,7 @@ Page({
 
   onShow:function(){
       this.onLoad();
-<<<<<<< HEAD
-      // console.log('----进入onshow----')
-=======
       console.log('----进入onshow----')
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
       //自定义组件还得给tabBar 添加选中效果
       if (typeof this.getTabBar === 'function' && this.getTabBar()) {
         this.getTabBar().setData({

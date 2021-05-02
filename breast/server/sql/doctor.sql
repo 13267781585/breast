@@ -1,4 +1,0 @@
-alter table doctor change `img_url` `img_url` varchar(245) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL;
-INSERT INTO doctor values (1,'username_01',123456,10,'张医生',100,101,'部门1',100,'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1579555037,3222228481&fm=26&gp=0.jpg',10,101);
-INSERT INTO doctor values (2,'username_02',123456,11,'陈医生',110,102,'部门2',120,'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1579555037,3222228481&fm=26&gp=0.jpg',11,102);
-INSERT INTO doctor values (3,'username_03',123456,12,'王医生',120,103,'部门3',130,'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1579555037,3222228481&fm=26&gp=0.jpg',12,103);

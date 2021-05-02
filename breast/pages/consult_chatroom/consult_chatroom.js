@@ -14,14 +14,11 @@ Page({
     object:'',
     message:"", //消息内容
     userHeadPictureUrl: 'http://llllllllr.top/doctorRegister_1585797161.jpg',  //用户备用头像
-<<<<<<< HEAD
     statsuBarHeight: app.globalData.statsuBarHeight,
     headHeight:40,
     chatListHeight:0,
     keyboardHeight:0,
     windowHeight:0
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
   },
   
   onHide() {
@@ -43,8 +40,7 @@ Page({
   },
   // 监听页面加载
   onLoad: function (options) {
-<<<<<<< HEAD
-
+    
     this.setChatListHeight();
     wx.onKeyboardHeightChange(res => { //监听键盘高度变化
       this.setData({
@@ -54,24 +50,17 @@ Page({
       this.scroll2Bottom();
     })
 
-    var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    console.log('参数：', options);
-    var img=JSON.parse(decodeURIComponent(options.img));
-=======
+    // var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
     var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    console.log('参数：', options)
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
+    console.log('参数：', options);
+    // var img=JSON.parse(decodeURIComponent(options.img));
     this.setData({
       object:app.globalData.object,
       id: options.id,
       oid: options.oid,
       otherId: options.otherId,    
       otherImg: oImg,
-<<<<<<< HEAD
-      img:img
-=======
       img: options.img
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
     })
     wx.showToast({
       title: '连接中',
@@ -84,18 +73,10 @@ Page({
     //监听服务器消息
     this.listenServerMessage();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
     //医生端更新用户消息状态   下面的函数应该放到监听代码里面 避免异步问题 ：还未获取到之前的聊天记录就更新用户消息 此时list为空
     // if (getApp().globalData.object == 'doctor'){
     //   this.updateWeChatMessageItemToRead();
     // }
-<<<<<<< HEAD
-
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
   },
 
 
@@ -171,13 +152,8 @@ Page({
 
         if (getApp().globalData.object == 'doctor'){
           this.updateWeChatMessageItemToRead();
-<<<<<<< HEAD
-
         }
         this.scroll2Bottom();
-=======
-        }
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
        }else
         if (type == 'acceptWeChatItemFromOther'){         //对方给我发送消息
         //判断是否是这个订单的聊天
@@ -195,22 +171,14 @@ Page({
         }
       console.log('设置后的list：', this.data.list)
 
-<<<<<<< HEAD
       this.scroll2Bottom();
-=======
-      this.rollingBottom()
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
     })
 
   },
 
 //设置 消息内容
   handleMessage(e){
-<<<<<<< HEAD
-    // console.log('消息内容:',e.detail.value)
-=======
     console.log('消息内容:',e.detail.value)
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
     this.setData({
       message: e.detail.value
     })
@@ -269,10 +237,7 @@ Page({
     //发送 消息通知
     this.sendMessageNotice()
     this.clearMessage();
-<<<<<<< HEAD
     this.scroll2Bottom();
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
   },
 
   // 聊天内容始终显示在最低端
@@ -385,10 +350,6 @@ Page({
   getInformation:function(){
     console.log("----打开资料页面----");
   },
-<<<<<<< HEAD
-  
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
   DelImg(e) {
     wx.showModal({
       title: '提示',
@@ -407,7 +368,6 @@ Page({
     })
   },
 
-<<<<<<< HEAD
   setChatListHeight:function(){
     // console.log("----app.globalData.sysHeight:----",app.globalData.sysHeight)
     // console.log("----app.globalData.statsuBarHeight:----",app.globalData.statsuBarHeight)
@@ -418,8 +378,8 @@ Page({
       chatListHeight: app.globalData.windowHeight - this.data.keyboardHeight-50,
     })
     // console.log("----this.chatListHeight:----",this.data.chatListHeight)
-    
   },
+
 
   //隐藏输入法键盘
   hideKeyboard:function(){
@@ -437,7 +397,6 @@ Page({
       toView:'item'+list_id,
     })
   }
-=======
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
+
 
 })

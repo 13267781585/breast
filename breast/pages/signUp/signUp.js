@@ -115,15 +115,6 @@ Page({
           //status==1表示状态正常
           if(status == 1)
           {
-<<<<<<< HEAD
-            wx.showToast({
-              title: '提交成功,进入人脸验证~',
-              icon: 'loading',
-              duration: 2000
-            })
-            wx.navigateTo({
-              url: 'index',
-=======
             // wx.showToast({
             //   title: '提交成功,进入人脸验证~',
             //   icon: 'loading',
@@ -131,7 +122,6 @@ Page({
             // })
             wx.navigateTo({
               url: '../signIn/signIn?object=user',
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
             })
           }
           //status不为1,显示错误信息
@@ -170,28 +160,16 @@ Page({
          var status = res.data.status;
          //status==1表示状态正常
          if (status == 1) {
-<<<<<<< HEAD
-           wx.showToast({
-             title: '提交成功,进入人脸验证~',
-             icon: 'loading',
-             duration: 2000
-           })
-=======
           //  wx.showToast({
           //    title: '提交成功,进入人脸验证~',
           //    icon: 'loading',
           //    duration: 2000
           //  })
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
            that.setData({
              success: true
            })
            wx.navigateTo({
-<<<<<<< HEAD
-             url: 'index',
-=======
              url: '../signIn/signIn?object=user',
->>>>>>> 40a984d6839b33b376eba7f726da846eb85dcd8b
            })
          }
          //status不为1,显示错误信息
