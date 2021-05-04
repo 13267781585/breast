@@ -1,0 +1,610 @@
+2021-05-04 00:35:16,856 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:35:16,859 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:35:16,860 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:35:16,865 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:35:16,866 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:35:16,867 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:35:26,370 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:35:27,056 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:35:27,057 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:35:27,059 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:35:27,071 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:35:27,072 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:35:27,074 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:35:27,565 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:35:27,759 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=0037R50w3Cg4jW28cF1w3y49j207R50n 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: r.BcojwgE-RjgZRA ]"}
+2021-05-04 00:35:27,760 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:35:28,334 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:35:28,334 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:35:28,336 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:35:28,421 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:35:28,423 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:35:28,425 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:35:28,658 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:35:28,659 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:35:28,663 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:35:28,709 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:35:28,710 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:35:28,713 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:35:30,726 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:35:30,731 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:35:30,782 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:35:31,038 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:35:31,039 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:35:31,042 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:35:31,340 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:35:31,340 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:35:31,341 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:35:31,342 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:35:31,345 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:35:31,346 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:39:11,856 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:39:13,122 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:39:13,124 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:39:13,129 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:39:13,130 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:39:13,132 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:13,139 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:13,908 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:39:13,909 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:13,911 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:14,032 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:39:14,033 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:14,037 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:39:14,231 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:39:14,231 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:14,233 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:14,265 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:39:14,266 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:14,268 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:39:14,810 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=003jutFa1emsYA0y3mGa1IGf0k4jutF0 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: t.Bc6zore-n6SGra ]"}
+2021-05-04 00:39:14,810 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:39:14,899 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:39:16,488 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:39:16,490 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:39:16,493 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:39:16,680 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:39:16,681 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:39:16,685 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:39:17,255 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:39:17,255 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:39:17,256 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:39:17,257 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:39:17,260 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:17,261 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:39:54,478 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:39:55,363 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:39:55,364 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:39:55,364 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:39:55,387 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:39:55,388 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:55,390 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:55,832 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:39:56,201 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:39:56,203 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:56,205 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:56,299 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:39:56,300 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:56,301 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:39:56,551 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:39:56,552 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:56,554 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:39:56,689 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:39:56,692 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:39:56,701 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:39:57,254 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=023vPMkl2SioY64gVQnl2s5X0u1vPMkk 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: t.BcmYTNe-HW7HBA ]"}
+2021-05-04 00:39:57,254 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:39:59,257 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:39:59,259 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:39:59,263 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:39:59,389 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:39:59,389 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:39:59,392 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:40:00,002 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:40:00,003 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:40:00,004 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:40:00,005 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:40:00,009 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:40:00,010 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:42:31,839 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:42:33,217 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:42:33,218 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:42:33,221 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:42:33,234 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:42:33,235 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:42:33,237 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:42:33,998 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:42:33,999 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:42:34,002 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:42:34,070 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:42:34,071 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:42:34,074 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:42:34,204 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:42:34,205 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:42:34,206 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:42:34,236 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:42:34,237 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:42:34,239 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:42:34,799 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:42:34,857 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=073rrr000ky2EL1GCf100E7PsG1rrr0W 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: U.BcRJqge-Kjj4ia ]"}
+2021-05-04 00:42:34,857 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:42:36,284 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:42:36,285 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:42:36,290 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:42:36,341 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:42:36,342 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:42:36,347 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:42:37,046 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:42:37,047 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:42:37,047 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:42:37,048 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:42:37,051 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:42:37,052 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:43:10,823 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:43:11,739 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:43:11,741 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:43:11,743 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:43:11,766 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:43:11,766 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:11,769 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:12,312 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:43:12,922 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:43:12,924 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:12,927 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:12,991 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:43:12,992 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:12,994 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:43:13,058 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:43:13,059 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:13,060 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:13,099 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:43:13,100 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:13,102 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:43:13,628 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=053mJtFa1kIrYA0P61Ga1RPU0f3mJtFT 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: v.Bc3uore-9J53rA ]"}
+2021-05-04 00:43:13,628 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:43:15,822 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:43:15,824 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:43:15,829 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:43:15,997 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:43:15,998 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:43:16,001 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:43:16,142 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:43:16,142 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:43:16,143 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:43:16,143 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:43:16,145 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:16,146 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:43:44,106 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:43:44,958 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:43:44,959 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:43:44,963 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:43:44,973 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:43:44,974 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:44,980 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:45,235 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:43:45,237 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:45,239 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:45,427 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:43:45,816 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:43:45,817 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:45,818 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:43:46,138 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:43:46,140 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:46,144 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:46,251 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:43:46,252 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:43:46,254 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:43:47,065 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=013Y3Nkl2xFnY64ABfml2VOQT31Y3Nko 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: v.BcBK4FE-EaIY ]"}
+2021-05-04 00:43:47,067 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:43:48,489 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:43:48,490 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:43:48,492 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:43:48,738 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:43:48,739 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:43:48,741 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:43:49,008 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:43:49,008 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:43:49,008 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:43:49,009 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:43:49,011 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:43:49,012 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:44:08,027 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:44:08,884 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:44:08,886 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:44:08,889 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:44:08,899 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:44:08,899 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:44:08,902 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:44:09,479 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:44:09,753 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:44:09,755 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:44:09,759 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:44:09,922 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:44:09,922 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:44:09,926 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:44:09,995 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:44:09,996 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:44:09,997 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:44:10,061 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:44:10,063 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:44:10,066 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:44:10,609 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=0830o60w3Fo4jW2lQb1w3xDlv740o60J 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: V.Bcm24ce-fibu1a ]"}
+2021-05-04 00:44:10,610 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:44:12,172 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:44:12,174 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:44:12,179 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:44:12,410 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:44:12,411 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:44:12,413 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:44:12,701 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:44:12,702 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:44:12,703 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:44:12,704 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:44:12,706 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:44:12,707 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:44:58,839 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:44:59,757 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:44:59,758 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:44:59,762 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:44:59,801 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:44:59,802 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:44:59,805 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:45:00,353 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:45:00,722 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:45:00,724 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:45:00,726 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:45:00,938 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:45:00,940 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:45:00,943 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:45:01,020 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:45:01,021 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:45:01,023 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:45:01,056 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:45:01,056 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:45:01,058 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:45:01,700 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=083Exa0002aLDL17qy000bVqZA4Exa0o 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: w.BcA7qNe-hH.m ]"}
+2021-05-04 00:45:01,701 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:45:03,209 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:45:03,210 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:45:03,218 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:45:03,498 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:45:03,499 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:45:03,501 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:45:03,989 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:45:03,990 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:45:03,991 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:45:03,992 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:45:03,995 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:45:03,996 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:45:52,776 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:45:52,781 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 3(Integer)
+2021-05-04 00:45:52,784 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-05-04 00:46:32,960 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:46:32,961 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:46:32,964 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:46:33,219 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:46:33,220 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:46:33,223 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:46:33,494 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:46:33,495 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:46:33,496 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:46:33,497 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:46:33,499 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:46:33,500 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:47:45,934 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:47:46,947 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:47:46,948 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:47:46,950 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:47:46,957 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:47:46,958 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:47:46,960 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:47:48,064 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:47:48,066 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:47:48,070 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:47:48,274 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:47:48,275 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:47:48,278 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:47:48,324 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:47:48,325 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:47:48,328 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:47:48,341 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:47:48,342 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:47:48,344 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:47:48,885 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=063JB60w3mt1jW2LEd0w3gQnBv2JB60b 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: x.Bc_tNre-NcBJwA ]"}
+2021-05-04 00:47:48,886 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:47:48,935 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:47:50,806 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:47:50,808 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:47:50,811 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:47:51,202 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:47:51,203 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:47:51,206 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:47:51,524 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:47:51,524 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:47:51,525 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:47:51,527 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:47:51,529 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:47:51,530 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:48:33,933 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:48:34,917 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:48:34,918 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:48:34,922 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:48:34,963 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:48:34,964 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:34,966 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:35,503 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:48:35,799 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:48:35,800 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:35,803 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:36,056 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:48:36,057 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:36,059 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:48:36,207 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:48:36,209 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:36,212 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:36,236 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:48:36,237 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:36,240 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:48:36,775 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=033LE60w3qp1jW26i41w3qNgZX2LE60G 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: X.BcdpyWf-fN2zRa ]"}
+2021-05-04 00:48:36,776 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:48:40,881 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:48:40,882 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:48:40,885 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:48:40,995 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:48:40,996 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:48:40,998 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:48:41,758 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:48:41,760 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:48:41,761 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:48:41,762 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:48:41,764 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:41,765 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:48:43,285 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:48:44,334 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:48:44,335 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:48:44,341 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:48:44,380 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:48:44,381 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:44,385 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:44,942 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:48:45,696 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:48:45,697 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:45,699 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:45,795 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:48:45,796 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:45,798 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:48:45,862 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:48:45,863 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:45,865 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:45,915 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:48:45,917 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:48:45,922 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:48:46,519 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=023QOr000m9ZDL1lP0300n0rvS0QOr0P 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: X.BcdpyWf-FRiz4 ]"}
+2021-05-04 00:48:46,520 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:48:49,283 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:48:49,284 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:48:49,288 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:48:49,346 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:48:49,347 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:48:49,350 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:48:50,192 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:48:50,193 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:48:50,195 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:48:50,196 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:48:50,201 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:48:50,204 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:49:00,884 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:49:01,643 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:49:01,643 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:49:01,644 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:49:01,714 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:49:01,715 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:49:01,717 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:49:02,274 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:49:02,797 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:49:02,797 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:49:02,800 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:49:03,035 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:49:03,037 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:49:03,040 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:49:03,112 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:49:03,113 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:49:03,115 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:49:03,155 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:49:03,156 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:49:03,158 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:49:03,895 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=023rG60w3zn1jW2Ao90w3K327j2rG60H 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: y.Bc58PNe-9_OI6 ]"}
+2021-05-04 00:49:03,895 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:49:06,281 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:49:06,282 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:49:06,286 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:49:06,549 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:49:06,550 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:49:06,552 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:49:06,797 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:49:06,797 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:49:06,798 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:49:06,798 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:49:06,801 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:49:06,802 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:50:19,495 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:50:20,744 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:50:20,744 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:50:20,746 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:50:20,747 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:50:20,747 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:50:20,765 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, description, img_url, category from article 
+2021-05-04 00:50:20,767 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:50:20,875 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:50:21,126 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 3
+2021-05-04 00:50:21,373 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:50:21,374 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:50:21,376 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:50:21,487 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:50:21,488 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:50:21,489 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:50:21,783 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:50:21,785 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:50:21,788 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:50:21,850 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:50:21,854 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:50:21,855 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:50:22,491 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:50:22,544 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=093rOn0w3TAijW2pVG3w3g839g3rOn0X 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: Y.BcMBore-p07Roa ]"}
+2021-05-04 00:50:22,547 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:50:24,143 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:50:24,144 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:50:24,149 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:50:24,257 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:50:24,257 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:50:24,258 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:50:24,873 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:50:24,873 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:50:35,977 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:50:35,986 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:50:38,980 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:50:39,054 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:50:53,077 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=023mbuFa1uVoYA01uMGa1Heuga0mbuFq 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: Y.BcdZyFe-6_ZI5a ]"}
+2021-05-04 00:50:58,221 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:51:37,184 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:51:37,396 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:51:37,845 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,206 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,206 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,490 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:55,602 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:51:55,668 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:51:55,668 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_name = ? 
+2021-05-04 00:51:55,833 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:55,834 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: user10(String)
+2021-05-04 00:51:55,836 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:55,837 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:51:55,838 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:51:55,839 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:51:55,840 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:55,840 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:51:55,846 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_name = ? 
+2021-05-04 00:51:55,846 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: user10(String)
+2021-05-04 00:51:55,864 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:51:56,475 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:56,474 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:56,475 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:56,475 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:56,509 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:51:56,646 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:51:57,208 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:51:57,424 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:51:57,591 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:51:57,591 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:57,593 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:57,619 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:51:57,620 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:57,621 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:51:57,656 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:51:57,657 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:57,658 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:51:57,675 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:51:57,704 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:51:57,705 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:51:58,191 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:52:27,220 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select content from search_content group by content order by count(content) desc 
+2021-05-04 00:52:27,305 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:52:29,999 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:52:30,000 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:52:30,081 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:52:30,118 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:52:30,119 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:52:30,124 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:52:31,633 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:52:31,634 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:52:31,646 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:52:31,852 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:52:31,854 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:52:31,856 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:52:33,285 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 0
+2021-05-04 00:52:33,906 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:52:33,907 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:52:33,988 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:52:34,118 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:52:34,119 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:52:34,121 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:52:34,945 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:52:34,946 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:52:34,947 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:52:34,948 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:52:34,950 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:52:34,951 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:53:12,636 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:53:12,636 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:53:13,564 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:53:13,565 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:53:13,570 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:53:13,727 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:53:13,728 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:13,731 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:14,329 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:53:14,658 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:53:14,659 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:14,660 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:14,792 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:53:14,793 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:14,795 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:53:15,029 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:53:15,030 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:15,031 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:15,061 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:53:15,061 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:15,063 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:53:15,767 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=073NDNkl2I9lY64b4Xol2UoWc32NDNks 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: 0.BcBH4FE-fFBEmA ]"}
+2021-05-04 00:53:15,767 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:53:17,755 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:53:17,756 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:53:17,758 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:53:17,988 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:53:17,989 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:53:18,002 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:53:18,444 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:53:18,444 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:53:18,447 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:53:18,448 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:53:18,452 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:18,453 [INFO] (WebSocketController.java:146)- ====== getAllWeChatItemById ==== 返回数据{"toUuid":"51a5f5684212455098b8ce270a448ef5","data":[{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":105,"messageContent":"aaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057032000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":106,"messageContent":"bbbb","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057034000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":107,"messageContent":"aaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057036000,"toUuid":"51a5f5684212455098b8ce270a448ef5"},{"fromUuid":"d2af06fb600b4641ba6292871359bcb7","id":108,"messageContent":"aaaaa","messageType":0,"oid":"6a9d25911e364b88805edaf1008b6cda","status":0,"time":1620057038000,"toUuid":"51a5f5684212455098b8ce270a448ef5"}],"fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda","type":"returnAllWeChatItemById"}
+2021-05-04 00:53:44,963 [INFO] (WebSocketController.java:102)- [WebSocket] 退出成功，当前连接人数为：=0 当前在线人： {}
+2021-05-04 00:53:45,774 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select user_id, age, credit_id, pregnant_type, pregnant_week, job, confinement_date, confinement_week, confinement_type, user_name, user_password, user_token, open_id,img_url,uuid from user where user_token = ? 
+2021-05-04 00:53:45,774 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: b38d993a3ea844bbbf98f4dfa3499098(String)
+2021-05-04 00:53:45,776 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:53:45,791 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, user_name, name, img_url, expert_in, imageText_cost, voice_cost, video_cost,open_id,uuid from doctor 
+2021-05-04 00:53:45,792 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:45,794 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:46,936 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:53:46,937 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:46,939 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:47,025 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:53:47,025 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:47,028 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:53:47,072 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, audioURL, category, cover_url from audio 
+2021-05-04 00:53:47,073 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:47,074 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 4
+2021-05-04 00:53:47,128 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, title, vedioURL, cover_url, category, description from vedio 
+2021-05-04 00:53:47,129 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 
+2021-05-04 00:53:47,131 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 2
+2021-05-04 00:53:47,457 [INFO] (WebSocketController.java:96)- [WebSocket] 连接成功，当前连接人数:1
+2021-05-04 00:53:47,658 [WARN] (HttpUtil.java:58)- === get https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code&appid=wxfbebd90d9bf59e52&secret=939f54b21647f5d6bf05feb58ece72bf&js_code=013jnuFa1j4pYA06OYFa1yEE8l4jnuF4 同步 success bodyMessage: {"errcode":40029,"errmsg":"invalid code, hints: [ req_id: 0.BcIMyWf-A5pKNa ]"}
+2021-05-04 00:53:47,658 [DEBUG] (WXUtil.java:214)- === open_id: null===
+2021-05-04 00:53:55,323 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT id, doctor_id, user_id, create_time, lasting_time, contact, contact_phone, symptom_description,consult_cost,status,oid,user_open_id,doctor_open_id,img_urls FROM consult_order WHERE user_id = ? and doctor_id = ? 
+2021-05-04 00:53:55,325 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 10(Integer), 4(Integer)
+2021-05-04 00:53:55,330 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 8
+2021-05-04 00:53:55,377 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select * from consult_order where oid = ? 
+2021-05-04 00:53:55,379 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: 6a9d25911e364b88805edaf1008b6cda(String)
+2021-05-04 00:53:55,381 [DEBUG] (BaseJdbcLogger.java:143)- <==      Total: 1
+2021-05-04 00:53:56,033 [INFO] (WebSocketController.java:107)- [WebSocket] 收到消息：{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:53:56,034 [INFO] (WebSocketController.java:123)- ==== websocket接收消息:{"type":"getAllWeChatItemById","toUuid":"51a5f5684212455098b8ce270a448ef5","fromUuid":"d2af06fb600b4641ba6292871359bcb7","oid":"6a9d25911e364b88805edaf1008b6cda"}
+2021-05-04 00:53:56,034 [DEBUG] (BaseJdbcLogger.java:143)- ==>  Preparing: select id, from_uuid, to_uuid, message_type, message_content, time,oid,status from wechat_message_item where from_uuid = ? and to_uuid = ? and oid = ? or from_uuid = ? and to_uuid = ? and oid = ? 
+2021-05-04 00:53:56,035 [DEBUG] (BaseJdbcLogger.java:143)- ==> Parameters: d2af06fb600b4641ba6292871359bcb7(String), 51a5f5684212455098b8ce270a448ef5(String), 6a9d25911e364b88805edaf1008b6cda(String), 51a5f5684212455098b8ce270a448ef5(String), d2af06fb600b4641ba6292871359bcb7(String), 6a9d25911e364b88805edaf1008b6cda(String)
