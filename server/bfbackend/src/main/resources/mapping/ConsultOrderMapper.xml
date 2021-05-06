@@ -142,6 +142,12 @@
     from consult_order
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from consult_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from consult_order
     where id = #{id,jdbcType=INTEGER}
@@ -253,6 +259,36 @@
     update consult_order set status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateByOid" parameterType="lllr.test.breast.dataObject.consult.ConsultOrder">
+    update consult_order
+    <set>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="symptomDescription != null">
+        symptom_description = #{symptomDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="consultCost != null">
+        #{consultCost,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userOpenId != null">
+        #{userOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorOpenId != null">
+        #{doctorOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="imgUrls != null">
+        #{imgUrls,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=VARCHAR}
+  </update>
   <update id="updateByPrimaryKeySelective" parameterType="lllr.test.breast.dataObject.consult.ConsultOrder">
     update consult_order
     <set>
@@ -278,22 +314,22 @@
         symptom_description = #{symptomDescription,jdbcType=VARCHAR},
       </if>
       <if test="consultCost != null">
-        #{consultCost,jdbcType=INTEGER},
+        consult_cost = #{consultCost,jdbcType=INTEGER},
       </if>
       <if test="status != null">
-        #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="oid != null">
-        #{oid,jdbcType=CHAR},
+        oid = #{oid,jdbcType=CHAR},
       </if>
       <if test="userOpenId != null">
-        #{userOpenId,jdbcType=VARCHAR},
+        user_open_id = #{userOpenId,jdbcType=VARCHAR},
       </if>
       <if test="doctorOpenId != null">
-        #{doctorOpenId,jdbcType=VARCHAR},
+        doctor_open_id = #{doctorOpenId,jdbcType=VARCHAR},
       </if>
       <if test="imgUrls != null">
-        #{imgUrls,jdbcType=VARCHAR},
+        img_urls = #{imgUrls,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

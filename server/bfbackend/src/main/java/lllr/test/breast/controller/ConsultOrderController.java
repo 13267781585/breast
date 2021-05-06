@@ -1,5 +1,6 @@
 package lllr.test.breast.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import lllr.test.breast.common.ServerResponse;
 import lllr.test.breast.dataObject.consult.ConsultOrder;
 import lllr.test.breast.service.impl.ConsultOrderServiceImpl;
@@ -11,10 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -99,6 +97,22 @@ public class ConsultOrderController {
     @GetMapping("/isOpenConsult")
     ServerResponse<String> getConsultStatus(@RequestParam("oid")@NotEmpty String oid){
         return consultOrderService.getConsultStatus(oid);
+    }
+
+    //根据订单id修改
+    @RequestMapping("/updateConsultOrder")
+    public ServerResponse<ConsultOrder> updateConsultOrder(@RequestBody ConsultOrder consultOrder){
+        return consultOrderService.updateConsultOrder(consultOrder);
+    }
+
+    public static void main(String[] ar){
+        ConsultOrder order = new ConsultOrder();
+        order.setDoctorId(1);
+        order.setUserId(7);
+        order.setOid("94fe366a213e4c6882ba6bde5022a69c");
+        order.setContactPhone("19982542455");
+        order.setContact("111");
+        System.out.println(JSONObject.toJSONString(order));
     }
 }
 

@@ -14,6 +14,8 @@ public interface ConsultOrderMapper {
 
     ConsultOrder selectByPrimaryKey(Integer id);
 
+    ConsultOrder selectById(Integer id);
+
     int updateByPrimaryKeySelective(ConsultOrder record);
 
     int updateByPrimaryKey(ConsultOrder record);
@@ -30,5 +32,5 @@ public interface ConsultOrderMapper {
 
     List<ConsultOrder> selectConsultByUserIdAndDoctorId(@Param("userId")Integer userId, @Param("doctorId")Integer doctorId);
 
-
+    int updateByOid(ConsultOrder consultOrder);
 }

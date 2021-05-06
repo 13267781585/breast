@@ -10,7 +10,7 @@ Page({
   onLoad() {
     this.setData({
       object: app.globalData.object,
-      uuid: app.globalData.userInfor.uuid
+      uuid: app.globalData.object
     })
   },
 

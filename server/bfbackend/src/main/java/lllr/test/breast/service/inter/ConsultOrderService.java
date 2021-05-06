@@ -19,4 +19,6 @@ public interface ConsultOrderService {
     ServerResponse<ConsultOrder> selectConsultByUserIdAndDoctorId(Integer userId, Integer doctorId);
 
     ServerResponse<String> getConsultStatus(String oid);
+
+    ServerResponse<ConsultOrder> updateConsultOrder(ConsultOrder consultOrder);
 }

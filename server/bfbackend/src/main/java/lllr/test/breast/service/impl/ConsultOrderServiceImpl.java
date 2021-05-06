@@ -4,6 +4,7 @@ import lllr.test.breast.common.ServerResponse;
 import lllr.test.breast.dao.mapper.ConsultOrderMapper;
 import lllr.test.breast.dataObject.consult.ConsultOrder;
 import lllr.test.breast.service.inter.ConsultOrderService;
+import lllr.test.breast.util.ComUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,40 @@ public class ConsultOrderServiceImpl implements ConsultOrderService {
         }else {
             return ServerResponse.createBysuccessMsg("consult_isOpen");
         }
+    }
+
+    @Override
+    public ServerResponse<ConsultOrder> updateConsultOrder(ConsultOrder consultOrder) {
+        Integer id = consultOrder.getId();
+        Integer userId = consultOrder.getUserId();
+        Integer doctorId = consultOrder.getDoctorId();
+        String oid = consultOrder.getOid();
+        ConsultOrder dataObject = null;
+        //通过id或者oid查询订单
+        if(id != null)
+            dataObject = consultOrderMapper.selectById(id);
+        else if(oid != null)
+            dataObject = consultOrderMapper.getByOid(oid);
+
+        //校验订单是否存在
+        if(dataObject == null || !ComUtils.isStrEqual(oid,dataObject.getOid())
+                || !dataObject.getUserId().equals(userId) || !dataObject.getDoctorId().equals(doctorId))
+            return ServerResponse.createByError();
+
+        int num = 0;
+        if(id != null)
+            num = consultOrderMapper.updateByPrimaryKeySelective(consultOrder);
+        else
+            if(!ComUtils.isEmpty(oid))
+                num = consultOrderMapper.updateByOid(consultOrder);
+
+        if(id != null)
+            dataObject = consultOrderMapper.selectById(id);
+        else if(!ComUtils.isEmpty(oid))
+            dataObject = consultOrderMapper.getByOid(oid);
+
+        return num == 1 ? ServerResponse.createBysuccessData(dataObject) : ServerResponse.createByError();
+
     }
 
 
