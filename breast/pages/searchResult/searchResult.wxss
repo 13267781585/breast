@@ -1,9 +1,0 @@
-page{
-  background-color: #FAFFF0;
-}
-
-.noewRes{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
