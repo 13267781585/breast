@@ -39,7 +39,8 @@ Page({
      //跳转到生长曲线页面 求月份差
     var monthDiff = util.monthDiff(this.data.date,this.data.endDate)
     wx.navigateTo({
-      url: '../lineDetail/lineDetail?monthDiff='+monthDiff + '&gender=' + fromValue.radioG,
+      url: '../lineDetail/lineDetail?monthDiff='+monthDiff + '&gender=' + fromValue.radioG + '&height=' + 
+      height + '&weight=' + weight,
     })
   },
   //设置日期

@@ -23,7 +23,9 @@ Page({
     monthDiff: 0,
     type: "weight",
     gender: '',
-    baseData: null
+    baseData: null,
+    height: 49.1,
+    weight: 2.4
   },
 
   onLoad: function (options) {
@@ -31,7 +33,9 @@ Page({
     console.log(options.monthDiff);
     this.setData({
       monthDiff: options.monthDiff,
-      gender: options.gender
+      gender: options.gender,
+      height: options.height,
+      weight: options.weight
     })
     wx.showLoading({
       title: "正在加载中。。",
@@ -62,7 +66,7 @@ Page({
         baseData = baseLine.g_height;
     }
     var opt = who.setOption({ tite: "宝宝", sex: 1, babyname: "zx" },
-      baseData, {}, type, this.data.monthDiff);
+      baseData, {}, type, this.data.monthDiff,this.data.height,this.data.weight);
     this.setData({
       option: opt
     })

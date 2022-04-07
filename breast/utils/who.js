@@ -1,4 +1,4 @@
-function setOption(custumOpt, baseLine, data, type,monthDiff) {
+function setOption(custumOpt, baseLine, data, type,monthDiff,height,weight) {
 
    var len = baseLine.length;
   var start = 0;
@@ -49,20 +49,43 @@ function setOption(custumOpt, baseLine, data, type,monthDiff) {
   console.log(data2)
   var l = data1.data.length;
 
-
+  var wpos = 0;
+  var hpos = 0;
+  if(height>49.1){
+    hpos = 1;
+  }
+  if(weight>2.4){
+    wpos = 1;
+  }
   if (type == 'weight') {
     for (var j = 0; j < l; j++) {
-      data1.data[j][1] += Math.random() / 2;
+      if(wpos===1){
+        data1.data[j][1] += Math.random() / 2;
+      }else{
+        data1.data[j][1] -= Math.random() / 2;
+      }
     }
     for (var j = 0; j < l; j++) {
-      data2.data[j][1] += Math.random() / 2;
+      if (wpos === 1) {
+        data2.data[j][1] += Math.random() / 2;
+      } else {
+        data2.data[j][1] -= Math.random() / 2;
+      }
     }
   } else if (type == 'height') {
     for (var j = 0; j < l; j++) {
-      data1.data[j][1] += Math.random() + 1;
+      if(hpos===1){
+        data1.data[j][1] += Math.random() + 1;
+      }else{
+        data1.data[j][1] += Math.random() - 1;
+      }
     }
     for (var j = 0; j < l; j++) {
-      data2.data[j][1] += Math.random() + 1;
+      if (hpos === 1) {
+        data2.data[j][1] += Math.random() + 1;
+      } else {
+        data2.data[j][1] -= Math.random() + 1;
+      }
     }
   }
 
