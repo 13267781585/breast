@@ -42,6 +42,32 @@ function setOption(custumOpt, baseLine, data, type,monthDiff) {
 
   var seriesData = new Array();
   var legendData = new Array();
+  var data1 = baseLine[2];
+  var data2 = baseLine[3];
+  
+  console.log(data1)
+  console.log(data2)
+  var l = data1.data.length;
+
+
+  if (type == 'weight') {
+    for (var j = 0; j < l; j++) {
+      data1.data[j][1] += Math.random() / 2;
+    }
+    for (var j = 0; j < l; j++) {
+      data2.data[j][1] += Math.random() / 2;
+    }
+  } else if (type == 'height') {
+    for (var j = 0; j < l; j++) {
+      data1.data[j][1] += Math.random() + 1;
+    }
+    for (var j = 0; j < l; j++) {
+      data2.data[j][1] += Math.random() + 1;
+    }
+  }
+
+  console.log(data1)
+  console.log(data2)
 
   for (var i = 0; i < len; i++) {
     legendData.push(baseLine[i].key);
