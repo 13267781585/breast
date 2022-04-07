@@ -8,8 +8,13 @@
     <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
     <result column="category" jdbcType="VARCHAR" property="category" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="lllr.test.breast.dataObject.popularization.Article">
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  <resultMap id="ResultMapWithBLOBs" type="lllr.test.breast.dataObject.popularization.Article">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

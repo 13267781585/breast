@@ -82,10 +82,10 @@ public class ArticleServiceImpl implements ArticleService {
     public ServerResponse<List<Article>> getArticleList() {
 
         List<Article> articleList = articleMapper.selectArticleList();
-        for(int i=0;i<articleList.size();i++)
-            if(articleList.get(i).getTitle().length()==0){
-                articleList.remove(articleList.get(i));
-            }
+//        for(int i=0;i<articleList.size();i++)
+//            if(articleList.get(i).getTitle().length()==0){
+//                articleList.remove(articleList.get(i));
+//            }
         return ServerResponse.createBysuccessData(articleList);
     }
 

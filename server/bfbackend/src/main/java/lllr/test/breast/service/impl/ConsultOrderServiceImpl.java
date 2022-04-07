@@ -79,7 +79,7 @@ public class ConsultOrderServiceImpl implements ConsultOrderService {
         Long lastingTime_long=(long)lastingTime;
         Long currentTime=System.currentTimeMillis();
 
-        if(currentTime-createTime_long>lastingTime_long){
+        if(consultOrder.getStatus()!=null&&consultOrder.getStatus()==1||currentTime-createTime_long>lastingTime_long){
             return ServerResponse.createByErrorMsg("consult_isClose");
         }else {
             return ServerResponse.createBysuccessMsg("consult_isOpen");

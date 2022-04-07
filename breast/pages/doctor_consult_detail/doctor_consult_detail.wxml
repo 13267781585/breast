@@ -26,8 +26,8 @@
  </view>
     
 <view style="margin-top:30rpx" class="btn_center">
-     <button class="cu-btn round bg-white shd" style="height:100rpx" 
-    bindtap="toChat" >进入咨询</button>
+     <!-- <button class="cu-btn round bg-white shd" style="height:100rpx" 
+    bindtap="toChat" >进入咨询</button> -->
      <button class="cu-btn round bg-white shd" style="height:100rpx" 
     bindtap="onOver" >结束订单</button>
 </view>

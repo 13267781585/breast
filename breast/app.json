@@ -43,10 +43,10 @@
         "selectedIconPath": "/images/icon/kppd2.png"
       },
       {
-        "pagePath": "pages/testIndex/testIndex",
-        "text": "测试",
-        "iconPath": "/images/icon/wj1.png",
-        "selectedIconPath": "/images/icon/wj2.png"
+          "pagePath": "pages/testIndex/testIndex",
+          "text": "测试",
+          "iconPath": "/images/icon/wj1.png",
+          "selectedIconPath": "/images/icon/wj2.png"
       },
       {
         "pagePath": "pages/consult_doctors_choose/consult_doctors_choose",

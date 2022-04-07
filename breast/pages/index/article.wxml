@@ -13,13 +13,13 @@
 		<!--图片绑定函数，点击进入详细图文页-->
 		<swiper indicator-dots autoplay loop class="itSwiperImage">
 			<swiper-item>
-				<image src="http://llllllllr.top/20087257413880_2.jpg" bindtap="imageText1" mode="widthFix"></image>
+				<image src="http://localhost:8088/picture/1.jpg" bindtap="imageText1" mode="widthFix"></image>
 			</swiper-item>
 			<swiper-item>
-				<image src="http://llllllllr.top/bbbjpg.jpg" bindtap="imageText2" mode="widthFix"></image>
+				<image src="http://localhost:8088/picture/1.jpg" bindtap="imageText2" mode="widthFix"></image>
 			</swiper-item>
 			<swiper-item>
-				<image src="http://llllllllr.top/bbbjpg.jpg" bindtap="imageText3" mode="widthFix"></image>
+				<image src="http://localhost:8088/picture/1.jpg" bindtap="imageText3" mode="widthFix"></image>
 			</swiper-item>
 		</swiper>
 

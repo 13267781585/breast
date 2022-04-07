@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from uanswer
+    from answer
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from uanswer
+    delete from answer
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="lllr.test.breast.dataObject.question.Answer">
-    insert into uanswer (id, user_id, t_id, 
+    insert into answer (id, user_id, t_id, 
       answers)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{tId,jdbcType=INTEGER}, 
       #{answers,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="lllr.test.breast.dataObject.question.Answer">
-    insert into uanswer
+    insert into answer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -58,7 +58,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="lllr.test.breast.dataObject.question.Answer">
-    update uanswer
+    update answer
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
@@ -73,7 +73,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="lllr.test.breast.dataObject.question.Answer">
-    update uanswer
+    update answer
     set user_id = #{userId,jdbcType=INTEGER},
       t_id = #{tId,jdbcType=INTEGER},
       answers = #{answers,jdbcType=VARCHAR}

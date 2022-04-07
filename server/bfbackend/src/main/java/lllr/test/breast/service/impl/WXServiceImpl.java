@@ -23,7 +23,7 @@ public class WXServiceImpl implements WXService {
         if(ComUtils.isEmpty(accessToken))
             throw new Exception("发送消息通知失败!");
 
-        wxUtil.sendTemplateMessage(accessToken,messageData);
+        //wxUtil.sendTemplateMessage(accessToken,messageData);
         return ServerResponse.createBysuccess();
     }
 }

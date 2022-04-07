@@ -13,7 +13,7 @@ Page({
     img:'',  //自己得头像链接
     object:'',
     message:"", //消息内容
-    userHeadPictureUrl: 'http://llllllllr.top/doctorRegister_1585797161.jpg',  //用户备用头像
+    userHeadPictureUrl: 'http://localhost:8088/picture/1.jpg',  //用户备用头像
     statsuBarHeight: app.globalData.statsuBarHeight,
     headHeight:40,
     chatListHeight:0,
@@ -348,7 +348,10 @@ Page({
   },
 
   getInformation:function(){
-    console.log("----打开资料页面----");
+    console.log("----打开资料页面----");  
+    wx.navigateTo({
+      url: '../doctor_consult_detail/doctor_consult_detail?consultOrderId=' + this.data.oid,
+    })
   },
   DelImg(e) {
     wx.showModal({

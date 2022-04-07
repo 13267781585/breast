@@ -7,6 +7,8 @@ import lllr.test.breast.service.inter.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 
 @Service
 public class ScoreServiceImpl implements ScoreService {
@@ -23,10 +25,15 @@ public class ScoreServiceImpl implements ScoreService {
     @Override
     public ServerResponse<String> updateScore(Score score) {
         Score oldScore = scoreMapper.selectByPrimaryKey(score.getUserId());
-        Integer oldNum = oldScore.getScore();
-        Integer incr = score.getScore();
-        score.setScore(oldNum+incr);
-        scoreMapper.updateByPrimaryKey(score);
+        if(Objects.isNull(oldScore))
+        {
+            scoreMapper.insert(oldScore);
+        }else{
+            Integer oldNum = oldScore.getScore();
+            Integer incr = score.getScore();
+            score.setScore(oldNum+incr);
+            scoreMapper.updateByPrimaryKey(score);
+        }
         return null;
     }
 

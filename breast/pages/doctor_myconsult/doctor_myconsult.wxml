@@ -1,6 +1,6 @@
    <view class="cu-list menu-avatar"   wx:for="{{consultOrderList}}" wx:key="{{item.id}}" wx:for-index="idx">
 
-        <scroll-view class="content-info" scroll-y data-id="{{item.id}}" bindtap="to_doctorConsultDetail" >
+        <scroll-view class="content-info" scroll-y data-id="{{item.id}}" bindtap="" >
         <view class="outer">
           <view class="card">
             <view class="topdes solids-bottom ">

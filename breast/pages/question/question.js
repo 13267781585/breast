@@ -15,7 +15,7 @@ Page({
     this.getQuestion(id)
     this.setData({
       tid:id,
-      userId:options.userId
+      userId:app.globalData.userId
     })
   },
 
@@ -90,7 +90,7 @@ Page({
         wx.request({
           url: serverUrl+'/score/update',
           data:{
-            userId: that.data.userId,
+            userid: that.data.userId,
             score:10
           },
           success:function(res){
@@ -149,7 +149,7 @@ Page({
         url: serverUrl+ '/user/insertAnswers',
         method:"GET",
         data:{
-          userId: that.data.userId,
+          userid: that.data.userId,
           tid:this.data.tid,
           answers:str
         },

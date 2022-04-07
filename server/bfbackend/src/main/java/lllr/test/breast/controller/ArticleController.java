@@ -52,7 +52,8 @@ public class ArticleController {
     public ServerResponse<List<Article>> queryArticleList()  {
 
         List<Article> rs = new ArrayList<Article>();
-        List<Article> articles = redisService.getlist(ArticleKey.articleList,"",Article.class);
+        //redisService.getlist(ArticleKey.articleList,"",Article.class)
+        List<Article> articles = null;
         //取缓存
         if(articles!=null)
            return ServerResponse.createBysuccessData(articles);

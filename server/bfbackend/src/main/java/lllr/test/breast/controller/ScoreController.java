@@ -27,12 +27,12 @@ public class ScoreController {
 
     @GetMapping("/update")
     ServerResponse<String> updateScore(@RequestParam("userid") Integer userid,
-                                       @RequestParam("score") Integer userSecore)
+                                       @RequestParam("score") Integer score)
     {
-        Score score = new Score();
-        score.setScore(userSecore);
-        score.setUserId(userid);
-        return scoreService.updateScore(score);
+        Score score1 = new Score();
+        score1.setScore(score);
+        score1.setUserId(userid);
+        return scoreService.updateScore(score1);
     }
 
 }

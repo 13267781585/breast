@@ -26,6 +26,7 @@ Page({
     }
     //获取用户的userid
     this.checkUserId();
+    this.getScore();
   },
 
   getTests:function(){
@@ -49,7 +50,7 @@ Page({
     var id = this.data.testList[index].id;
     console.log("id--"+id);
     wx.navigateTo({
-      url: '../question/question?id=' + id + '&userId=' + this.data.userId,
+      url: '../question/question?id=' + id + '&userid=' + this.data.userId,
     })
   },
   //检查用户是否登录
@@ -69,10 +70,7 @@ Page({
     var that =this;
     var serverUrl = app.globalData.serverUrl;
     wx.request({
-      url:serverUrl + '/score/get',
-      data:{
-        userId: that.data.userId
-      },
+      url: serverUrl + '/score/get?userid=' + that.data.userId,
       success:function(res){
           console.log("积分----");
           console.log(res)   

@@ -37,18 +37,17 @@ Page({
       doctorOpenId: options.openId
     })
     //判断本地是否有问卷
-    console.log('----判断本地是否有问卷：----')
-    if(this.queryGlobalConsult(this.data.doctorId)){
-      //如果返回为true则直接进入聊天页面
-      console.log('----本地有咨询问卷：----')
-      wx.navigateTo({
-        url: '../consult_chatroom/consult_chatroom?otherId=' +this.data.doctorUuid + '&oid=' + this.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
-        +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl))
-      })
-    }
+    // console.log('----判断本地是否有问卷：----')
+    // if(this.queryGlobalConsult(this.data.doctorId)){
+    //   //如果返回为true则直接进入聊天页面
+    //   console.log('----本地有咨询问卷：----')
+    //   wx.navigateTo({
+    //     url: '../consult_chatroom/consult_chatroom?otherId=' +this.data.doctorUuid + '&oid=' + this.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
+    //     +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl))
+    //   })
+    // }
     //判断数据库是否有问卷
     console.log('----判断数据库是否有问卷：----')
-    console.log(options.doctorId,getApp().globalData.userId);
     this.queryConsult(getApp().globalData.userId,options.doctorId);
 
     //等待填写问卷
@@ -280,7 +279,9 @@ Page({
       return false;
     }
 
-  },
+  }
+  
+  ,
   //查询订单是否有效
   queryConsuIsOpen:async function(oid){
     wx.request({
@@ -364,25 +365,16 @@ Page({
       if(res.data.status == 1){
         console.log('----查询到后台咨询记录----:', res)
         //开始查询订单是否有效
-        // var flag=_this.queryConsuIsOpen(res.data.data.oid);
-        _this.queryConsuIsOpen(res.data.data.oid);
-        console.log("订单有效")
-        wx.navigateTo({
-          url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + res.data.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
-          +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
-        })
+        if (res.data.data.status!=1){
+          console.log("订单有效")
+          wx.navigateTo({
+            url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + res.data.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg)) + '&id=' + app.globalData.userInfor.uuid + '&img='
+              + encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
+          })
+        }else{
+          console.log('订单无效！')
+        }
           
-        // //出现异步请求问题
-        // if(flag){
-        //   console.log("订单有效")
-        //   wx.navigateTo({
-        //     url: '../consult_chatroom/consult_chatroom?otherId=' + _this.data.doctorUuid + '&oid=' + res.data.data.oid + '&otherImg=' + encodeURIComponent(JSON.stringify(_this.data.doctorImg))+ '&id=' + app.globalData.userInfor.uuid + '&img='
-        //     +  encodeURIComponent(JSON.stringify(app.globalData.userInfor.imgUrl)),
-        //   })
-        // }else{
-          console.log("无效则不进入聊天页面")
-        // }
-    
       }else{
         console.log('----没有查询到咨询记录----:', res)
       }

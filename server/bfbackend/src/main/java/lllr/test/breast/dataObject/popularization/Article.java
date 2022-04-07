@@ -26,7 +26,7 @@ public class Article {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getDescription() {
@@ -34,7 +34,7 @@ public class Article {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
     }
 
     public String getImgUrl() {
@@ -42,7 +42,7 @@ public class Article {
     }
 
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+        this.imgUrl = imgUrl;
     }
 
     public String getCategory() {
@@ -50,7 +50,7 @@ public class Article {
     }
 
     public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
+        this.category = category;
     }
 
     public String getContent() {
@@ -58,6 +58,6 @@ public class Article {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 }

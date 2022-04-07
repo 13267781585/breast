@@ -196,6 +196,7 @@ App({
         console.log('app.js :', this.globalData.consultOrderList[i])
         return this.globalData.consultOrderList[i];
       }
+
   },
 
   //医生结束订单时 修改订单的状态
