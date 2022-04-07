@@ -37,6 +37,39 @@ Page({
       console.log('userId', app.globalData.userId);
       showUtil.showToLogion();
     }
+
+    var that = this;
+    var serverUrl = app.globalData.serverUrl;
+    wx.request({
+      url: serverUrl + '/score/get?userid=' + app.globalData.userId,
+      success: function (res) {
+        var score = res.data.data;
+        if(score<10){
+          that.showToTest();
+        }
+      }
+    })
+    
+  },
+
+  showToTest:function() {
+    wx.showModal({
+      title: '提示',
+      content: '积分不足！',
+      confirmColor: "#d4237a",
+      confirmText: '获取积分',
+      success(res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '../testIndex/testIndex',
+          })
+          return true;
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+          return false;
+        }
+      }
+    })
   },
   fetchDoctorData: function () {  //获取医生列表
     let _this = this;

@@ -2,7 +2,9 @@ package lllr.test.breast.service.impl;
 
 import lllr.test.breast.common.ServerResponse;
 import lllr.test.breast.dao.mapper.ConsultOrderMapper;
+import lllr.test.breast.dao.mapper.ScoreMapper;
 import lllr.test.breast.dataObject.consult.ConsultOrder;
+import lllr.test.breast.dataObject.user.Score;
 import lllr.test.breast.service.inter.ConsultOrderService;
 import lllr.test.breast.util.ComUtils;
 import org.slf4j.Logger;
@@ -20,10 +22,17 @@ public class ConsultOrderServiceImpl implements ConsultOrderService {
     @Autowired
     private ConsultOrderMapper consultOrderMapper;
 
+    @Autowired
+    private ScoreMapper scoreMapper;
+
 
     @Override
     public ServerResponse<String> AddConsultOrder(ConsultOrder consultOrder) {
         int inNum = consultOrderMapper.insert(consultOrder);
+        //减积分
+        Score score = scoreMapper.selectByPrimaryKey(consultOrder.getUserId());
+        score.setScore(score.getScore()-10);
+        scoreMapper.updateByPrimaryKeySelective(score);
         if( inNum == 1 )
         {
             String oid = consultOrder.getOid();

@@ -15,12 +15,12 @@
        <view class="cu-form-group">
           <view class="title">病情简述:  {{consultOrder.symptomDescription}}</view>
        </view>
-        <view style="margin-top:30rpx" class="cu-form-group">
+        <!-- <view style="margin-top:30rpx" class="cu-form-group">
           <view class="title">图片详情：</view>
           <view class="grid col-4 grid-square flex-sub" wx:for="{{consultOrder.imgUrls}}">
 							<image src="{{item}}" mode='aspectFill'></image>
 					</view>
-       </view>
+       </view> -->
    </view> 
    <view class="link-top"></view>
  </view>
