@@ -13,7 +13,8 @@ Page({
     img:'',  //自己得头像链接
     object:'',
     message:"", //消息内容
-    userHeadPictureUrl: 'http://localhost:8088/picture/1.jpg',  //用户备用头像
+    userHeadPictureUrl: 'http://localhost:8088/picture/yinger9.jpg',  //用户备用头像
+    doctorHeadPictureUrl: 'http://localhost:8088/picture/yisheng2.jpg', //医生备用头像
     statsuBarHeight: app.globalData.statsuBarHeight,
     headHeight:40,
     chatListHeight:0,
@@ -51,7 +52,8 @@ Page({
     })
 
     // var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    var oImg = options.otherImg == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
+    var oImg = this.data.object == 'doctor' ? this.data.userHeadPictureUrl : this.data.doctorHeadPictureUrl;
+    var userImg = this.data.object != 'doctor' ? this.data.userHeadPictureUrl : this.data.doctorHeadPictureUrl;
     console.log('参数：', options);
     // var img=JSON.parse(decodeURIComponent(options.img));
     this.setData({
@@ -60,7 +62,7 @@ Page({
       oid: options.oid,
       otherId: options.otherId,    
       otherImg: oImg,
-      img: options.img
+      img: userImg
     })
     wx.showToast({
       title: '连接中',

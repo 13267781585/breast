@@ -8,6 +8,7 @@ Page({
     scrolltop: null, //滚动位置
     page: 0,  //分页
     openId: '',
+    doctorImg: 'http://localhost:8088/picture/yisheng2.jpg'
   },
   onLoad: function () { //加载数据渲染页面
     console.log('----进入onload----')
@@ -33,11 +34,6 @@ Page({
       }
     }
 
-    if (app.globalData.userId < 0){
-      console.log('userId', app.globalData.userId);
-      showUtil.showToLogion();
-    }
-
     var that = this;
     var serverUrl = app.globalData.serverUrl;
     wx.request({
@@ -49,7 +45,10 @@ Page({
         }
       }
     })
-    
+    if (app.globalData.userId < 0) {
+      console.log('userId', app.globalData.userId);
+      showUtil.showToLogion();
+    }
   },
 
   showToTest:function() {

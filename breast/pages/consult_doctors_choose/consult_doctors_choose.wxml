@@ -40,7 +40,7 @@
         <view class="doctor_txk">
           <!-- <view class="chat_head" style="background-image:url({{item.user.imgUrl}});"></view> -->
 					<!-- <view class="doctor_head" style="background-image:url({{item.imgUrl}});" mode="aspectFill"></view> -->
-					<view class="cu-avatar2 round lg" style="height:120rpx;width:120rpx; background-image:url({{item.imgUrl}});"></view>
+					<view class="cu-avatar2 round lg" style="height:120rpx;width:120rpx; background-image:url({{item.imgUrl===''?doctorImg:item.imgUrl}});"></view>
         </view>
 
         <view class="doctor_content">

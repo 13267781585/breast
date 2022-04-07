@@ -28,7 +28,7 @@ left: 100px;
 }
 
 .UCenter-bg {
-  background-image: url(http://llllllllr.top/20200216134141.png);
+  background-image: url(http://localhost:8088/picture/yinger6.jpg);
   background-size: cover;
   height: 550rpx;
   display: flex;
