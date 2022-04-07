@@ -164,14 +164,14 @@ Page({
   
   //加载页面时播放音频
   initMusic:function(){
-    this.audioCtx.src = "http://llllllllr.top/%E5%BC%A0%E7%A2%A7%E6%99%A8&%…A8%E5%AE%97%E7%BA%AC+-+%E5%87%89%E5%87%89.mp32553";
-    this.setData({
-      'play.title': '母乳喂养的好处有哪些',
-      'play.coverUrl': "http://llllllllr.top/zfx.jpg2162",
-      'play.currentTime': '00:00',
-      'play.duration': '00:00',
-      'play.percent': 0,
-    })
+    // this.audioCtx.src = "http://localhost:8088/audio/yintian.mp3";
+    // this.setData({
+    //   'play.title': '母乳喂养的好处有哪些',
+    //   'play.coverUrl': "http://localhost:8088/picture/1.jpg",
+    //   'play.currentTime': '00:00',
+    //   'play.duration': '00:00',
+    //   'play.percent': 0,
+    // })
   },
 
   //切换音频
@@ -208,8 +208,9 @@ Page({
   //下一首
   next: function () {
     //判断是否为列表的最后一首，若是则回到第一首
-
+    this.audioCtx.pause();
     var index = this.data.playIndex >= this.data.playList.length - 1 ? 0 : this.data.playIndex + 1;
+    console.log('下一首个index:',index)
     this.setMusic(index);
     //若当前状态为暂停则不立即播放，若是播放状态则播放///用于下一首的图标按钮点击
     if (this.data.state === 'running') this.play();

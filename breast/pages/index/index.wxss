@@ -219,7 +219,7 @@ vertical-align: middle;
   height: 112rpx;
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: 110rpx;
   width: 100%;
 }
 

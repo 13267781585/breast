@@ -1,7 +1,7 @@
  <scroll-view class="content-info" scroll-y>
  	<view class='box'>
  		<view class='video'>
- 			<block wx:for="{{videoList}}">
+ 			<block wx:for="{{videoList}}" wx:key="key">
  				<view class='video-item'>
  					<view class='wrapper'>
  						<video class='video-video' wx:if='{{index==videoIndex}}' id='video{{index}}' autoplay='{{true}}' show-center-play-btn="{{false}}" src='{{item.vediourl}}'></video>
