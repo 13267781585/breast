@@ -19,12 +19,12 @@
 		<input name="userPassword" type="password" placeholder="请输入密码"></input>
 		<text  class="cuIcon-lock lg text-gray"></text>
 	</view>
-	<view class="cu-bar bg-white">
+	<!-- <view class="cu-bar bg-white">
 		<view class="action">
 			上传头像
 		</view>
-	</view>
-	<view class="cu-form-group">
+	</view> -->
+	<!-- <view class="cu-form-group">
 		<view class="grid col-4 grid-square flex-sub">
 			<view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
 				<image src='{{imgList[index]}}' mode='aspectFill'></image>
@@ -36,10 +36,10 @@
 				<text class="cuIcon-cameraadd"></text>
 			</view>
 		</view>
-	</view>
-	<view class="cu-form-group align-start">
+	</view> -->
+	<view class="cu-form-group">
 		<view class="title">擅长</view>
-		<textarea maxlength="-1" name="expertIn" disabled="{{modalName!=null}}" placeholder="请输入擅长的领域"></textarea>
+		<input maxlength="-1" name="expertIn" disabled="{{modalName!=null}}" placeholder="请输入擅长的领域"></input>
 	</view>
 
 	<view class="btn">

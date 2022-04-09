@@ -52,10 +52,11 @@ Page({
     })
 
     // var oImg = JSON.parse(decodeURIComponent(options.otherImg)) == undefined || options.otherImg == null ? this.data.userHeadPictureUrl : options.otherImg;
-    var oImg = this.data.object == 'doctor' ? this.data.userHeadPictureUrl : this.data.doctorHeadPictureUrl;
-    var userImg = this.data.object != 'doctor' ? this.data.userHeadPictureUrl : this.data.doctorHeadPictureUrl;
-    console.log('参数：', options);
-    // var img=JSON.parse(decodeURIComponent(options.img));
+    var oImg = app.globalData.object == 'doctor' ? this.data.userHeadPictureUrl : this.data.doctorHeadPictureUrl;
+    var userImg = app.globalData.object == 'doctor' ? this.data.doctorHeadPictureUrl : this.data.userHeadPictureUrl;
+    console.log('object:',this.data.object)
+    console.log('img',userImg);
+    console.log('omg:',oImg);
     this.setData({
       object:app.globalData.object,
       id: options.id,
