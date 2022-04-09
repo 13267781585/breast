@@ -11,6 +11,16 @@ public class Question {
 
     private String qOpstions;
 
+    private String qAnswer;
+
+    public String getqAnswer() {
+        return qAnswer;
+    }
+
+    public void setqAnswer(String qAnswer) {
+        this.qAnswer = qAnswer;
+    }
+
     public Integer getqId() {
         return qId;
     }

@@ -7,6 +7,7 @@
     <result column="q_type" jdbcType="INTEGER" property="qType" />
     <result column="q_content" jdbcType="VARCHAR" property="qContent" />
     <result column="q_opstions" jdbcType="VARCHAR" property="qOpstions" />
+    <result column="q_answer" jdbcType="VARCHAR" property="qAnswer" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -38,7 +39,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    q_id, t_id, q_type, q_content, q_opstions
+    q_id, t_id, q_type, q_content, q_opstions, q_answer
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -53,9 +54,9 @@
 
   <insert id="insert" parameterType="lllr.test.breast.dataObject.question.Question">
     insert into question (q_id, t_id, q_type, 
-      q_content, q_opstions)
+      q_content, q_opstions, q_answer)
     values (#{qId,jdbcType=INTEGER}, #{tId,jdbcType=INTEGER}, #{qType,jdbcType=INTEGER}, 
-      #{qContent,jdbcType=VARCHAR}, #{qOpstions,jdbcType=VARCHAR})
+      #{qContent,jdbcType=VARCHAR}, #{qOpstions,jdbcType=VARCHAR}, #{qAnswer,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="lllr.test.breast.dataObject.question.Question">
     insert into question
@@ -75,6 +76,9 @@
       <if test="qOpstions != null">
         q_opstions,
       </if>
+      <if test="qAnswer != null">
+        q_answer,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="qId != null">
@@ -91,6 +95,9 @@
       </if>
       <if test="qOpstions != null">
         #{qOpstions,jdbcType=VARCHAR},
+      </if>
+      <if test="qAnswer != null">
+        #{qAnswer,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -109,6 +116,9 @@
       <if test="qOpstions != null">
         q_opstions = #{qOpstions,jdbcType=VARCHAR},
       </if>
+      <if test="qAnswer != null">
+        #{qAnswer,jdbcType=VARCHAR},
+      </if>
     </set>
     where q_id = #{qId,jdbcType=INTEGER}
   </update>
@@ -117,7 +127,8 @@
     set t_id = #{tId,jdbcType=INTEGER},
       q_type = #{qType,jdbcType=INTEGER},
       q_content = #{qContent,jdbcType=VARCHAR},
-      q_opstions = #{qOpstions,jdbcType=VARCHAR}
+      q_opstions = #{qOpstions,jdbcType=VARCHAR},
+      q_answer =  #{qAnswer,jdbcType=VARCHAR}
     where q_id = #{qId,jdbcType=INTEGER}
   </update>
   

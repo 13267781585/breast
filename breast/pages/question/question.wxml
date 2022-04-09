@@ -12,6 +12,7 @@
   			<text class="option">{{item.option}}</text>
   		</view>
   	</block>
+      <view class="content" style="display:fixed"></view>
   </scroll-view>
   <view class="btn">
   	<button class="cu-btn round bg-white shd" style="height:100rpx" 

@@ -7,7 +7,8 @@ Page({
     type: 0,
     options: [],
     resData: [],
-    userId:-1
+    userId:-1,
+    answer: '',
   },
   onLoad: function (options) {
     var id = options.id;
@@ -30,7 +31,7 @@ Page({
         tid: id
       },
       success: function (res) {
-        console.log(res)
+        console.log('问卷：',res.data.data)
         that.setData({
           resData: res.data.data,
           currentIndex: 0
@@ -67,6 +68,7 @@ Page({
     this.setData({
       title: questionList[index].qContent,
       type: questionList[index].qType,
+      answer: questionList[index].qAnswer
     })
 
     
@@ -87,24 +89,29 @@ Page({
    // console.log(this.data.resData.length)
     //如果已经是最后一题
     if (this.data.currentIndex == this.data.resData.length - 1) {
-        wx.request({
-          url: serverUrl+'/score/update',
-          data:{
-            userid: that.data.userId,
-            score:10
-          },
-          success:function(res){
-            wx.showToast({
-              title: '积分+10!',
-            })
+        if(that.data.userId!=-1){
+          wx.request({
+            url: serverUrl + '/score/update',
+            data: {
+              userid: that.data.userId,
+              score: 10
+            },
+            success: function (res) {
+              wx.showToast({
+                title: '积分+10!',
+              })
+              wx.switchTab({
+                url: '../testIndex/testIndex',
+              })
+              return;
+            }
+          })
+        }else{
+          wx.switchTab({
+            url: '../testIndex/testIndex',
+          })
+        }
       
-           wx.switchTab({
-             url: '../testIndex/testIndex',
-           })
-           return;
-          }
-        })
-       
     } 
     else{    
       var options = this.data.options;
@@ -144,6 +151,9 @@ Page({
         })
         return;
       }
+      wx.showToast({
+        title: '正确答案：' + this.data.answer,
+      })
       //存到数据库
       wx.request({
         url: serverUrl+ '/user/insertAnswers',
