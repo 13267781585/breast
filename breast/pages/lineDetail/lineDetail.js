@@ -37,11 +37,11 @@ Page({
       height: options.height,
       weight: options.weight
     })
-    wx.showLoading({
-      title: "正在加载中。。",
-      icon: 'loading',
-      duration: 6000,
-      })
+    // wx.showLoading({
+    //   title: "正在加载中。。",
+    //   icon: 'loading',
+    //   duration: 3000,
+    //   })
     this.createCurve(this.data.type);
     setTimeout(() => {
       chart.setOption(that.data.option)
@@ -67,8 +67,17 @@ Page({
     }
     var opt = who.setOption({ tite: "宝宝", sex: 1, babyname: "zx" },
       baseData, {}, type, this.data.monthDiff,this.data.height,this.data.weight);
+      console.log('建议：',opt.message);
+    wx.showModal({
+      title: '喂养建议',
+      content: opt.message,
+      confirmColor: "#d4237a",
+      confirmText: '知道了！',
+      success(res) {
+      }
+    })
     this.setData({
-      option: opt
+      option: opt.data,
     })
   },
   resetType: function (canvas, width, height) {

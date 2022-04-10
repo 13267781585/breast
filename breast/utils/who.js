@@ -44,47 +44,95 @@ function setOption(custumOpt, baseLine, data, type,monthDiff,height,weight) {
   var legendData = new Array();
   var data1 = baseLine[2];
   var data2 = baseLine[3];
+  var data11 = baseLine[0];
+  var data22 = baseLine[1];
+
+  //还原数据
+  var l = data1.data.length;
+  for (var j = 0; j < l; j++) {
+      data1.data[j][1] = data11.data[j][1];         
+      data2.data[j][1] = data22.data[j][1];
+  }
   
   console.log(data1)
   console.log(data2)
-  var l = data1.data.length;
 
-  var wpos = 0;
-  var hpos = 0;
-  if(height>49.1){
-    hpos = 1;
+  var normalPos30 = data1.data[0][1];  //30%出生正常值
+  var normalPos80 = data2.data[0][1];  //80%出生正常值
+  var pos80 = 0;    //判断80%发展是在正常水平之上还是之下
+  var pos30 = 0;    //判断30%发展是在正常水平之上还是之下
+  var whparamter = 10;
+  var differ30 = 0;   //和30%正常值的差值
+  var differ80 = 0;  //和80%正常值的差值
+  var weightUncertain = 1.5; //体重未来不确定因素比值
+  var heightUncertain = 1;
+  var advice = '';
+
+  if(type=='weight'){
+    advice += '宝宝体重';
+    if(Math.abs(normalPos80-weight)<0.5){
+      advice += '正常，无需更改饮食计划！！！';
+    } else if(normalPos80 - weight > 0){
+      advice += '低于正常值，建议调整饮食计划，增加饮食分量！！！';
+    }else {
+      advice += '高于正常值，建议调整饮食计划，少食多餐，减少饮食分量！！！';
+    }
+  }else{
+    advice += '宝宝身高';
+    if (Math.abs(normalPos80 - height) > 2) {
+      advice += '低于正常值，建议调整饮食计划，适量增加营养！！！';
+    } else if (normalPos80 - height < 1) {
+      advice += '正常，无需更改饮食计划！！！';
+    }
   }
-  if(weight>2.4){
-    wpos = 1;
+
+  if (type == 'height'){
+    pos80 = height > normalPos80 ? 1 : 0;
+    pos30 = height > normalPos30 ? 1 : 0;
+    differ30 = Math.abs(height-normalPos30);
+    differ80 = Math.abs(height-normalPos80);
+  }else{
+    pos80 = weight > normalPos80 ? 1 : 0;
+    pos30 = weight > normalPos30 ? 1 : 0;
+    differ30 = Math.abs(weight - normalPos30);
+    differ80 = Math.abs(weight - normalPos80);
   }
+
+  console.log('80%正常值：', normalPos80);
+  console.log('30%正常值：', normalPos30);
+  console.log('体重：', weight);
+  console.log('身高：', height);
+  console.log('pos80:',pos80);
+  console.log('pos30',pos30);
+  
   if (type == 'weight') {
     for (var j = 0; j < l; j++) {
-      if(wpos===1){
-        data1.data[j][1] += Math.random() / 2;
+      if(pos30===1){
+        data1.data[j][1] += (Math.random() / weightUncertain + differ30 * differ30 / normalPos30);         //用随机数表示未来不确定因素
       }else{
-        data1.data[j][1] -= Math.random() / 2;
+        data1.data[j][1] -= (Math.random() / weightUncertain + differ30 * differ30 / normalPos30);
       }
     }
     for (var j = 0; j < l; j++) {
-      if (wpos === 1) {
-        data2.data[j][1] += Math.random() / 2;
+      if (pos80 === 1) {
+        data2.data[j][1] += (Math.random() / weightUncertain + differ80 * differ80 / normalPos80);
       } else {
-        data2.data[j][1] -= Math.random() / 2;
+        data2.data[j][1] -= (Math.random() / weightUncertain + differ80 * differ80 / normalPos80);
       }
     }
   } else if (type == 'height') {
     for (var j = 0; j < l; j++) {
-      if(hpos===1){
-        data1.data[j][1] += Math.random() + 1;
+      if(pos30===1){
+        data1.data[j][1] += (Math.random() + heightUncertain + differ80 * differ80 / normalPos80);
       }else{
-        data1.data[j][1] += Math.random() - 1;
+        data1.data[j][1] -= (Math.random() + heightUncertain + differ80 * differ80 / normalPos80);
       }
     }
     for (var j = 0; j < l; j++) {
-      if (hpos === 1) {
-        data2.data[j][1] += Math.random() + 1;
+      if (pos80 === 1) {
+        data2.data[j][1] += (Math.random() + heightUncertain + differ30 * differ30 / normalPos30);
       } else {
-        data2.data[j][1] -= Math.random() + 1;
+        data2.data[j][1] -= (Math.random() + heightUncertain + differ30 * differ30 / normalPos30);
       }
     }
   }
@@ -134,106 +182,109 @@ function setOption(custumOpt, baseLine, data, type,monthDiff,height,weight) {
     )
   }
   return {
-    textStyle: {
-      // color: '#fff'
-      color:'black'
-    },
-    backgroundColor: curveBgColor,
-    animation:true,
-    animationDuration:1000,
-    title: {
-      text: title,
-      left: 'center',
-      top: '6%',
+    "message":advice,
+    "data": {
       textStyle: {
-        // color: '#fff',
-        color:'black',
-        fontSize: '12px'
+        // color: '#fff'
+        color: 'black'
       },
-    },
-    legend: {
-      X: 300,
-      bottom: '7%',
-      textStyle: {
-        // color: '#ffd285',
-        color:'black'
-      },
-      data: legendData
-    },
-    tooltip: {
-      show: true,
-    },
-    grid: {
-      left: '6%',
-      right: '6%',
-      bottom: '25%',
-      containLabel: true,
-      show: true,
-
-    },
-
-    xAxis: [
-      {
-        type: 'value',
-        min: xyOpt.xmin,
-        max: xyOpt.xmax,
-        boundaryGap: false,
-        name: nameOpt.xName,
-        nameLocation: nameOpt.nameLocation,
-        nameGap: nameOpt.nameGap,
-        nameTextStyle: nameOpt.nameTextStyle,
-        "axisTick": {
-          "show": false
+      backgroundColor: curveBgColor,
+      animation: true,
+      animationDuration: 1000,
+      title: {
+        text: title,
+        left: 'center',
+        top: '6%',
+        textStyle: {
+          // color: '#fff',
+          color: 'black',
+          fontSize: '12px'
         },
-        axisLabel: {
-          textStyle: {
-            // color: '#fff'
-            color:'black'
+      },
+      legend: {
+        X: 300,
+        bottom: '7%',
+        textStyle: {
+          // color: '#ffd285',
+          color: 'black'
+        },
+        data: legendData
+      },
+      tooltip: {
+        show: true,
+      },
+      grid: {
+        left: '6%',
+        right: '6%',
+        bottom: '25%',
+        containLabel: true,
+        show: true,
+
+      },
+
+      xAxis: [
+        {
+          type: 'value',
+          min: xyOpt.xmin,
+          max: xyOpt.xmax,
+          boundaryGap: false,
+          name: nameOpt.xName,
+          nameLocation: nameOpt.nameLocation,
+          nameGap: nameOpt.nameGap,
+          nameTextStyle: nameOpt.nameTextStyle,
+          "axisTick": {
+            "show": false
           },
-          z: 1
-        },
-      },
-    ],
-    yAxis: [
-      {
-        type: 'value',
-        min: xyOpt.ymin,
-        max: xyOpt.ymax,
-        name: nameOpt.yName,
-        nameLocation: nameOpt.nameLocation,
-        nameGap: nameOpt.nameGap,
-        nameTextStyle: nameOpt.nameTextStyle,
-        "axisLine": {
-          lineStyle: {
-            // color: '#fff'
-            color:'black'
-          }
-        },
-        splitLine: {
-          show: true,
-          lineStyle: {
-            // color: '#fff'
-            color:'black'
-          }
-        },
-        "axisTick": {
-          "show": false
-        },
-        axisLabel: {
-          textStyle: {
-            // color: '#fff'
-            color:'black'
+          axisLabel: {
+            textStyle: {
+              // color: '#fff'
+              color: 'black'
+            },
+            z: 1
           },
         },
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          min: xyOpt.ymin,
+          max: xyOpt.ymax,
+          name: nameOpt.yName,
+          nameLocation: nameOpt.nameLocation,
+          nameGap: nameOpt.nameGap,
+          nameTextStyle: nameOpt.nameTextStyle,
+          "axisLine": {
+            lineStyle: {
+              // color: '#fff'
+              color: 'black'
+            }
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              // color: '#fff'
+              color: 'black'
+            }
+          },
+          "axisTick": {
+            "show": false
+          },
+          axisLabel: {
+            textStyle: {
+              // color: '#fff'
+              color: 'black'
+            },
+          },
 
-        z: 2
-      },
+          z: 2
+        },
 
-    ],
-    series: seriesData
+      ],
+      series: seriesData
+    }
+
   };
 }
-
 
 
 
