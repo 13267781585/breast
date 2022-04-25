@@ -2,13 +2,13 @@
     <!--轮播图-->
     <swiper indicator-dots autoplay>
         <swiper-item>
-            <image src="http://localhost:8088/picture/geshou1.jpg" style="width:100%"></image>
+            <image src="http://localhost:8088/picture/zhaopian10.jpg" style="width:100%"></image>
         </swiper-item>
         <swiper-item>
-            <image src="http://localhost:8088/picture/geshou2.jpg" style="width:100%"></image>
+            <image src="http://localhost:8088/picture/zhaopian11.jpg" style="width:100%"></image>
         </swiper-item>
         <swiper-item>
-            <image src="http://localhost:8088/picture/geshou3.jpg" style="width:100%"></image>
+            <image src="http://localhost:8088/picture/zhaopian12.jpg" style="width:100%"></image>
         </swiper-item>
     </swiper>
 </view>

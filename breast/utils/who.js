@@ -79,10 +79,12 @@ function setOption(custumOpt, baseLine, data, type,monthDiff,height,weight) {
     }
   }else{
     advice += '宝宝身高';
-    if (Math.abs(normalPos80 - height) > 2) {
+    if (normalPos80 - height > 1) {
       advice += '低于正常值，建议调整饮食计划，适量增加营养！！！';
-    } else if (normalPos80 - height < 1) {
+    } else if (Math.abs(normalPos80 - height) < 1) {
       advice += '正常，无需更改饮食计划！！！';
+    }else{
+      advice += '高于正常值，无需调整饮食计划！！！';
     }
   }
 
